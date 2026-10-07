@@ -98,6 +98,7 @@ a{color:inherit}
 .phone::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:40%;height:18px;background:#111;border-radius:0 0 12px 12px;z-index:2}
 .phone .scr{position:absolute;inset:0;padding:30px 10% 10%;display:flex;flex-direction:column;gap:.6rem;font-size:.62rem;line-height:1.35}
 .phone.dark{background:#111;color:#fff}
+.phone .shot{position:absolute;top:18px;left:0;width:100%;height:calc(100% - 18px);object-fit:cover;object-position:top;background:#fff;display:block}
 
 /* tiles content */
 .t-blue{background:var(--paper)}
@@ -181,16 +182,6 @@ section.page{background:var(--paper);padding:clamp(4rem,9vw,7rem) 0}
 
 .phones{display:flex;gap:clamp(1rem,3vw,2.25rem);justify-content:flex-end}
 .phones .phone{width:min(46%,230px)}
-.shop-hd{display:flex;justify-content:space-between;font-weight:600;font-size:.58rem;letter-spacing:.08em}
-.shop-hero{background:var(--wall);aspect-ratio:1.15;display:flex;align-items:flex-end;padding:.5rem;font-family:var(--serif);font-size:1.15rem;line-height:1.05;color:var(--ink)}
-.dark .shop-hero{background:#2a2a2a;color:#fff}
-.shop-grid{display:grid;grid-template-columns:1fr 1fr;gap:.35rem}
-.shop-grid i{aspect-ratio:1;background:var(--soft)}
-.dark .shop-grid i{background:#333}
-.shop-grid i:nth-child(2){background:var(--sage)}
-.shop-grid i:nth-child(3){background:var(--blush)}
-.btnmini{background:var(--orange);color:#fff;text-align:center;padding:.35rem;font-weight:600;font-size:.58rem;letter-spacing:.1em}
-.lang{font-family:var(--serif);font-size:.95rem;font-style:italic;color:var(--sage);text-align:center}
 
 /* automation */
 .auto-l .laptop{max-width:560px}
@@ -372,13 +363,8 @@ footer a{text-decoration:none}
           <div class="pill">Webshop &amp; eBay</div>
         </div>
       </div>
-      <div class="phone" aria-label="Webshop mockup">
-        <div class="scr">
-          <div class="shop-hd"><span>RMTEK</span><span>DE · EN</span></div>
-          <div class="shop-hero">Built,<br>launched,<br>selling.</div>
-          <div class="lang">Webshop</div>
-          <div class="shop-grid"><i></i><i></i><i></i><i></i></div>
-        </div>
+      <div class="phone dark" aria-label="Webshop mockup">
+        <img class="shot" src="assets/rmtek/shop-products.jpg" alt="Product listings on the RMtek webshop, shop.rmtek.de" loading="lazy">
       </div>
       <div class="tile t-orange">
         <div class="arch">
@@ -482,19 +468,13 @@ footer a{text-decoration:none}
           </ul>
           <p style="margin-top:1.5rem"><a class="caps uline" style="padding-left:0;font-size:.8rem" href="https://shop.rmtek.de" target="_blank" rel="noopener">Visit shop.rmtek.de</a></p>
         </div>
-        <div class="phones" aria-hidden="true">
-          <div class="phone dark"><div class="scr">
-            <div class="shop-hd"><span>RMTEK</span><span>EN</span></div>
-            <div class="shop-hero">Online<br>shop</div>
-            <div class="shop-grid"><i></i><i></i><i></i><i></i></div>
-            <div class="btnmini">Add to cart</div>
-          </div></div>
-          <div class="phone"><div class="scr">
-            <div class="shop-hd"><span>RMTEK</span><span>DE</span></div>
-            <div class="shop-hero">Online-<br>shop</div>
-            <div class="lang">Zweisprachig</div>
-            <div class="shop-grid"><i></i><i></i><i></i><i></i></div>
-          </div></div>
+        <div class="phones">
+          <div class="phone dark">
+            <img class="shot" src="assets/rmtek/shop-en.jpg" alt="The English version of the RMtek webshop homepage" loading="lazy">
+          </div>
+          <div class="phone dark">
+            <img class="shot" src="assets/rmtek/shop-de.jpg" alt="The German version of the RMtek webshop homepage" loading="lazy">
+          </div>
         </div>
       </article>
 
