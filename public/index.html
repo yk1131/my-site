@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Yousuf Khan — ERP for Shipping &amp; Logistics</title>
+<meta name="description" content="Yousuf Khan: ERP administrator and automation builder with four and a half years of container terminal experience at Hutchison Ports. Studying International Information Systems at FAU, aiming for ERP in the shipping industry.">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5F5F4; --paper:#FFFFFF; --ink:#111111; --muted:#5B5B5B; --line:#1A1A1A; --soft:#E9E7E4;
+  --orange:#EE5A2F; --blue:#3A86D6; --navy:#2F4F9C; --blush:#F2B8B0; --cream:#FBF4EC; --sage:#8A9A6B; --wall:#E8DCD9;
+  --serif:"Gloock",Georgia,"Times New Roman",serif;
+  --sans:"Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:4.5rem}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:1rem;line-height:1.7;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.05;margin:0}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--orange);outline-offset:4px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 clamp(1rem,5vw,4.5rem)}
+.label{font-family:var(--sans);font-size:.8rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+.caps{font-family:var(--sans);font-size:.95rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase}
+.uline{display:inline-block;text-decoration:none;padding:0 2.5rem .55rem;border-bottom:1.5px solid var(--line)}
+.uline:hover{color:var(--orange);border-color:var(--orange)}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.nav .wrap{display:flex;justify-content:space-between;align-items:center;height:4rem}
+.nav .name{font-family:var(--serif);font-size:1.35rem;text-decoration:none}
+.nav ul{list-style:none;display:flex;gap:2rem;margin:0;padding:0}
+.nav ul a{text-decoration:none;font-size:.75rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
+.nav ul a:hover{color:var(--orange)}
+
+/* ---------- HOME ---------- */
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:min(92vh,820px)}
+.hero-text{display:flex;flex-direction:column;justify-content:space-between;padding:clamp(3rem,8vw,6rem) clamp(1rem,5vw,4.5rem) clamp(2.5rem,6vw,5rem)}
+.hero-text .top{text-align:center}
+.hero h1{font-size:clamp(4.25rem,11vw,9.5rem);line-height:.95;margin-top:2.5rem}
+.hero .sub{margin-top:2rem;font-size:1.05rem;color:var(--muted);max-width:30ch;margin-inline:auto}
+.hero-foot{display:flex;justify-content:space-between;align-items:end;gap:1.5rem;flex-wrap:wrap;margin-top:3rem}
+.hero-art{position:relative;background:var(--wall);overflow:hidden;display:flex;align-items:center;justify-content:center;padding:3rem clamp(1.5rem,4vw,3.5rem)}
+.hero-art .moon{position:absolute;top:-22%;left:-18%;width:70%;aspect-ratio:1;border-radius:50%;background:#EFE8E6}
+.hero-art .vase{position:absolute;right:-3%;bottom:14%;width:22%;aspect-ratio:.62;border-radius:45% 45% 38% 38%/30% 30% 60% 60%;background:linear-gradient(90deg,#7c7468,#5b544b 60%,#4a443d)}
+.hero-art .desk{position:absolute;left:0;right:0;bottom:0;height:16%;background:#C9B8A8}
+
+/* device: laptop */
+.laptop{position:relative;width:100%;max-width:640px;z-index:1}
+.laptop .lid{background:#1d1d1f;border-radius:14px 14px 0 0;padding:2.2% 2.2% 3%}
+.laptop .screen{background:var(--cream);aspect-ratio:16/10;overflow:hidden;position:relative}
+.laptop .base{height:14px;background:linear-gradient(#d9d9db,#a9a9ad);border-radius:0 0 12px 12px;margin:0 -5%;position:relative}
+.laptop .base::after{content:"";position:absolute;left:42%;right:42%;top:0;height:5px;background:#8d8d92;border-radius:0 0 6px 6px}
+.hero-art .laptop{width:100%;max-width:600px}
+
+/* bay plan inside laptop */
+.bayscreen{position:absolute;inset:0;display:grid;grid-template-columns:1.1fr 1fr;padding:6%}
+.bayscreen .bp{display:grid;grid-template-columns:repeat(6,1fr);gap:3px;align-content:center}
+.bayscreen .bp i{aspect-ratio:2/1;background:var(--soft)}
+.bp .o{background:var(--orange)!important}.bp .b{background:var(--blue)!important}.bp .p{background:var(--blush)!important}.bp .s{background:var(--sage)!important}
+.bayscreen .copy{padding-left:9%;display:flex;flex-direction:column;justify-content:center;color:var(--orange);font-size:clamp(.45rem,.9vw,.72rem);line-height:1.5}
+.bayscreen .copy b{font-family:var(--serif);font-weight:400;font-size:1.9em;line-height:1.05;color:var(--ink);margin:.4em 0 .6em}
+.bayscreen .copy span{color:var(--muted)}
+
+
+/* ERP dashboard on laptop */
+.erp{position:absolute;inset:0;display:grid;grid-template-columns:22% 1fr;font-size:clamp(.4rem,.98vw,.82rem);line-height:1.35}
+.erp-side{background:#f0ece6;padding:10% 12%;display:flex;flex-direction:column;gap:.55em;color:var(--muted)}
+.erp-side b{font-family:var(--serif);font-weight:400;font-size:1.9em;color:var(--ink);margin-bottom:.3em}
+.erp-side .on{color:var(--orange);font-weight:600}
+.erp-main{padding:5% 6%;display:flex;flex-direction:column;gap:.8em}
+.erp-top{display:flex;justify-content:space-between;align-items:baseline}
+.erp-top b{font-family:var(--serif);font-weight:400;font-size:2em}
+.erp-top span{color:var(--muted)}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:.6em}
+.kpis div{background:#fff;padding:.6em .7em}
+.kpis small{display:block;color:var(--muted);font-size:.85em}
+.kpis b{display:block;font-weight:600;margin-bottom:.4em}
+.kpis i{display:block;height:.45em}
+.kpis i.b,.st.b{background:var(--blue)}.kpis i.p,.st.p{background:var(--blush)}.kpis i.o,.st.o{background:var(--orange)}.st.s{background:var(--sage)}
+.erp .rows{display:grid;gap:.45em}
+.erp .rows div{display:flex;justify-content:space-between;align-items:center;background:#fff;padding:.6em .8em}
+.st{font-style:normal;color:#fff;font-weight:600;padding:.15em .7em;border-radius:999px;font-size:.9em}
+.st.p{color:var(--ink)}
+
+/* home work strip */
+.strip{display:grid;grid-template-columns:.85fr .75fr 1.4fr .85fr;gap:clamp(1rem,2.5vw,2rem);align-items:center;padding:clamp(4rem,9vw,7rem) 0 clamp(3rem,6vw,4rem)}
+.tile{position:relative;overflow:hidden}
+.see{text-align:center;padding-bottom:clamp(4rem,9vw,7rem)}
+
+/* device: phone */
+.phone{border:10px solid #111;border-radius:34px;background:var(--cream);aspect-ratio:9/18.5;position:relative;overflow:hidden;box-shadow:0 1px 0 #333}
+.phone::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:40%;height:18px;background:#111;border-radius:0 0 12px 12px;z-index:2}
+.phone .scr{position:absolute;inset:0;padding:30px 10% 10%;display:flex;flex-direction:column;gap:.6rem;font-size:.62rem;line-height:1.35}
+.phone.dark{background:#111;color:#fff}
+
+/* tiles content */
+.t-blue{background:var(--paper)}
+.t-blue .hd{background:var(--blue);color:#fff;padding:1rem 1rem .9rem;font-family:var(--serif);font-size:1.35rem;line-height:1.1}
+.t-blue .hd small{display:block;font-family:var(--sans);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.4rem;opacity:.85}
+.t-blue .bd{padding:1rem}
+.t-blue .bd b{display:block;color:var(--blue);font-weight:700;font-size:1.05rem;line-height:1.2}
+.t-blue .bd b em{font-style:normal;color:var(--orange)}
+.pill{border:1.5px solid var(--blue);border-radius:999px;font-size:.62rem;padding:.3rem .7rem;margin-top:.5rem;color:var(--navy)}
+.t-orange{background:var(--orange);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center}
+.arch{width:68%;aspect-ratio:.8;background:var(--cream);border-radius:999px 999px 0 0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:9%;position:relative;color:var(--navy)}
+.arch svg{position:absolute;top:5%;left:5%;width:90%;overflow:visible}
+.arch .big{font-family:var(--sans);font-weight:800;font-size:clamp(1rem,2.4vw,2rem);letter-spacing:.03em;line-height:1;font-weight:700}
+.arch .sm{font-size:clamp(.45rem,.75vw,.62rem);letter-spacing:.35em;text-transform:uppercase;margin-top:.5rem}
+.arch .crane{width:34%;margin-bottom:8%}
+.t-stack{display:grid;gap:clamp(.75rem,1.5vw,1.1rem)}
+.t-blush{background:var(--blush);padding:1.1rem;color:var(--orange)}
+.t-blush small{font-size:.62rem;font-weight:600;display:block;text-align:center}
+.t-blush b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(1.4rem,2.4vw,2rem);text-align:center;line-height:1.05;margin:.35rem 0 .6rem}
+.mail{background:#fff;border-radius:6px;padding:.55rem .7rem;font-size:.62rem;color:var(--ink);line-height:1.4;display:grid;grid-template-columns:auto 1fr;gap:.15rem .5rem}
+.mail i{grid-row:span 2;width:1.4rem;height:1.4rem;border-radius:50%;background:var(--orange);display:block;align-self:center}
+.mail span{color:var(--muted)}
+
+/* ---------- ABOUT ---------- */
+section.page{background:var(--paper);padding:clamp(4rem,9vw,7rem) 0}
+.bio{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(2rem,6vw,6rem)}
+.bio .statement{font-size:clamp(2rem,3.8vw,3rem);line-height:1.15}
+.bio .copy p{margin-top:1.6rem;max-width:46ch;font-size:1.02rem}
+.bio .copy p:first-of-type{margin-top:2.75rem}
+.photo{position:relative;overflow:hidden;background:var(--wall)}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photo .mono{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:clamp(4rem,9vw,7rem);color:#fff}
+.photo.p1{aspect-ratio:.81;max-width:330px;margin-top:4rem}
+.photo.p1 .mono{background:linear-gradient(160deg,var(--wall),#d5c3bf)}
+
+.bg-ex{display:grid;grid-template-columns:1fr 1fr .85fr;gap:clamp(2rem,4vw,4rem);margin-top:clamp(4rem,9vw,7rem);align-items:start}
+.bg-ex h2{font-size:clamp(2rem,3.4vw,2.6rem);margin-bottom:1.6rem}
+.bg-ex .item{margin-bottom:1.6rem;font-size:.98rem;line-height:1.75}
+.bg-ex .item b{font-weight:700}
+.bg-ex ul{margin:0;padding-left:1.1rem;font-size:.98rem;line-height:1.85}
+.bayfig{background:var(--bg);padding:1.25rem;margin-top:5.5rem}
+.bayfig .bp{display:grid;grid-template-columns:repeat(6,1fr);gap:3px}
+.bayfig .bp i{aspect-ratio:2/1;background:var(--soft)}
+.bayfig figcaption{font-size:.75rem;color:var(--muted);margin-top:.8rem;line-height:1.5}
+
+.quote{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(2rem,6vw,6rem);align-items:center;margin-top:clamp(4rem,9vw,7rem)}
+.photo.p2{aspect-ratio:.9;max-width:420px}
+.photo.p2 .mono{background:linear-gradient(200deg,#e9e1dc,var(--blush))}
+.quote blockquote{margin:0;font-family:var(--serif);font-size:clamp(2rem,4vw,3.1rem);line-height:1.2;max-width:17ch}
+
+/* ---------- WORK ---------- */
+#work{background:var(--paper);padding:clamp(4rem,9vw,7rem) 0;border-top:1px solid var(--soft)}
+.case{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);padding:clamp(3rem,7vw,5.5rem) 0;align-items:center}
+.case:first-of-type{padding-top:0}
+.case h2{font-size:clamp(3rem,6.2vw,5rem);line-height:.95}
+.case .lead{max-width:44ch;font-size:1.02rem;margin-top:1.75rem}
+.case .facts{margin-top:1.5rem;font-size:.9rem;color:var(--muted);max-width:46ch}
+.case .facts li{margin-bottom:.35rem}
+.case .facts{padding-left:1.1rem}
+.case-head{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:start}
+.case-head .label{display:block;margin-bottom:1rem}
+.wide{grid-column:1/-1}
+
+/* case 1 tiles */
+.tiles4{display:grid;grid-template-columns:1.25fr .75fr .75fr .95fr;gap:10px;margin-top:2.5rem}
+.tiles4>*{min-height:clamp(160px,22vw,280px)}
+.yard{background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.1rem;padding:1.5rem}
+.yard .rows{display:grid;grid-template-columns:repeat(8,1fr);gap:4px;width:80%}
+.yard .rows i{aspect-ratio:1;background:var(--blush);border-radius:2px}
+.yard .rows i.e{background:transparent;border:1.5px solid var(--blush)}
+.yard .rows i.r{background:var(--orange)}
+.yard .t{font-family:var(--sans);font-weight:700;color:var(--blue);font-size:clamp(1.1rem,2vw,1.6rem);line-height:1.05;text-align:center}
+.yard .t small{display:block;font-weight:500;font-size:.62rem;letter-spacing:.06em;color:var(--orange);margin-top:.35rem}
+.navycard{background:var(--blue);color:#fff;padding:1.1rem;display:flex;flex-direction:column;justify-content:flex-end}
+.navycard b{font-size:1rem;line-height:1.25}
+.navycard span{font-size:.65rem;opacity:.85;margin-top:.5rem;line-height:1.4}
+.creamcard{background:var(--bg);padding:1.1rem;display:flex;flex-direction:column;justify-content:space-between}
+.creamcard b{color:var(--blue);font-size:1rem;line-height:1.25}
+.creamcard .ring{width:2.6rem;height:1.3rem;border:6px solid var(--orange);border-top:0;border-radius:0 0 999px 999px;margin-top:.6rem}
+.creamcard span{font-size:.62rem;color:var(--blue)}
+
+.phones{display:flex;gap:clamp(1rem,3vw,2.25rem);justify-content:flex-end}
+.phones .phone{width:min(46%,230px)}
+.shop-hd{display:flex;justify-content:space-between;font-weight:600;font-size:.58rem;letter-spacing:.08em}
+.shop-hero{background:var(--wall);aspect-ratio:1.15;display:flex;align-items:flex-end;padding:.5rem;font-family:var(--serif);font-size:1.15rem;line-height:1.05;color:var(--ink)}
+.dark .shop-hero{background:#2a2a2a;color:#fff}
+.shop-grid{display:grid;grid-template-columns:1fr 1fr;gap:.35rem}
+.shop-grid i{aspect-ratio:1;background:var(--soft)}
+.dark .shop-grid i{background:#333}
+.shop-grid i:nth-child(2){background:var(--sage)}
+.shop-grid i:nth-child(3){background:var(--blush)}
+.btnmini{background:var(--orange);color:#fff;text-align:center;padding:.35rem;font-weight:600;font-size:.58rem;letter-spacing:.1em}
+.lang{font-family:var(--serif);font-size:.95rem;font-style:italic;color:var(--sage);text-align:center}
+
+/* automation */
+.auto-l .laptop{max-width:560px}
+.inbox{position:absolute;inset:0;display:grid;grid-template-columns:30% 1fr;font-size:clamp(.42rem,.8vw,.66rem);line-height:1.4}
+.inbox .side{background:#f0ece6;padding:8% 10%;display:flex;flex-direction:column;gap:.5em}
+.inbox .side b{font-family:var(--serif);font-weight:400;font-size:1.6em;color:var(--ink)}
+.inbox .side span{color:var(--muted)}
+.inbox .side span.on{color:var(--orange);font-weight:600}
+.inbox .main{padding:7% 8%;display:flex;flex-direction:column;gap:.7em}
+.inbox .msg{background:#fff;border-left:3px solid var(--orange);padding:.6em .8em}
+.inbox .msg b{display:block}
+.inbox .msg span{color:var(--muted)}
+.inbox .flow{display:flex;align-items:center;gap:.5em;color:var(--blue);font-weight:700;margin-top:auto}
+.inbox .flow i{font-style:normal;color:var(--orange)}
+.sidecard{background:#9FB3BD;padding:1.75rem;color:#fff;display:flex;flex-direction:column;gap:.9rem}
+.sidecard h3{font-size:clamp(2rem,3.4vw,2.8rem);color:#f4ff9a;line-height:1}
+.sidecard .log{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.7rem;background:rgba(0,0,0,.18);padding:.8rem;line-height:1.7;overflow-wrap:anywhere}
+.sidecard .log em{font-style:normal;color:#f4ff9a}
+.sidecard p{font-size:.9rem}
+.auto{display:grid;grid-template-columns:1.35fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:start}
+.auto .caption{margin-top:1.5rem;max-width:40ch;font-size:1rem}
+
+/* research tiles */
+.emblems{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.emblem b,.emblem span{overflow-wrap:anywhere}
+.emblem{background:var(--bg);aspect-ratio:1.28;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1rem;gap:.6rem;text-decoration:none}
+.emblem svg{width:2.6rem;height:2.6rem}
+.emblem b{font-family:var(--sans);font-weight:700;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;line-height:1.35}
+.emblem span{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+a.emblem:hover b{color:var(--orange)}
+
+
+/* ---------- PORTFOLIO ---------- */
+#portfolio{background:var(--bg);padding:clamp(4rem,9vw,7rem) 0}
+.pf-head{display:flex;justify-content:space-between;align-items:end;gap:2rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.pf-head h2{font-size:clamp(2.5rem,5.5vw,4.5rem);margin-top:1rem;max-width:14ch}
+.pf-tabs{display:flex;flex-wrap:wrap;gap:.5rem}
+.pf-tabs button{font:inherit;font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;background:transparent;border:1.5px solid var(--ink);color:var(--ink);padding:.55rem 1rem;cursor:pointer}
+.pf-tabs button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.pf-tabs button:hover{border-color:var(--orange)}
+.pf-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1rem,2vw,1.5rem)}
+.pf{background:var(--paper);display:flex;flex-direction:column}
+.pf[hidden]{display:none}
+.pf-wide{grid-column:1/-1;display:grid;grid-template-columns:1.6fr 1fr}
+.pf-body{padding:1.4rem 1.4rem 1.6rem}
+.pf-wide .pf-body{padding:clamp(1.5rem,3vw,2.5rem);display:flex;flex-direction:column;justify-content:center}
+.pf-label{font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-bottom:.6rem}
+.pf h3{font-size:1.45rem;line-height:1.15;margin-bottom:.6rem}
+.pf-wide h3{font-size:clamp(1.8rem,3vw,2.5rem)}
+.pf-body>p:not(.pf-label){font-size:.92rem;color:var(--muted);line-height:1.65}
+.pf-links{margin-top:1rem!important}
+.pf-links a{font-size:.75rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)!important;text-decoration:none;border-bottom:1.5px solid var(--ink);padding-bottom:.2rem}
+.pf-links a:hover{color:var(--orange)!important;border-color:var(--orange)}
+.pv{aspect-ratio:4/3;position:relative;overflow:hidden}
+.ph{background:repeating-linear-gradient(135deg,var(--soft) 0 1px,transparent 1px 12px),var(--bg);border:1.5px dashed #cfcac4;margin:10px 10px 0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.35rem;text-align:center}
+.ph-kind{font-family:var(--serif);font-size:1.5rem;color:#9a948d}
+.ph-note{font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9a948d}
+.doc{display:block;background:#E9E7E4;margin:10px 10px 0;padding:14px 14px 0;overflow:hidden}
+.doc img{display:block;width:100%;height:auto;box-shadow:0 2px 10px rgba(0,0,0,.12);transition:transform .3s}
+.doc:hover img{transform:translateY(-4px)}
+.pf-empty{background:transparent;border:1.5px dashed #cfcac4}
+.pf-empty .ph{border:0;background:transparent}
+.gallery{aspect-ratio:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:10px;background:#E9EEF4}
+.gallery a{display:block;overflow:hidden;background:#fff;line-height:0}
+.gallery img{width:100%;height:auto;display:block;transition:transform .3s}
+.gallery a:hover img{transform:scale(1.03)}
+.gallery .g-main{grid-column:1/-1}
+@media (max-width: 960px){.pf-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.pf-wide{grid-template-columns:1fr}}
+@media (max-width: 600px){.pf-grid{grid-template-columns:1fr}}
+
+/* ---------- CONTACT ---------- */
+#contact{background:var(--paper);padding:clamp(4rem,9vw,7rem) 0 clamp(3rem,7vw,5rem);border-top:1px solid var(--soft)}
+#contact h2{font-size:clamp(3.25rem,7vw,5.5rem)}
+.contact{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(2rem,8vw,10rem);margin-top:clamp(3rem,7vw,6rem);align-items:center}
+.photo.p3{aspect-ratio:1.72}
+.photo.p3 .mono{background:linear-gradient(120deg,var(--wall),#d9cfc6)}
+.contact dl{margin:0;display:grid;gap:2rem}
+.contact dt{margin-bottom:.6rem}
+.contact dd{margin:0;font-family:var(--serif);font-size:clamp(1.15rem,1.8vw,1.45rem);line-height:1.3}
+.contact dd a{text-decoration:none;border-bottom:1px solid transparent;overflow-wrap:anywhere}
+.contact dd a:hover{border-color:var(--ink)}
+.contact .note{margin-top:2.5rem;font-size:.95rem;color:var(--muted);max-width:44ch}
+footer{background:var(--paper);padding:2rem 0 3rem}
+footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+footer a{text-decoration:none}
+
+.hero>*,.bio>*,.bg-ex>*,.quote>*,.case>*,.case-head>*,.auto>*,.contact>*,.strip>*{min-width:0}
+/* ---------- responsive ---------- */
+@media (max-width: 960px){
+  .hero{grid-template-columns:1fr;min-height:0}
+  .hero-art{padding:3rem 0 3rem 1.25rem;min-height:340px}
+  .hero-art .laptop{width:100%}
+  .strip{grid-template-columns:1fr 1fr}
+  .bio,.quote,.case,.case-head,.auto,.contact{grid-template-columns:1fr}
+  .bg-ex{grid-template-columns:1fr 1fr}
+  .bayfig{grid-column:1/-1;margin-top:0;max-width:520px}
+  .tiles4{grid-template-columns:1fr 1fr}
+  .phones{justify-content:flex-start}
+  .photo.p1{margin-top:0}
+}
+@media (max-width: 600px){
+  .hero-art{padding:2.5rem 1rem;min-height:0}
+  .hero-art .laptop{width:100%;margin-right:0}
+  .emblem{aspect-ratio:auto;min-height:150px;padding:1.25rem .6rem}
+  .emblem b{letter-spacing:.08em}
+  .nav ul{gap:1rem}
+  .nav ul li:not(:last-child){display:none}
+  .strip{grid-template-columns:1fr;max-width:380px;margin:0 auto}
+  .strip .phone{max-width:230px;margin:0 auto;width:100%}
+  .bg-ex{grid-template-columns:1fr}
+  .hero-foot{justify-content:center;text-align:center}
+  .uline{padding-inline:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="name" href="#top">Yousuf Khan</a>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="#about">Bio</a></li>
+        <li><a href="#work">Experience</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HOME -->
+  <section class="hero" aria-label="Introduction">
+    <div class="hero-text">
+      <div class="top">
+        <p class="caps">Portfolio</p>
+        <h1>Yousuf<br>Khan</h1>
+        <p class="sub">I run ERP and build automation around it. Before that, I spent four and a half years planning container ships at Hutchison Ports.</p>
+      </div>
+      <div class="hero-foot">
+        <p class="caps">ERP for shipping &amp; logistics</p>
+        <a class="caps uline" href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="moon"></div>
+      <div class="desk"></div>
+      <div class="vase"></div>
+      <div class="laptop">
+        <div class="lid"><div class="screen">
+          <div class="erp">
+            <div class="erp-side"><b>ERP</b><span class="on">Orders</span><span>Shipments</span><span>Stock</span><span>EDI</span><span>Reports</span></div>
+            <div class="erp-main">
+              <div class="erp-top"><b>Shipments</b><span>Today</span></div>
+              <div class="kpis"><div><small>Received</small><b>Orders</b><i style="width:86%" class="b"></i></div><div><small>Picked</small><b>Warehouse</b><i style="width:64%" class="p"></i></div><div><small>Dispatched</small><b>Carrier</b><i style="width:48%" class="o"></i></div></div>
+              <div class="rows">
+                <div><span>Order · DE</span><em class="st b">Received</em></div>
+                <div><span>Order · EN</span><em class="st p">Picked</em></div>
+                <div><span>Order · eBay</span><em class="st o">Dispatched</em></div>
+                <div><span>Order · DE</span><em class="st s">Delivered</em></div>
+              </div>
+            </div>
+          </div>
+        </div></div>
+        <div class="base"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="strip" aria-label="Work preview">
+      <div class="tile t-blue">
+        <div class="hd"><small>JTL-Wawi</small>ERP, every day.</div>
+        <div class="bd">
+          <b>Systems that run <em>on time!</em></b>
+          <div class="pill">Maintenance &amp; operation</div>
+          <div class="pill">Order workflows</div>
+          <div class="pill">Webshop &amp; eBay</div>
+        </div>
+      </div>
+      <div class="phone" aria-label="Webshop mockup">
+        <div class="scr">
+          <div class="shop-hd"><span>RMTEK</span><span>DE · EN</span></div>
+          <div class="shop-hero">Built,<br>launched,<br>selling.</div>
+          <div class="lang">Webshop</div>
+          <div class="shop-grid"><i></i><i></i><i></i><i></i></div>
+        </div>
+      </div>
+      <div class="tile t-orange">
+        <div class="arch">
+          <svg viewBox="0 0 200 120" aria-hidden="true">
+            <path id="arc1" d="M 22 112 A 78 78 0 0 1 178 112" fill="none"/>
+            <text font-family="Montserrat, sans-serif" font-weight="800" font-size="19" letter-spacing="3" fill="#2F4F9C"><textPath href="#arc1" startOffset="50%" text-anchor="middle">TOP PLANNER</textPath></text>
+          </svg>
+          <svg class="crane" viewBox="0 0 64 64" aria-hidden="true" style="position:static;width:34%"><g fill="#2F4F9C"><rect x="8" y="10" width="48" height="5"/><rect x="14" y="15" width="5" height="40"/><rect x="40" y="15" width="5" height="40"/><rect x="26" y="15" width="2" height="16"/><rect x="20" y="31" width="14" height="9"/><rect x="6" y="55" width="52" height="4"/></g></svg>
+          <span class="big">OF THE YEAR</span>
+          <span class="sm">Hutchison Ports Pakistan</span>
+        </div>
+      </div>
+      <div class="t-stack">
+        <div class="tile t-blue">
+          <div class="bd" style="padding-bottom:.4rem"><b style="font-size:.8rem;font-weight:600">Order <em>of the day</em></b></div>
+          <div class="hd" style="font-family:var(--sans);font-size:.85rem;font-weight:600">A new order lands. The warehouse already knows.</div>
+        </div>
+        <div class="t-blush">
+          <small>Automated ERP workflow</small>
+          <b>Dispatch &amp; Ship</b>
+          <div class="mail"><i></i><strong>To: Lager</strong><span>New order, ready to pick</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="see"><a class="caps uline" href="#portfolio" style="padding-inline:clamp(2rem,15vw,12rem)">See my portfolio</a></p>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="page" id="about" aria-labelledby="bio-title">
+    <div class="wrap">
+      <div class="bio">
+        <div>
+          <p class="label">Bio</p>
+          <div class="photo p1"><div class="mono">YK</div><img src="photo.jpg" alt="Portrait of Yousuf Khan" onerror="this.remove()"></div>
+        </div>
+        <div class="copy">
+          <h2 class="statement" id="bio-title">I build and run ERP systems, and I know shipping from the quay up.</h2>
+          <p>Today I administer the JTL-Wawi ERP at RMtek, automate its workflows, build Python pipelines on top of its data, and run the company's webshop and eBay channel. Alongside that I'm finishing an M.Sc. in International Information Systems at FAU in Nuremberg.</p>
+          <p>Before that, I spent four and a half years at Hutchison Ports Pakistan, from top of my trainee batch to senior planner co-managing a team of six. I planned vessels of 2,000+ containers, tested new terminal operating systems, and helped bring a new terminal live in Jazan, Saudi Arabia.</p>
+          <p>That combination is where I'm heading: ERP for the shipping industry, built by someone who knows how ships, yards and warehouses actually work.</p>
+        </div>
+      </div>
+
+      <div class="bg-ex">
+        <div>
+          <h2>Background</h2>
+          <p class="item"><b>RM Technical Services (RMtek)</b><br>Werkstudent, Jun 2025–present<br>Winkelhaid, Germany</p>
+          <p class="item"><b>Hutchison Ports Pakistan</b><br>Senior Planner, Jan 2023–Jul 2024<br>Planner, Jul 2021–Dec 2022<br>Trainee Planner, Jan 2020–Jun 2021</p>
+          <p class="item"><b>FAU Erlangen-Nürnberg</b><br>M.Sc. International Information Systems<br>Oct 2024–expected early 2027</p>
+          <p class="item"><b>Institute of Business Management, Karachi</b><br>MBA, Logistics &amp; Supply Chain Management<br>Sep 2021–Dec 2023</p>
+          <p class="item"><b>Iqra University, Karachi</b><br>Bachelor of Business Administration<br>Aug 2015–Aug 2019</p>
+        </div>
+        <div>
+          <h2>Expertise</h2>
+          <ul>
+            <li>ERP administration &amp; workflows (JTL-Wawi)</li>
+            <li>Process automation &amp; process mining</li>
+            <li>Python, PHP &amp; SQL (AI-assisted)</li>
+            <li>Webshop, DotLiquid &amp; eBay Seller Tools</li>
+            <li>Excel: macros, data cleaning &amp; transformation</li>
+            <li>Celonis dashboards, R &amp; EViews</li>
+            <li>Terminal operating systems &amp; EDI</li>
+            <li>Software testing, QA &amp; bug reporting</li>
+            <li>Vessel, yard &amp; berth planning</li>
+            <li>Special cargo: reefer, DG/IMDG, OOG, break-bulk</li>
+            <li>Technical documentation &amp; video manuals</li>
+            <li>Team leadership, training &amp; mentoring</li>
+          </ul>
+        </div>
+        <figure class="bayfig">
+          <div class="bp" aria-hidden="true">
+            <i class="b"></i><i class="b"></i><i class="o"></i><i class="o"></i><i class="p"></i><i></i>
+            <i class="b"></i><i class="b"></i><i class="o"></i><i class="o"></i><i class="p"></i><i class="p"></i>
+            <i class="s"></i><i class="b"></i><i class="b"></i><i class="o"></i><i class="p"></i><i class="p"></i>
+            <i class="s"></i><i class="s"></i><i class="b"></i><i class="o"></i><i class="o"></i><i class="p"></i>
+          </div>
+          <figcaption>Languages: Urdu (native), English (C1), German (B1, in progress), Hindi (conversational).<br>Off the clock: hiking, reading, films, gaming, gardening and cooking.</figcaption>
+        </figure>
+      </div>
+
+      <div class="quote">
+        <div class="photo p2"><div class="mono">YK</div><img src="photo-2.jpg" alt="" onerror="this.remove()"></div>
+        <blockquote>Shipping runs on its systems. I want those systems to fit how ships, yards and warehouses really work.</blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work" aria-label="Work">
+    <div class="wrap">
+
+      <article class="case">
+        <div>
+          <p class="label" style="margin-bottom:1rem">Work</p>
+          <h2>ERP &amp;<br>Webshop</h2>
+          <p class="lead">At RMtek I'm the administrator for JTL-Wawi ERP maintenance and ongoing operation. On top of it I built and launched the company's bilingual German and English webshop and helped increase sales.</p>
+          <ul class="facts">
+            <li>Custom DotLiquid eBay listing templates and product pricing research for eBay</li>
+            <li>Custom shop pages in PHP and SQL for offsite service staff</li>
+            <li>Internal guides and video manuals for the company</li>
+          </ul>
+          <p style="margin-top:1.5rem"><a class="caps uline" style="padding-left:0;font-size:.8rem" href="https://shop.rmtek.de" target="_blank" rel="noopener">Visit shop.rmtek.de</a></p>
+        </div>
+        <div class="phones" aria-hidden="true">
+          <div class="phone dark"><div class="scr">
+            <div class="shop-hd"><span>RMTEK</span><span>EN</span></div>
+            <div class="shop-hero">Online<br>shop</div>
+            <div class="shop-grid"><i></i><i></i><i></i><i></i></div>
+            <div class="btnmini">Add to cart</div>
+          </div></div>
+          <div class="phone"><div class="scr">
+            <div class="shop-hd"><span>RMTEK</span><span>DE</span></div>
+            <div class="shop-hero">Online-<br>shop</div>
+            <div class="lang">Zweisprachig</div>
+            <div class="shop-grid"><i></i><i></i><i></i><i></i></div>
+          </div></div>
+        </div>
+      </article>
+
+      <article class="case" style="display:block">
+        <h2>Automation</h2>
+        <div class="auto" style="margin-top:2.5rem">
+          <div class="auto-l">
+            <div class="laptop" aria-hidden="true">
+              <div class="lid"><div class="screen">
+                <div class="inbox">
+                  <div class="side"><b>Pipeline</b><span class="on">JTL data</span><span>Transform</span><span>HTML / Excel</span><span>FTP · Email</span></div>
+                  <div class="main">
+                    <div class="msg"><b>customer_report.xlsx</b><span>Generated from JTL-Wawi data, sent via FTP</span></div>
+                    <div class="msg"><b>customer_report.html</b><span>Generated from JTL-Wawi data, sent by email</span></div>
+                    <div class="flow">JTL <i>→</i> Python <i>→</i> HTML/Excel <i>→</i> Customer</div>
+                  </div>
+                </div>
+              </div></div>
+              <div class="base"></div>
+            </div>
+            <p class="caption">I built a Python pipeline that turns JTL data into HTML and Excel files and sends them to customers via FTP and email. Inside the ERP, I implemented workflows that send warehouse dispatch emails automatically when an order comes in.</p>
+          </div>
+          <div>
+            <div class="sidecard">
+              <h3>Bot<br>traffic</h3>
+              <div class="log">GET /shop … <em>bot</em><br>GET /shop … <em>bot</em><br>GET /shop … <em>bot</em><br>→ migrated to Cloudflare</div>
+              <p>I diagnosed a bot attack on the shop through server log analysis and mitigated it by migrating the site to Cloudflare.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="case-head" style="padding:clamp(3rem,7vw,5.5rem) 0">
+        <div>
+          <h2 style="font-size:clamp(3rem,6.2vw,5rem);line-height:.95">Shipping, from<br>the Inside</h2>
+        </div>
+        <div style="padding-top:2rem">
+          <p class="lead" style="margin-top:0">Four and a half years at Hutchison Ports Pakistan, from trainee to senior planner, taught me the operations an ERP in shipping has to serve, and the systems a terminal already runs on.</p>
+          <ul class="facts">
+            <li>Co-managed a team of 6 planners with the team lead, balancing workload and quality-checking plans</li>
+            <li>Tested new terminal operating systems, reported bugs and wrote supporting documentation</li>
+            <li>Supported the go-live of HPJZ Jazan, Saudi Arabia: set terminal parameters and documentation guidelines, and oversaw live plan execution</li>
+            <li>Planned vessels of 2,000+ containers, typically completing a full plan in under an hour</li>
+            <li>Produced daily yard planning reports for the CEO and department heads</li>
+            <li>Rated top planner of the year; member of the 4-person special team planning for YICT, China</li>
+            <li>Finished top of the trainee batch; ran the planning desk largely alone during the COVID-19 lockdown</li>
+          </ul>
+        </div>
+        <div class="tiles4 wide" aria-hidden="true">
+          <div class="yard">
+            <div class="t">Hutchison<br>Ports<small>Container terminal planning</small></div>
+            <div class="rows">
+              <i></i><i></i><i class="r"></i><i></i><i class="e"></i><i></i><i class="r"></i><i></i>
+              <i></i><i class="e"></i><i></i><i></i><i></i><i class="r"></i><i class="e"></i><i></i>
+              <i class="r"></i><i></i><i></i><i class="e"></i><i></i><i></i><i></i><i class="e"></i>
+            </div>
+          </div>
+          <div class="navycard"><b>Team of 6</b><span>Co-managed planners as senior planner: workload, quality checks, training.</span></div>
+          <div class="creamcard"><div><b>2,000+ containers</b><div class="ring"></div></div><span>A full vessel plan, typically in under an hour</span></div>
+          <div class="t-blue tile"><div class="hd"><small>YICT · China</small>Special team of four</div><div class="bd"><div class="pill">Reefer · DG · OOG</div><div class="pill">Quality-checked plans</div></div></div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio" aria-labelledby="pf-title">
+    <div class="wrap">
+      <div class="pf-head">
+        <div>
+          <p class="label">Portfolio</p>
+          <h2 id="pf-title">Dashboards, code, research &amp; writing</h2>
+        </div>
+        <div class="pf-tabs" role="group" aria-label="Filter portfolio">
+          <button type="button" data-f="all" aria-pressed="true">All</button>
+          <button type="button" data-f="dash" aria-pressed="false">Dashboards</button>
+          <button type="button" data-f="code" aria-pressed="false">Programming</button>
+          <button type="button" data-f="research" aria-pressed="false">Research</button>
+          <button type="button" data-f="writing" aria-pressed="false">Writing</button>
+        </div>
+      </div>
+      <div class="pf-grid" id="pf-grid">
+        <article class="pf pf-wide" data-cat="dash">
+          <div class="pv gallery">
+            <a href="assets/celonis/01-overview.jpg" target="_blank" rel="noopener" class="g-main"><img src="assets/celonis/01-overview.jpg" alt="Celonis dashboard main overview: 19,953 orders, 210,104 events, 87.34% on-time delivery, process explorer" loading="lazy"></a>
+            <a href="assets/celonis/04-factories.jpg" target="_blank" rel="noopener"><img src="assets/celonis/04-factories.jpg" alt="Factory performance view with on-time delivery rate per factory" loading="lazy"></a>
+            <a href="assets/celonis/05-delivery.jpg" target="_blank" rel="noopener"><img src="assets/celonis/05-delivery.jpg" alt="Delivery company performance view" loading="lazy"></a>
+            <a href="assets/celonis/07-business-case.jpg" target="_blank" rel="noopener"><img src="assets/celonis/07-business-case.jpg" alt="Business case calculator: losses and potential revenue by product type" loading="lazy"></a>
+          </div>
+          <div class="pf-body">
+            <p class="pf-label">Dashboard · Celonis · Process mining</p>
+            <h3>Case Analysis Dashboard: Order to Cash</h3>
+            <p>A seven-view process mining dashboard for a case company's order-to-cash process: 19,953 orders and 210,104 events. It covers the process explorer, automation rate by warehouse type, make-to-order vs. make-to-stock, on-time delivery by factory and delivery company, customer markets, and a business case calculator for losses from late deliveries (current on-time delivery 87.34%).</p>
+            <p class="pf-links"><a href="assets/celonis/celonis-case-analysis-dashboard.pdf" target="_blank" rel="noopener">View full dashboard (PDF)</a></p>
+          </div>
+        </article>
+        <article class="pf " data-cat="dash">
+          <div class="pv ph"><span class="ph-kind">Dashboard</span><span class="ph-note">Preview coming soon</span></div>
+          <div class="pf-body">
+            <p class="pf-label">Dashboard · In progress</p>
+            <h3>Next dashboard</h3>
+            <p>A second dashboard is in progress and will be added here.</p>
+          </div>
+        </article>
+        <article class="pf " data-cat="code">
+          <div class="pv ph"><span class="ph-kind">Python</span><span class="ph-note">Code sample coming soon</span></div>
+          <div class="pf-body">
+            <p class="pf-label">Programming · Python</p>
+            <h3>JTL data pipeline</h3>
+            <p>Turns JTL-Wawi data into HTML and Excel files and sends them to customers via FTP and email.</p>
+          </div>
+        </article>
+        <article class="pf " data-cat="code">
+          <div class="pv ph"><span class="ph-kind">PHP · SQL</span><span class="ph-note">Preview coming soon</span></div>
+          <div class="pf-body">
+            <p class="pf-label">Programming · PHP &amp; SQL</p>
+            <h3>Shop pages for service staff</h3>
+            <p>Custom webshop pages for RMtek's offsite service staff, built in PHP and SQL.</p>
+          </div>
+        </article>
+        <article class="pf " data-cat="code">
+          <div class="pv ph"><span class="ph-kind">DotLiquid</span><span class="ph-note">Preview coming soon</span></div>
+          <div class="pf-body">
+            <p class="pf-label">Programming · DotLiquid</p>
+            <h3>eBay listing templates</h3>
+            <p>Custom DotLiquid templates for RMtek's eBay listings.</p>
+          </div>
+        </article>
+        <article class="pf pf-empty" data-cat="code">
+          <div class="pv ph"><span class="ph-kind">Code</span><span class="ph-note">Coming soon</span></div>
+          <div class="pf-body">
+            <p class="pf-label">Programming</p>
+            <h3>Your next project</h3>
+            <p>Space for more code: scripts, notebooks or repositories.</p>
+          </div>
+        </article>
+        <article class="pf " data-cat="research">
+          <div class="pv ph"><span class="ph-kind">Journal article</span><span class="ph-note">Preview coming soon</span></div>
+          <div class="pf-body">
+            <p class="pf-label">Thesis · Peer-reviewed · 2019</p>
+            <h3>Generation X and Y: Impact of Work Attitudes and Work Values on Employee Performance</h3>
+            <p>Usmani, S., Asif, M. H., Mahmood, M. Z., Khan, M. Y., &amp; Burhan, M. Journal of Management and Research, 6(2), 51–84.</p>
+            <p class="pf-links"><a href="https://doi.org/10.29145/jmr/62/060203" target="_blank" rel="noopener">Read the paper (DOI)</a></p>
+          </div>
+        </article>
+        <article class="pf " data-cat="research">
+          <div class="pv ph"><span class="ph-kind">Capstone</span><span class="ph-note">Preview coming soon</span></div>
+          <div class="pf-body">
+            <p class="pf-label">Capstone project</p>
+            <h3>Forecasting LNG and its Impact on Port Traffic in Pakistan</h3>
+            <p>Capstone project on LNG demand forecasting and what it means for port traffic.</p>
+          </div>
+        </article>
+        <article class="pf " data-cat="research">
+          <div class="pv ph"><span class="ph-kind">Capstone</span><span class="ph-note">Preview coming soon</span></div>
+          <div class="pf-body">
+            <p class="pf-label">Capstone project</p>
+            <h3>Application of Value Stream Mapping: A Case Study of an Automotive Industry</h3>
+            <p>Capstone project applying value stream mapping to an automotive manufacturer.</p>
+          </div>
+        </article>
+        <article class="pf" data-cat="research">
+          <a class="pv doc" href="assets/research/selfefficacy.jpg" target="_blank" rel="noopener"><img src="assets/research/selfefficacy.jpg" alt="Abstract page of the IT and AI self-efficacy seminar paper" loading="lazy"></a>
+          <div class="pf-body">
+            <p class="pf-label">Research seminar · FAU · 2026</p>
+            <h3>IT and AI Self-efficacy: Success Attribution, Task Performance and Imposter Syndrome</h3>
+            <p>Cross-sectional study of graduate students learning data analysis, testing four moderated research models with linear regression. AI self-efficacy showed a positive and stronger relationship with perceived task performance than IT self-efficacy, and imposter syndrome moderated the effect of IT self-efficacy.</p>
+            <p class="pf-links"><a href="assets/research/selfefficacy.jpg" target="_blank" rel="noopener">View preview page</a></p>
+          </div>
+        </article>
+        <article class="pf " data-cat="research">
+          <div class="pv ph"><span class="ph-kind">Seminar paper</span><span class="ph-note">Preview coming soon</span></div>
+          <div class="pf-body">
+            <p class="pf-label">Research seminar · FAU</p>
+            <h3>Generative AI vs. Python for Data Analysis</h3>
+            <p>Seminar paper comparing generative AI with Python for data analysis.</p>
+          </div>
+        </article>
+        <article class="pf" data-cat="research">
+          <a class="pv doc" href="assets/research/immersive.jpg" target="_blank" rel="noopener"><img src="assets/research/immersive.jpg" alt="Abstract page of the immersive retail seminar paper" loading="lazy"></a>
+          <div class="pf-body">
+            <p class="pf-label">Research seminar · FAU · 2026 · Group paper</p>
+            <h3>Which Technologies Will Become Relevant for Immersive Retail Concepts in the Future?</h3>
+            <p>A systematic literature review builds a framework of three factors: consumer experience, technology value and economic viability. Applied to holograms, neurotechnology and agentic AI, it identifies agentic AI as the most viable future innovation for retailers.</p>
+            <p class="pf-links"><a href="assets/research/immersive.jpg" target="_blank" rel="noopener">View preview page</a></p>
+          </div>
+        </article>
+        <article class="pf" data-cat="research">
+          <a class="pv doc" href="assets/research/ip-vc.jpg" target="_blank" rel="noopener"><img src="assets/research/ip-vc.jpg" alt="Introduction page of the IP and venture capital seminar paper" loading="lazy"></a>
+          <div class="pf-body">
+            <p class="pf-label">Seminar paper · FAU · 2026</p>
+            <h3>Relevance of IP in Venture Capital Financing for a Start-Up</h3>
+            <p>Examines how patents help start-ups attract venture capital, with a case study of Rescale, the cloud simulation company whose growing patent portfolio accompanied its funding rounds from Series B to Series D.</p>
+            <p class="pf-links"><a href="assets/research/ip-vc.jpg" target="_blank" rel="noopener">View preview page</a></p>
+          </div>
+        </article>
+        <article class="pf" data-cat="research">
+          <a class="pv doc" href="assets/research/green-loyalty.jpg" target="_blank" rel="noopener"><img src="assets/research/green-loyalty.jpg" alt="Introduction page of the green employee loyalty research report" loading="lazy"></a>
+          <div class="pf-body">
+            <p class="pf-label">Group research project · IoBM · MBA</p>
+            <h3>Effect of Environmental Strategies and CSR on Green Employee Loyalty</h3>
+            <p>Quantitative survey study in Karachi on how environmental strategy and corporate social responsibility affect green employee loyalty, with green product attitude and green trust as moderators, analysed with regression in SmartPLS.</p>
+            <p class="pf-links"><a href="assets/research/green-loyalty.jpg" target="_blank" rel="noopener">View preview page</a></p>
+          </div>
+        </article>
+        <article class="pf " data-cat="research">
+          <div class="pv ph"><span class="ph-kind">Project</span><span class="ph-note">Preview coming soon</span></div>
+          <div class="pf-body">
+            <p class="pf-label">Project · FAU</p>
+            <h3>Innovation and Leadership Project for JOSEPHS</h3>
+            <p>Innovation and leadership project carried out for JOSEPHS.</p>
+          </div>
+        </article>
+        <article class="pf " data-cat="writing">
+          <div class="pv ph"><span class="ph-kind">Writing sample</span><span class="ph-note">Sample coming soon</span></div>
+          <div class="pf-body">
+            <p class="pf-label">Writing</p>
+            <h3>Ghostwriting &amp; book outlining</h3>
+            <p>Space for ghostwritten work and book outlines.</p>
+          </div>
+        </article>
+        <article class="pf " data-cat="writing">
+          <div class="pv ph"><span class="ph-kind">Writing sample</span><span class="ph-note">Sample coming soon</span></div>
+          <div class="pf-body">
+            <p class="pf-label">Writing</p>
+            <h3>Content writing</h3>
+            <p>Space for articles and web content.</p>
+          </div>
+        </article>
+        <article class="pf " data-cat="writing">
+          <div class="pv ph"><span class="ph-kind">Documentation</span><span class="ph-note">Sample coming soon</span></div>
+          <div class="pf-body">
+            <p class="pf-label">Writing</p>
+            <h3>Technical documentation &amp; video manuals</h3>
+            <p>Space for internal guides, software documentation and video manuals.</p>
+          </div>
+        </article>
+        <article class="pf " data-cat="writing">
+          <div class="pv ph"><span class="ph-kind">Writing sample</span><span class="ph-note">Sample coming soon</span></div>
+          <div class="pf-body">
+            <p class="pf-label">Writing</p>
+            <h3>Editing &amp; proofreading</h3>
+            <p>Space for before-and-after editing samples.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" aria-labelledby="contact-title">
+    <div class="wrap">
+      <h2 id="contact-title">Work with me</h2>
+      <div class="contact">
+        <div class="photo p3"><div class="mono">YK</div><img src="photo-3.jpg" alt="" onerror="this.remove()"></div>
+        <div>
+          <dl>
+            <div><dt class="label">LinkedIn</dt><dd><a href="https://linkedin.com/in/yousufkhan1997" target="_blank" rel="noopener">in/yousufkhan1997</a></dd></div>
+            <div><dt class="label">Email</dt><dd><a href="mailto:m.yousufkhan1997@gmail.com">m.yousufkhan1997@gmail.com</a></dd></div>
+            <div><dt class="label">Phone</dt><dd><a href="tel:+4915750966840">+49 157 50966840</a></dd></div>
+          </dl>
+          <p class="note">Looking for ERP roles in shipping and logistics: working student positions and thesis collaborations now, full-time from 2027. Based in Nuremberg.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><span>© 2026 Yousuf Khan</span><a href="#top">Back to top ↑</a></div>
+</footer>
+<script>
+(function(){
+  var btns=document.querySelectorAll('.pf-tabs button'), cards=document.querySelectorAll('#pf-grid .pf');
+  btns.forEach(function(b){b.addEventListener('click',function(){
+    var f=b.getAttribute('data-f');
+    btns.forEach(function(x){x.setAttribute('aria-pressed',String(x===b))});
+    cards.forEach(function(c){c.hidden=!(f==='all'||c.getAttribute('data-cat')===f)});
+  })});
+})();
+</script>
+</body>
+</html>
