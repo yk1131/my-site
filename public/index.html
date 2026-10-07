@@ -89,16 +89,16 @@ a{color:inherit}
 .st.p{color:var(--ink)}
 
 /* home work strip */
-.strip{display:grid;grid-template-columns:.85fr .75fr 1.4fr .85fr;gap:clamp(1rem,2.5vw,2rem);align-items:center;padding:clamp(4rem,9vw,7rem) 0 clamp(3rem,6vw,4rem)}
+.strip{display:grid;grid-template-columns:.75fr 1.15fr 1.4fr .8fr;gap:clamp(1rem,2.5vw,2rem);align-items:center;padding:clamp(4rem,9vw,7rem) 0 clamp(3rem,6vw,4rem)}
 .tile{position:relative;overflow:hidden}
 .see{text-align:center;padding-bottom:clamp(4rem,9vw,7rem)}
 
 /* device: phone */
-.phone{border:10px solid #111;border-radius:34px;background:var(--cream);aspect-ratio:9/18.5;position:relative;overflow:hidden;box-shadow:0 1px 0 #333}
-.phone::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:40%;height:18px;background:#111;border-radius:0 0 12px 12px;z-index:2}
-.phone .scr{position:absolute;inset:0;padding:30px 10% 10%;display:flex;flex-direction:column;gap:.6rem;font-size:.62rem;line-height:1.35}
-.phone.dark{background:#111;color:#fff}
-.phone .shot{position:absolute;top:18px;left:0;width:100%;height:calc(100% - 18px);object-fit:cover;object-position:top;background:#fff;display:block}
+.laptop .shot{width:100%;height:100%;object-fit:cover;object-position:top;display:block;background:#fff}
+.shop-devices{position:relative;padding-bottom:16%}
+.shop-devices .laptop{max-width:none;width:86%;margin-left:auto}
+.shop-devices .laptop.front{position:absolute;left:0;bottom:0;width:50%;filter:drop-shadow(0 12px 22px rgba(0,0,0,.18))}
+.strip .laptop{max-width:none}
 
 /* tiles content */
 .t-blue{background:var(--paper)}
@@ -180,8 +180,6 @@ section.page{background:var(--paper);padding:clamp(4rem,9vw,7rem) 0}
 .creamcard .ring{width:2.6rem;height:1.3rem;border:6px solid var(--orange);border-top:0;border-radius:0 0 999px 999px;margin-top:.6rem}
 .creamcard span{font-size:.62rem;color:var(--blue)}
 
-.phones{display:flex;gap:clamp(1rem,3vw,2.25rem);justify-content:flex-end}
-.phones .phone{width:min(46%,230px)}
 
 /* automation */
 .auto-l .laptop{max-width:560px}
@@ -279,7 +277,6 @@ footer a{text-decoration:none}
   .bg-ex{grid-template-columns:1fr 1fr}
   .bayfig{grid-column:1/-1;margin-top:0;max-width:520px}
   .tiles4{grid-template-columns:1fr 1fr}
-  .phones{justify-content:flex-start}
   .photo.p1{margin-top:0}
 }
 @media (max-width: 600px){
@@ -290,7 +287,6 @@ footer a{text-decoration:none}
   .nav ul{gap:1rem}
   .nav ul li:not(:last-child){display:none}
   .strip{grid-template-columns:1fr;max-width:380px;margin:0 auto}
-  .strip .phone{max-width:230px;margin:0 auto;width:100%}
   .bg-ex{grid-template-columns:1fr}
   .hero-foot{justify-content:center;text-align:center}
   .uline{padding-inline:1.5rem}
@@ -363,8 +359,9 @@ footer a{text-decoration:none}
           <div class="pill">Webshop &amp; eBay</div>
         </div>
       </div>
-      <div class="phone dark" aria-label="Webshop mockup">
-        <img class="shot" src="assets/rmtek/shop-products.jpg" alt="Product listings on the RMtek webshop, shop.rmtek.de" loading="lazy">
+      <div class="laptop" aria-label="Webshop mockup">
+        <div class="lid"><div class="screen"><img class="shot" src="assets/rmtek/shop-catalog.jpg" alt="Schneider Electric frequency converters listed on the RMtek webshop, shop.rmtek.de" loading="lazy"></div></div>
+        <div class="base"></div>
       </div>
       <div class="tile t-orange">
         <div class="arch">
@@ -468,12 +465,14 @@ footer a{text-decoration:none}
           </ul>
           <p style="margin-top:1.5rem"><a class="caps uline" style="padding-left:0;font-size:.8rem" href="https://shop.rmtek.de" target="_blank" rel="noopener">Visit shop.rmtek.de</a></p>
         </div>
-        <div class="phones">
-          <div class="phone dark">
-            <img class="shot" src="assets/rmtek/shop-en.jpg" alt="The English version of the RMtek webshop homepage" loading="lazy">
+        <div class="shop-devices">
+          <div class="laptop">
+            <div class="lid"><div class="screen"><img class="shot" src="assets/rmtek/shop-en.jpg" alt="The English version of the RMtek webshop homepage" loading="lazy"></div></div>
+            <div class="base"></div>
           </div>
-          <div class="phone dark">
-            <img class="shot" src="assets/rmtek/shop-de.jpg" alt="The German version of the RMtek webshop homepage" loading="lazy">
+          <div class="laptop front">
+            <div class="lid"><div class="screen"><img class="shot" src="assets/rmtek/shop-de.jpg" alt="The German version of the RMtek webshop homepage" loading="lazy"></div></div>
+            <div class="base"></div>
           </div>
         </div>
       </article>
