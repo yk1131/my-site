@@ -3,477 +3,549 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Yousuf Khan — Port planning meets information systems</title>
-<meta name="description" content="Yousuf Khan: former container terminal planner at Hutchison Ports, now studying International Information Systems at FAU and automating ERP and e-commerce operations.">
+<title>Yousuf Khan — Portfolio</title>
+<meta name="description" content="Yousuf Khan: former container terminal planner at Hutchison Ports, now studying International Information Systems at FAU and building ERP, automation and e-commerce systems.">
+<meta name="color-scheme" content="light">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#EEF1F3; --surface:#FFFFFF; --ink:#15212B; --muted:#55636F; --line:#C9D1D7;
-  --yellow:#F2B705; --teal:#1F5F66; --steel:#3F6E9A; --rust:#9C3D22; --sage:#6E7F4E;
-  --cell-empty:#DCE2E6;
-  box-sizing:border-box;
-  padding-top:env(safe-area-inset-top,0px);
-  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#F5F5F4; --paper:#FFFFFF; --ink:#111111; --muted:#5B5B5B; --line:#1A1A1A; --soft:#E9E7E4;
+  --orange:#EE5A2F; --blue:#3A86D6; --navy:#2F4F9C; --blush:#F2B8B0; --cream:#FBF4EC; --sage:#8A9A6B; --wall:#E8DCD9;
+  --serif:"Gloock",Georgia,"Times New Roman",serif;
+  --sans:"Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
 }
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#13222D; --surface:#1A2C39; --ink:#E9EEF1; --muted:#9AAAB6; --line:#2E4352;
-    --yellow:#F5C02A; --teal:#4FA3AB; --steel:#6E9CC8; --rust:#D0694A; --sage:#9BAE76;
-    --cell-empty:#223745;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#13222D; --surface:#1A2C39; --ink:#E9EEF1; --muted:#9AAAB6; --line:#2E4352;
-  --yellow:#F5C02A; --teal:#4FA3AB; --steel:#6E9CC8; --rust:#D0694A; --sage:#9BAE76;
-  --cell-empty:#223745;
-}
-*,*::before,*::after{box-sizing:inherit}
-html{scroll-padding-top:5rem;scroll-behavior:smooth}
-@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Barlow",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:1.0625rem;line-height:1.55}
-a{color:inherit;text-decoration-color:var(--yellow);text-decoration-thickness:2px;text-underline-offset:3px}
-a:hover{text-decoration-color:var(--ink)}
-:focus-visible{outline:3px solid var(--yellow);outline-offset:3px;border-radius:2px}
-h1,h2,h3{font-family:"Barlow Condensed","Arial Narrow",Arial,sans-serif;font-weight:700;line-height:1.02;margin:0}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:4.5rem}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:1rem;line-height:1.7;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.05;margin:0}
 p{margin:0}
-.wrap{max-width:1120px;margin:0 auto;padding:0 clamp(1rem,4vw,2.5rem)}
-.kicker{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:.95rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:.6rem;margin-bottom:.9rem}
-.kicker::before{content:"";width:.7rem;height:.7rem;background:var(--yellow);border:2px solid var(--ink);flex:none}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--orange);outline-offset:4px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 clamp(1rem,5vw,4.5rem)}
+.label{font-family:var(--sans);font-size:.8rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+.caps{font-family:var(--sans);font-size:.95rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase}
+.uline{display:inline-block;text-decoration:none;padding:0 2.5rem .55rem;border-bottom:1.5px solid var(--line)}
+.uline:hover{color:var(--orange);border-color:var(--orange)}
 
-/* top bar */
-.bar-outer{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.bar{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.9rem 0}
-.bar .mark{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:1.25rem;text-decoration:none;display:flex;align-items:center;gap:.5rem}
-.bar .mark span{display:inline-block;width:.9rem;height:.9rem;background:var(--yellow);border:2px solid var(--ink)}
-.bar nav{display:flex;gap:1.25rem;align-items:center}
-.bar nav a{text-decoration:none;color:var(--muted);font-weight:500}
-.bar nav a:hover{color:var(--ink)}
-.bar nav a.cta{color:var(--ink);border:2px solid var(--ink);padding:.3rem .8rem;font-weight:600}
-.bar nav a.cta:hover{background:var(--yellow);border-color:var(--yellow);color:#15212B}
+/* nav */
+.nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.nav .wrap{display:flex;justify-content:space-between;align-items:center;height:4rem}
+.nav .name{font-family:var(--serif);font-size:1.35rem;text-decoration:none}
+.nav ul{list-style:none;display:flex;gap:2rem;margin:0;padding:0}
+.nav ul a{text-decoration:none;font-size:.75rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
+.nav ul a:hover{color:var(--orange)}
 
-/* hero */
-.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(2rem,5vw,4rem);padding:clamp(3rem,8vw,6rem) 0 clamp(3rem,6vw,4.5rem);align-items:center}
-.hero h1{font-size:clamp(2.75rem,6.2vw,5.25rem);letter-spacing:-.01em}
-.hero h1 em{font-style:normal;background:linear-gradient(transparent 62%,var(--yellow) 62%,var(--yellow) 90%,transparent 90%)}
-.hero .lede{font-size:clamp(1.15rem,2vw,1.35rem);max-width:36ch;margin:1.5rem 0 0}
-.hero .where{color:var(--muted);margin-top:1rem;display:flex;flex-wrap:wrap;gap:.35rem 1rem}
-.hero .where span{display:inline-flex;align-items:center;gap:.4rem}
-.dot{width:.55rem;height:.55rem;border-radius:50%;background:var(--sage);box-shadow:0 0 0 3px color-mix(in srgb,var(--sage) 30%,transparent)}
-.btns{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.75rem}
-.btn{display:inline-block;padding:.75rem 1.25rem;font-weight:600;text-decoration:none;border:2px solid var(--ink);background:var(--ink);color:var(--bg)}
-.btn.ghost{background:transparent;color:var(--ink)}
-.btn:hover{background:var(--yellow);color:#15212B;border-color:var(--yellow)}
+/* ---------- HOME ---------- */
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:min(92vh,820px)}
+.hero-text{display:flex;flex-direction:column;justify-content:space-between;padding:clamp(3rem,8vw,6rem) clamp(1rem,5vw,4.5rem) clamp(2.5rem,6vw,5rem)}
+.hero-text .top{text-align:center}
+.hero h1{font-size:clamp(4.25rem,11vw,9.5rem);line-height:.95;margin-top:2.5rem}
+.hero .sub{margin-top:2rem;font-size:1.05rem;color:var(--muted);max-width:30ch;margin-inline:auto}
+.hero-foot{display:flex;justify-content:space-between;align-items:end;gap:1.5rem;flex-wrap:wrap;margin-top:3rem}
+.hero-art{position:relative;background:var(--wall);overflow:hidden;display:flex;align-items:center;justify-content:center;padding:3rem 0 3rem 2rem}
+.hero-art .moon{position:absolute;top:-22%;left:-18%;width:70%;aspect-ratio:1;border-radius:50%;background:#EFE8E6}
+.hero-art .vase{position:absolute;right:-3%;bottom:14%;width:22%;aspect-ratio:.62;border-radius:45% 45% 38% 38%/30% 30% 60% 60%;background:linear-gradient(90deg,#7c7468,#5b544b 60%,#4a443d)}
+.hero-art .desk{position:absolute;left:0;right:0;bottom:0;height:16%;background:#C9B8A8}
 
-/* bay plan */
-.bay{background:var(--surface);border:1px solid var(--line);padding:1.25rem;margin:0}
-.bay-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-bottom:.9rem}
-.bay-head h2{font-size:1.35rem}
-.bay-head p{color:var(--muted);font-size:.9rem}
-.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:4px}
-.cell{aspect-ratio:2.1/1;background:var(--cell-empty);display:flex;align-items:center;justify-content:center;text-align:center;font-size:.72rem;font-weight:600;line-height:1.1;padding:2px 4px;color:#fff;position:relative;transition:opacity .2s}
-.cell[data-k="ops"]{background:var(--teal)}
-.cell[data-k="sys"]{background:var(--steel)}
-.cell[data-k="biz"]{background:var(--rust)}
-.cell[data-k="res"]{background:var(--sage)}
-.cell::after{content:"";position:absolute;inset:3px;border:1px solid rgba(255,255,255,.22);pointer-events:none}
-.cell.empty::after{display:none}
-.grid.filtered .cell:not(.on){opacity:.18}
-.hatch{display:flex;justify-content:space-between;margin-top:6px;color:var(--muted);font-size:.75rem}
-.legend{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
-.legend button{font:inherit;font-size:.9rem;font-weight:500;display:flex;align-items:center;gap:.45rem;padding:.4rem .7rem;background:transparent;border:1px solid var(--line);color:var(--ink);cursor:pointer}
-.legend button i{width:.8rem;height:.8rem;display:inline-block}
-.legend button[aria-pressed="true"]{border-color:var(--ink);background:var(--bg)}
+/* device: laptop */
+.laptop{position:relative;width:100%;max-width:640px;z-index:1}
+.laptop .lid{background:#1d1d1f;border-radius:14px 14px 0 0;padding:2.2% 2.2% 3%}
+.laptop .screen{background:var(--cream);aspect-ratio:16/10;overflow:hidden;position:relative}
+.laptop .base{height:14px;background:linear-gradient(#d9d9db,#a9a9ad);border-radius:0 0 12px 12px;margin:0 -5%;position:relative}
+.laptop .base::after{content:"";position:absolute;left:42%;right:42%;top:0;height:5px;background:#8d8d92;border-radius:0 0 6px 6px}
+.hero-art .laptop{width:118%;max-width:none;margin-right:-30%}
 
-/* stats strip */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:3px solid var(--ink);border-bottom:1px solid var(--line)}
-.stat{padding:1.25rem 1rem 1.25rem 0}
-.stat+.stat{padding-left:1rem;border-left:1px solid var(--line)}
-.stat strong{display:block;font-family:"Barlow Condensed",sans-serif;font-size:clamp(2rem,4.5vw,3rem);line-height:1}
-.stat span{color:var(--muted);font-size:.95rem}
+/* bay plan inside laptop */
+.bayscreen{position:absolute;inset:0;display:grid;grid-template-columns:1.1fr 1fr;padding:6%}
+.bayscreen .bp{display:grid;grid-template-columns:repeat(6,1fr);gap:3px;align-content:center}
+.bayscreen .bp i{aspect-ratio:2/1;background:var(--soft)}
+.bp .o{background:var(--orange)!important}.bp .b{background:var(--blue)!important}.bp .p{background:var(--blush)!important}.bp .s{background:var(--sage)!important}
+.bayscreen .copy{padding-left:9%;display:flex;flex-direction:column;justify-content:center;color:var(--orange);font-size:clamp(.45rem,.9vw,.72rem);line-height:1.5}
+.bayscreen .copy b{font-family:var(--serif);font-weight:400;font-size:1.9em;line-height:1.05;color:var(--ink);margin:.4em 0 .6em}
+.bayscreen .copy span{color:var(--muted)}
 
-/* sections */
-section.block{padding:clamp(3.5rem,8vw,6rem) 0}
-.sec-head{display:flex;justify-content:space-between;align-items:end;gap:2rem;margin-bottom:2.5rem;flex-wrap:wrap}
-.sec-head h2{font-size:clamp(2.25rem,5vw,3.5rem);max-width:18ch}
-.sec-head p{color:var(--muted);max-width:44ch}
+/* home work strip */
+.strip{display:grid;grid-template-columns:.85fr .75fr 1.4fr .85fr;gap:clamp(1rem,2.5vw,2rem);align-items:center;padding:clamp(4rem,9vw,7rem) 0 clamp(3rem,6vw,4rem)}
+.tile{position:relative;overflow:hidden}
+.see{text-align:center;padding-bottom:clamp(4rem,9vw,7rem)}
 
-/* focus areas */
-.focus{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
-.area{background:var(--surface);border:1px solid var(--line);border-top:6px solid var(--c);padding:1.5rem}
-.area h3{font-size:1.6rem;margin-bottom:.6rem}
-.area p{color:var(--muted)}
-.area .tools{margin-top:1rem;font-size:.92rem;color:var(--ink);border-top:1px dashed var(--line);padding-top:.8rem}
+/* device: phone */
+.phone{border:10px solid #111;border-radius:34px;background:var(--cream);aspect-ratio:9/18.5;position:relative;overflow:hidden;box-shadow:0 1px 0 #333}
+.phone::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:40%;height:18px;background:#111;border-radius:0 0 12px 12px;z-index:2}
+.phone .scr{position:absolute;inset:0;padding:30px 10% 10%;display:flex;flex-direction:column;gap:.6rem;font-size:.62rem;line-height:1.35}
+.phone.dark{background:#111;color:#fff}
 
-/* case studies */
-.cases{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem}
-.case{background:var(--surface);border:1px solid var(--line);padding:1.5rem 1.5rem 1.25rem;display:flex;flex-direction:column;position:relative}
-.case::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--c)}
-.case.big{grid-column:span 2;display:grid;grid-template-columns:1fr 1fr;gap:2rem}
-.case .meta{font-size:.88rem;color:var(--muted);margin-bottom:.6rem;display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
-.case .meta b{font-weight:600;color:var(--c-text,var(--ink))}
-.case h3{font-size:clamp(1.5rem,2.6vw,1.9rem);margin-bottom:.75rem}
-.case p{max-width:60ch}
-.case p+p{margin-top:.6rem}
-.case .lbl{font-family:"Barlow Condensed",sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.08em;font-size:.82rem;color:var(--muted);display:block;margin-bottom:.15rem}
-.case .stack{margin-top:auto;padding-top:1rem;display:flex;flex-wrap:wrap;gap:.35rem}
-.case .stack span{font-size:.82rem;border:1px solid var(--line);padding:.1rem .5rem;color:var(--muted)}
-.badge{display:inline-block;background:var(--yellow);color:#15212B;font-weight:600;font-size:.8rem;padding:.05rem .5rem}
+/* tiles content */
+.t-blue{background:var(--paper)}
+.t-blue .hd{background:var(--blue);color:#fff;padding:1rem 1rem .9rem;font-family:var(--serif);font-size:1.35rem;line-height:1.1}
+.t-blue .hd small{display:block;font-family:var(--sans);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.4rem;opacity:.85}
+.t-blue .bd{padding:1rem}
+.t-blue .bd b{display:block;color:var(--blue);font-weight:700;font-size:1.05rem;line-height:1.2}
+.t-blue .bd b em{font-style:normal;color:var(--orange)}
+.pill{border:1.5px solid var(--blue);border-radius:999px;font-size:.62rem;padding:.3rem .7rem;margin-top:.5rem;color:var(--navy)}
+.t-orange{background:var(--orange);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center}
+.arch{width:68%;aspect-ratio:.8;background:var(--cream);border-radius:999px 999px 0 0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:9%;position:relative;color:var(--navy)}
+.arch svg{position:absolute;top:5%;left:5%;width:90%;overflow:visible}
+.arch .big{font-family:var(--sans);font-weight:800;font-size:clamp(1rem,2.4vw,2rem);letter-spacing:.03em;line-height:1;font-weight:700}
+.arch .sm{font-size:clamp(.45rem,.75vw,.62rem);letter-spacing:.35em;text-transform:uppercase;margin-top:.5rem}
+.arch .crane{width:34%;margin-bottom:8%}
+.t-stack{display:grid;gap:clamp(.75rem,1.5vw,1.1rem)}
+.t-blush{background:var(--blush);padding:1.1rem;color:var(--orange)}
+.t-blush small{font-size:.62rem;font-weight:600;display:block;text-align:center}
+.t-blush b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(1.4rem,2.4vw,2rem);text-align:center;line-height:1.05;margin:.35rem 0 .6rem}
+.mail{background:#fff;border-radius:6px;padding:.55rem .7rem;font-size:.62rem;color:var(--ink);line-height:1.4;display:grid;grid-template-columns:auto 1fr;gap:.15rem .5rem}
+.mail i{grid-row:span 2;width:1.4rem;height:1.4rem;border-radius:50%;background:var(--orange);display:block;align-self:center}
+.mail span{color:var(--muted)}
 
-/* route / journey */
-.route-wrap{background:var(--ink);color:var(--bg)}
-.route-wrap .sec-head p{color:color-mix(in srgb,var(--bg) 70%,transparent)}
-.route-wrap .kicker{color:color-mix(in srgb,var(--bg) 70%,transparent)}
-.route-wrap .kicker::before{border-color:var(--bg)}
-.route{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,1fr);position:relative}
-.route::before{content:"";position:absolute;left:0;right:0;top:.55rem;border-top:2px dashed color-mix(in srgb,var(--bg) 40%,transparent)}
-.stop{position:relative;padding:2rem 1rem 0 0}
-.stop::before{content:"";position:absolute;top:0;left:0;width:1.1rem;height:1.1rem;background:var(--ink);border:3px solid var(--bg)}
-.stop.port::before{background:var(--yellow);border-color:var(--yellow)}
-.stop time{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:1.5rem;color:var(--yellow);display:block}
-.stop strong{display:block;font-weight:600;margin:.2rem 0 .3rem;line-height:1.25}
-.stop p{font-size:.92rem;color:color-mix(in srgb,var(--bg) 72%,transparent)}
-.route-note{margin-top:2.5rem;font-size:.95rem;color:color-mix(in srgb,var(--bg) 70%,transparent)}
-.route-note a{color:var(--bg)}
+/* ---------- ABOUT ---------- */
+section.page{background:var(--paper);padding:clamp(4rem,9vw,7rem) 0}
+.bio{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(2rem,6vw,6rem)}
+.bio .statement{font-size:clamp(2rem,3.8vw,3rem);line-height:1.15}
+.bio .copy p{margin-top:1.6rem;max-width:46ch;font-size:1.02rem}
+.bio .copy p:first-of-type{margin-top:2.75rem}
+.photo{position:relative;overflow:hidden;background:var(--wall)}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photo .mono{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:clamp(4rem,9vw,7rem);color:#fff}
+.photo.p1{aspect-ratio:.81;max-width:330px;margin-top:4rem}
+.photo.p1 .mono{background:linear-gradient(160deg,var(--wall),#d5c3bf)}
 
-/* writing */
-.writing{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:start}
-.pub{background:var(--surface);border-left:6px solid var(--yellow);padding:1.5rem}
-.pub .lbl{font-family:"Barlow Condensed",sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.08em;font-size:.82rem;color:var(--muted)}
-.pub h3{font-size:1.6rem;margin:.4rem 0 .6rem}
-.pub p{color:var(--muted);font-size:.95rem;margin-bottom:.9rem}
-.list{list-style:none;margin:0;padding:0}
-.list li{display:grid;grid-template-columns:7rem 1fr;gap:1rem;padding:.8rem 0;border-bottom:1px solid var(--line)}
-.list li:first-child{border-top:1px solid var(--line)}
-.list li span{color:var(--muted);font-size:.9rem}
+.bg-ex{display:grid;grid-template-columns:1fr 1fr .85fr;gap:clamp(2rem,4vw,4rem);margin-top:clamp(4rem,9vw,7rem);align-items:start}
+.bg-ex h2{font-size:clamp(2rem,3.4vw,2.6rem);margin-bottom:1.6rem}
+.bg-ex .item{margin-bottom:1.6rem;font-size:.98rem;line-height:1.75}
+.bg-ex .item b{font-weight:700}
+.bg-ex ul{margin:0;padding-left:1.1rem;font-size:.98rem;line-height:1.85}
+.bayfig{background:var(--bg);padding:1.25rem;margin-top:5.5rem}
+.bayfig .bp{display:grid;grid-template-columns:repeat(6,1fr);gap:3px}
+.bayfig .bp i{aspect-ratio:2/1;background:var(--soft)}
+.bayfig figcaption{font-size:.75rem;color:var(--muted);margin-top:.8rem;line-height:1.5}
 
-/* now */
-.now{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
-.now div{border-top:3px solid var(--ink);padding-top:.75rem}
-.now h3{font-size:1.25rem;margin-bottom:.3rem}
-.now p{color:var(--muted);font-size:.95rem}
-.meter{height:6px;background:var(--cell-empty);margin-top:.5rem}
-.meter b{display:block;height:100%;background:var(--yellow)}
+.quote{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(2rem,6vw,6rem);align-items:center;margin-top:clamp(4rem,9vw,7rem)}
+.photo.p2{aspect-ratio:.9;max-width:420px}
+.photo.p2 .mono{background:linear-gradient(200deg,#e9e1dc,var(--blush))}
+.quote blockquote{margin:0;font-family:var(--serif);font-size:clamp(2rem,4vw,3.1rem);line-height:1.2;max-width:17ch}
 
-/* contact */
-.contact{background:var(--yellow);color:#15212B;padding:clamp(3.5rem,8vw,6rem) 0}
-.contact-in{display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:end}
-.contact h2{font-size:clamp(2.5rem,6vw,4.5rem)}
-.contact p{max-width:48ch;margin-top:1.25rem;font-size:1.1rem}
-.contact ul{list-style:none;padding:0;margin:0;display:grid;gap:1rem}
-.contact li{border-top:2px solid #15212B;padding-top:.6rem}
-.contact a{color:#15212B;font-size:1.2rem;font-weight:600;text-decoration-color:#15212B;word-break:break-word}
-.contact small{display:block;font-size:.85rem;opacity:.7}
-footer{padding:1.5rem 0;color:var(--muted);font-size:.9rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+/* ---------- WORK ---------- */
+#work{background:var(--paper);padding:clamp(4rem,9vw,7rem) 0;border-top:1px solid var(--soft)}
+.case{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);padding:clamp(3rem,7vw,5.5rem) 0;align-items:center}
+.case:first-of-type{padding-top:0}
+.case h2{font-size:clamp(3rem,6.2vw,5rem);line-height:.95}
+.case .lead{max-width:44ch;font-size:1.02rem;margin-top:1.75rem}
+.case .facts{margin-top:1.5rem;font-size:.9rem;color:var(--muted);max-width:46ch}
+.case .facts li{margin-bottom:.35rem}
+.case .facts{padding-left:1.1rem}
+.case-head{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:start}
+.case-head .label{display:block;margin-bottom:1rem}
+.wide{grid-column:1/-1}
 
+/* case 1 tiles */
+.tiles4{display:grid;grid-template-columns:1.25fr .75fr .75fr .95fr;gap:10px;margin-top:2.5rem}
+.tiles4>*{min-height:clamp(160px,22vw,280px)}
+.yard{background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.1rem;padding:1.5rem}
+.yard .rows{display:grid;grid-template-columns:repeat(8,1fr);gap:4px;width:80%}
+.yard .rows i{aspect-ratio:1;background:var(--blush);border-radius:2px}
+.yard .rows i.e{background:transparent;border:1.5px solid var(--blush)}
+.yard .rows i.r{background:var(--orange)}
+.yard .t{font-family:var(--sans);font-weight:700;color:var(--blue);font-size:clamp(1.1rem,2vw,1.6rem);line-height:1.05;text-align:center}
+.yard .t small{display:block;font-weight:500;font-size:.62rem;letter-spacing:.06em;color:var(--orange);margin-top:.35rem}
+.navycard{background:var(--blue);color:#fff;padding:1.1rem;display:flex;flex-direction:column;justify-content:flex-end}
+.navycard b{font-size:1rem;line-height:1.25}
+.navycard span{font-size:.65rem;opacity:.85;margin-top:.5rem;line-height:1.4}
+.creamcard{background:var(--bg);padding:1.1rem;display:flex;flex-direction:column;justify-content:space-between}
+.creamcard b{color:var(--blue);font-size:1rem;line-height:1.25}
+.creamcard .ring{width:2.6rem;height:1.3rem;border:6px solid var(--orange);border-top:0;border-radius:0 0 999px 999px;margin-top:.6rem}
+.creamcard span{font-size:.62rem;color:var(--blue)}
+
+.phones{display:flex;gap:clamp(1rem,3vw,2.25rem);justify-content:flex-end}
+.phones .phone{width:min(46%,230px)}
+.shop-hd{display:flex;justify-content:space-between;font-weight:600;font-size:.58rem;letter-spacing:.08em}
+.shop-hero{background:var(--wall);aspect-ratio:1.15;display:flex;align-items:flex-end;padding:.5rem;font-family:var(--serif);font-size:1.15rem;line-height:1.05;color:var(--ink)}
+.dark .shop-hero{background:#2a2a2a;color:#fff}
+.shop-grid{display:grid;grid-template-columns:1fr 1fr;gap:.35rem}
+.shop-grid i{aspect-ratio:1;background:var(--soft)}
+.dark .shop-grid i{background:#333}
+.shop-grid i:nth-child(2){background:var(--sage)}
+.shop-grid i:nth-child(3){background:var(--blush)}
+.btnmini{background:var(--orange);color:#fff;text-align:center;padding:.35rem;font-weight:600;font-size:.58rem;letter-spacing:.1em}
+.lang{font-family:var(--serif);font-size:.95rem;font-style:italic;color:var(--sage);text-align:center}
+
+/* automation */
+.auto-l .laptop{max-width:560px}
+.inbox{position:absolute;inset:0;display:grid;grid-template-columns:30% 1fr;font-size:clamp(.42rem,.8vw,.66rem);line-height:1.4}
+.inbox .side{background:#f0ece6;padding:8% 10%;display:flex;flex-direction:column;gap:.5em}
+.inbox .side b{font-family:var(--serif);font-weight:400;font-size:1.6em;color:var(--ink)}
+.inbox .side span{color:var(--muted)}
+.inbox .side span.on{color:var(--orange);font-weight:600}
+.inbox .main{padding:7% 8%;display:flex;flex-direction:column;gap:.7em}
+.inbox .msg{background:#fff;border-left:3px solid var(--orange);padding:.6em .8em}
+.inbox .msg b{display:block}
+.inbox .msg span{color:var(--muted)}
+.inbox .flow{display:flex;align-items:center;gap:.5em;color:var(--blue);font-weight:700;margin-top:auto}
+.inbox .flow i{font-style:normal;color:var(--orange)}
+.sidecard{background:#9FB3BD;padding:1.75rem;color:#fff;display:flex;flex-direction:column;gap:.9rem}
+.sidecard h3{font-size:clamp(2rem,3.4vw,2.8rem);color:#f4ff9a;line-height:1}
+.sidecard .log{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.7rem;background:rgba(0,0,0,.18);padding:.8rem;line-height:1.7;overflow-wrap:anywhere}
+.sidecard .log em{font-style:normal;color:#f4ff9a}
+.sidecard p{font-size:.9rem}
+.auto{display:grid;grid-template-columns:1.35fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:start}
+.auto .caption{margin-top:1.5rem;max-width:40ch;font-size:1rem}
+
+/* research tiles */
+.emblems{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.emblem b,.emblem span{overflow-wrap:anywhere}
+.emblem{background:var(--bg);aspect-ratio:1.28;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1rem;gap:.6rem;text-decoration:none}
+.emblem svg{width:2.6rem;height:2.6rem}
+.emblem b{font-family:var(--sans);font-weight:700;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;line-height:1.35}
+.emblem span{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+a.emblem:hover b{color:var(--orange)}
+
+/* ---------- CONTACT ---------- */
+#contact{background:var(--paper);padding:clamp(4rem,9vw,7rem) 0 clamp(3rem,7vw,5rem);border-top:1px solid var(--soft)}
+#contact h2{font-size:clamp(3.25rem,7vw,5.5rem)}
+.contact{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(2rem,8vw,10rem);margin-top:clamp(3rem,7vw,6rem);align-items:center}
+.photo.p3{aspect-ratio:1.72}
+.photo.p3 .mono{background:linear-gradient(120deg,var(--wall),#d9cfc6)}
+.contact dl{margin:0;display:grid;gap:2rem}
+.contact dt{margin-bottom:.6rem}
+.contact dd{margin:0;font-family:var(--serif);font-size:clamp(1.15rem,1.8vw,1.45rem);line-height:1.3}
+.contact dd a{text-decoration:none;border-bottom:1px solid transparent;overflow-wrap:anywhere}
+.contact dd a:hover{border-color:var(--ink)}
+.contact .note{margin-top:2.5rem;font-size:.95rem;color:var(--muted);max-width:44ch}
+footer{background:var(--paper);padding:2rem 0 3rem}
+footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+footer a{text-decoration:none}
+
+.hero>*,.bio>*,.bg-ex>*,.quote>*,.case>*,.case-head>*,.auto>*,.contact>*,.strip>*{min-width:0}
+/* ---------- responsive ---------- */
 @media (max-width: 960px){
-  .route{grid-template-columns:repeat(3,1fr);row-gap:2rem}
-  .route::before{display:none}
-  .now{grid-template-columns:repeat(2,1fr)}
+  .hero{grid-template-columns:1fr;min-height:0}
+  .hero-art{padding:3rem 0 3rem 1.25rem;min-height:340px}
+  .hero-art .laptop{width:105%;margin-right:-25%}
+  .strip{grid-template-columns:1fr 1fr}
+  .bio,.quote,.case,.case-head,.auto,.contact{grid-template-columns:1fr}
+  .bg-ex{grid-template-columns:1fr 1fr}
+  .bayfig{grid-column:1/-1;margin-top:0;max-width:520px}
+  .tiles4{grid-template-columns:1fr 1fr}
+  .phones{justify-content:flex-start}
+  .photo.p1{margin-top:0}
 }
-@media (max-width: 860px){
-  .hero,.writing,.contact-in{grid-template-columns:1fr}
-  .focus{grid-template-columns:1fr}
-  .cases{grid-template-columns:1fr}
-  .case.big{grid-column:auto;grid-template-columns:1fr;gap:0}
-  .stats{grid-template-columns:repeat(2,1fr)}
-  .stat:nth-child(3){padding-left:0;border-left:0}
-  .stat:nth-child(n+3){border-top:1px solid var(--line)}
-}
-@media (max-width: 560px){
-  .bar nav a:not(.cta){display:none}
-  .cell{font-size:.6rem}
-  .grid{grid-template-columns:repeat(4,1fr)}
-  .cell.wide-only{display:none}
-  .route{grid-template-columns:1fr;row-gap:0;padding-left:.45rem}
-  .route::before{display:block;left:.45rem;right:auto;top:.5rem;bottom:.5rem;border-top:0;border-left:2px dashed color-mix(in srgb,var(--bg) 40%,transparent)}
-  .stop{padding:0 0 1.75rem 2rem}
-  .stop::before{left:-.05rem}
-  .stop time{font-size:1.3rem}
-  .now{grid-template-columns:1fr}
-  .list li{grid-template-columns:1fr;gap:.1rem}
+@media (max-width: 600px){
+  .emblem{aspect-ratio:auto;min-height:150px;padding:1.25rem .6rem}
+  .emblem b{letter-spacing:.08em}
+  .nav ul{gap:1rem}
+  .nav ul li:not(:last-child){display:none}
+  .strip{grid-template-columns:1fr;max-width:380px;margin:0 auto}
+  .strip .phone{max-width:230px;margin:0 auto;width:100%}
+  .bg-ex{grid-template-columns:1fr}
+  .hero-foot{justify-content:center;text-align:center}
+  .uline{padding-inline:1.5rem}
 }
 </style>
 </head>
 <body>
-<div class="bar-outer">
+
+<header class="nav">
   <div class="wrap">
-    <header class="bar">
-      <a class="mark" href="#top"><span aria-hidden="true"></span>Yousuf Khan</a>
-      <nav aria-label="Sections">
-        <a href="#work">Work</a>
-        <a href="#route">Route</a>
-        <a href="#writing">Writing</a>
-        <a class="cta" href="#contact">Contact</a>
-      </nav>
-    </header>
+    <a class="name" href="#top">Yousuf Khan</a>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="#about">Bio</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
   </div>
-</div>
+</header>
 
 <main id="top">
-  <div class="wrap">
-    <div class="hero">
-      <div>
-        <p class="kicker">Operations × information systems</p>
-        <h1>I plan ships. Now I build the <em>systems</em> behind them.</h1>
-        <p class="lede">Four years planning container vessels and yards at Hutchison Ports. Today I run ERP, automation and e-commerce for a German technical services company while finishing a master's at FAU.</p>
-        <p class="where">
-          <span><i class="dot" aria-hidden="true"></i>Open to roles from 2027</span>
-          <span>Nuremberg, Germany</span>
-        </p>
-        <div class="btns">
-          <a class="btn" href="#work">See what I've built</a>
-          <a class="btn ghost" href="mailto:m.yousufkhan1997@gmail.com">Email me</a>
-        </div>
+  <!-- HOME -->
+  <section class="hero" aria-label="Introduction">
+    <div class="hero-text">
+      <div class="top">
+        <p class="caps">Portfolio</p>
+        <h1>Yousuf<br>Khan</h1>
+        <p class="sub">I planned container ships at Hutchison Ports. Now I build the systems behind operations.</p>
       </div>
-
-      <figure class="bay" aria-labelledby="bay-title">
-        <div class="bay-head">
-          <h2 id="bay-title">Bay plan of what I carry</h2>
-          <p>Tap a cargo type</p>
-        </div>
-        <div class="grid" id="grid">
-          <div class="cell" data-k="ops">Stowage</div>
-          <div class="cell" data-k="ops">Yard planning</div>
-          <div class="cell" data-k="ops">Berth planning</div>
-          <div class="cell" data-k="sys">JTL-Wawi</div>
-          <div class="cell" data-k="sys">Python</div>
-          <div class="cell empty" aria-hidden="true"></div>
-
-          <div class="cell" data-k="ops">Reefer / DG / OOG</div>
-          <div class="cell" data-k="ops">Crane plans</div>
-          <div class="cell" data-k="sys">Webshop</div>
-          <div class="cell" data-k="sys">SQL</div>
-          <div class="cell" data-k="sys">PHP</div>
-          <div class="cell wide-only" data-k="sys">Cloudflare</div>
-
-          <div class="cell" data-k="ops">Terminal config</div>
-          <div class="cell" data-k="biz">ERP workflows</div>
-          <div class="cell" data-k="biz">Process mining</div>
-          <div class="cell" data-k="sys">DotLiquid</div>
-          <div class="cell" data-k="sys">EDI</div>
-          <div class="cell wide-only" data-k="biz">QA &amp; testing</div>
-
-          <div class="cell" data-k="biz">Automation</div>
-          <div class="cell" data-k="biz">Root cause analysis</div>
-          <div class="cell" data-k="res">Regression</div>
-          <div class="cell" data-k="res">Survey design</div>
-          <div class="cell" data-k="biz">Mentoring</div>
-          <div class="cell wide-only" data-k="res">Lit. review</div>
-
-          <div class="cell" data-k="res">Forecasting</div>
-          <div class="cell" data-k="biz">Documentation</div>
-          <div class="cell" data-k="res">Celonis</div>
-          <div class="cell" data-k="res">R / EViews</div>
-          <div class="cell" data-k="res">Academic writing</div>
-          <div class="cell wide-only" data-k="biz">Reporting</div>
-        </div>
-        <div class="hatch" aria-hidden="true"><span>Bow</span><span>Stern</span></div>
-        <div class="legend" role="group" aria-label="Filter by cargo type">
-          <button type="button" data-k="ops" aria-pressed="false"><i style="background:var(--teal)"></i>Port operations</button>
-          <button type="button" data-k="sys" aria-pressed="false"><i style="background:var(--steel)"></i>Systems</button>
-          <button type="button" data-k="biz" aria-pressed="false"><i style="background:var(--rust)"></i>Business &amp; process</button>
-          <button type="button" data-k="res" aria-pressed="false"><i style="background:var(--sage)"></i>Research &amp; data</button>
-        </div>
-      </figure>
+      <div class="hero-foot">
+        <p class="caps">Port planner &amp; systems builder</p>
+        <a class="caps uline" href="#contact">Contact</a>
+      </div>
     </div>
-
-    <div class="stats" aria-label="At a glance">
-      <div class="stat"><strong>4.5 yrs</strong><span>on a container terminal planning desk</span></div>
-      <div class="stat"><strong>3</strong><span>terminals planned for: Karachi, Yantian, Jazan</span></div>
-      <div class="stat"><strong>Top planner</strong><span>of the year, formal performance review</span></div>
-      <div class="stat"><strong>DE / EN</strong><span>webshop built and launched at RMtek</span></div>
-    </div>
-
-    <section class="block" id="focus" aria-labelledby="focus-title">
-      <div class="sec-head">
-        <div>
-          <p class="kicker">What I do</p>
-          <h2 id="focus-title">Three things I'm good at, and how they connect</h2>
-        </div>
-        <p>A good plan only works if the software underneath it does. I've sat on both sides of that line.</p>
-      </div>
-      <div class="focus">
-        <article class="area" style="--c:var(--teal)">
-          <h3>Operations planning</h3>
-          <p>Vessel stowage, yard and berth planning for a high-volume terminal. Making sure ships leave on time and yard trucks don't queue, including reefer, dangerous goods and out-of-gauge cargo.</p>
-          <p class="tools">Terminal operating systems · EDI · crane working plans</p>
-        </article>
-        <article class="area" style="--c:var(--steel)">
-          <h3>ERP &amp; e-commerce</h3>
-          <p>Running JTL-Wawi day to day, and building what the ERP can't do on its own: Python automation, custom shop pages, eBay templates and the webshop itself.</p>
-          <p class="tools">JTL-Wawi · Python · PHP · SQL · DotLiquid · Cloudflare</p>
-        </article>
-        <article class="area" style="--c:var(--rust)">
-          <h3>Process &amp; data</h3>
-          <p>Finding where a process breaks and why. Quality checks, root-cause analysis, process mining and the documentation that keeps a fix in place after I've left the room.</p>
-          <p class="tools">Celonis · R · EViews · Excel · regression · surveys</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="block" id="work" aria-labelledby="work-title" style="padding-top:0">
-      <div class="sec-head">
-        <div>
-          <p class="kicker">Selected work</p>
-          <h2 id="work-title">Problems I've solved</h2>
-        </div>
-        <p>A few pieces of work I'm proud of, from the planning desk and from the server room.</p>
-      </div>
-
-      <div class="cases">
-        <article class="case big" style="--c:var(--teal)">
-          <div>
-            <p class="meta"><b>Hutchison Ports</b> · Senior Planner · 2023–24</p>
-            <h3>Bringing a new terminal live in Jazan, Saudi Arabia</h3>
+    <div class="hero-art" aria-hidden="true">
+      <div class="moon"></div>
+      <div class="desk"></div>
+      <div class="vase"></div>
+      <div class="laptop">
+        <div class="lid"><div class="screen">
+          <div class="bayscreen">
+            <div class="bp">
+              <i class="b"></i><i class="b"></i><i class="o"></i><i class="o"></i><i class="p"></i><i></i>
+              <i class="b"></i><i class="b"></i><i class="o"></i><i class="o"></i><i class="p"></i><i class="p"></i>
+              <i class="s"></i><i class="b"></i><i class="b"></i><i class="o"></i><i class="p"></i><i class="p"></i>
+              <i class="s"></i><i class="s"></i><i class="b"></i><i class="o"></i><i class="o"></i><i class="p"></i>
+              <i class="s"></i><i class="s"></i><i class="b"></i><i class="b"></i><i class="o"></i><i class="p"></i>
+            </div>
+            <div class="copy">
+              ★ ★ ★ ★ ★
+              <b>Bay plan,<br>checked.</b>
+              <span>Reefer, dangerous goods and out-of-gauge cargo, each in the right slot, before the ship comes alongside.</span>
+            </div>
           </div>
-          <div>
-            <p><span class="lbl">The job</span>A brand-new terminal, HPJZ Jazan, needed to be configured and brought into live operation.</p>
-            <p><span class="lbl">What I did</span>Set terminal parameters and documentation guidelines, then oversaw live plan execution together with the onsite planner.</p>
-          </div>
-        </article>
-
-        <article class="case" style="--c:var(--steel)">
-          <p class="meta"><b>RMtek</b> · 2025</p>
-          <h3>Stopping a bot attack on the webshop</h3>
-          <p><span class="lbl">Problem</span>Something was hammering the shop server.</p>
-          <p><span class="lbl">What I did</span>Diagnosed it as a bot attack through server log analysis and mitigated it by migrating the site to Cloudflare.</p>
-          <div class="stack"><span>Log analysis</span><span>Cloudflare</span></div>
-        </article>
-
-        <article class="case" style="--c:var(--steel)">
-          <p class="meta"><b>RMtek</b> · 2025</p>
-          <h3>A bilingual webshop, from nothing to live</h3>
-          <p>Built and launched the DE/EN shop and helped grow sales. Alongside it, created DotLiquid listing templates for the eBay channel and researched product pricing.</p>
-          <div class="stack"><span>JTL-Wawi</span><span>DotLiquid</span><span>eBay</span></div>
-        </article>
-
-        <article class="case" style="--c:var(--rust)">
-          <p class="meta"><b>RMtek</b> · 2025</p>
-          <h3>Orders that tell the warehouse what to do</h3>
-          <p>Wrote Python automation that sends dispatch emails to the warehouse the moment an order arrives, plus PHP/SQL shop pages built for offsite service staff.</p>
-          <div class="stack"><span>Python</span><span>PHP</span><span>SQL</span></div>
-        </article>
-
-        <article class="case" style="--c:var(--teal)">
-          <p class="meta"><b>Hutchison Ports</b> · 2021–22 <span class="badge">Top planner of the year</span></p>
-          <h3>A better way to see the whole ship</h3>
-          <p>Devised an all-bays overview planning method, and was one of four planners chosen for the special team planning Yantian International Container Terminals in China.</p>
-          <div class="stack"><span>Stowage</span><span>YICT</span></div>
-        </article>
-
-        <article class="case" style="--c:var(--teal)">
-          <p class="meta"><b>Hutchison Ports</b> · 2020–21</p>
-          <h3>Holding the desk through lockdown</h3>
-          <p>As a trainee, ran the planning desk onsite largely alone during COVID-19. The personal quality checklist I built then was later adopted for training new planners.</p>
-          <div class="stack"><span>Quality assurance</span><span>Training</span></div>
-        </article>
-
-        <article class="case" style="--c:var(--rust)">
-          <p class="meta"><b>Hutchison Ports</b> · 2023–24</p>
-          <h3>Testing the system before it hits the quay</h3>
-          <p>Quality-checked operation plans, tested new terminal operating system releases and reported bugs, and wrote the daily yard planning report read by the CEO and department heads.</p>
-          <div class="stack"><span>Software testing</span><span>Reporting</span></div>
-        </article>
+        </div></div>
+        <div class="base"></div>
       </div>
-    </section>
-  </div>
-
-  <section class="block route-wrap" id="route" aria-labelledby="route-title">
-    <div class="wrap">
-      <div class="sec-head">
-        <div>
-          <p class="kicker">The route so far</p>
-          <h2 id="route-title">Karachi to Nuremberg</h2>
-        </div>
-        <p>From business school to the quay, and from the quay to information systems.</p>
-      </div>
-      <ol class="route">
-        <li class="stop"><time>2019</time><strong>BBA, Iqra University</strong><p>Graduated in Karachi and co-authored a peer-reviewed paper.</p></li>
-        <li class="stop port"><time>2020</time><strong>Trainee Planner, Hutchison Ports</strong><p>Structured training and certification, then lockdown.</p></li>
-        <li class="stop port"><time>2021</time><strong>Planner</strong><p>YICT special team. Top planner of the year.</p></li>
-        <li class="stop port"><time>2023</time><strong>Senior Planner · MBA</strong><p>Jazan go-live. MBA in Logistics &amp; SCM from IoBM.</p></li>
-        <li class="stop"><time>2024</time><strong>M.Sc. at FAU</strong><p>International Information Systems, Nuremberg.</p></li>
-        <li class="stop"><time>2025</time><strong>Werkstudent, RMtek</strong><p>ERP, automation and e-commerce in Winkelhaid.</p></li>
-      </ol>
-      <p class="route-note">Want the full timeline with dates? It's all on <a href="https://linkedin.com/in/yousufkhan1997" target="_blank" rel="noopener">LinkedIn</a>.</p>
     </div>
   </section>
 
   <div class="wrap">
-    <section class="block" id="writing" aria-labelledby="writing-title">
-      <div class="sec-head">
-        <div>
-          <p class="kicker">Writing &amp; research</p>
-          <h2 id="writing-title">Things I've written and studied</h2>
+    <div class="strip" aria-label="Work preview">
+      <div class="tile t-blue">
+        <div class="hd"><small>Hutchison Ports</small>Yard planning, daily.</div>
+        <div class="bd">
+          <b>Ships on time is <em>teamwork!</em></b>
+          <div class="pill">Berth plan checked</div>
+          <div class="pill">Yard allocation set</div>
+          <div class="pill">Report sent to the CEO</div>
         </div>
       </div>
-      <div class="writing">
-        <article class="pub">
-          <span class="lbl">Peer-reviewed · 2019</span>
-          <h3>Generation X and Y: Impact of Work Attitudes and Work Values on Employee Performance</h3>
-          <p>Usmani, S., Asif, M. H., Mahmood, M. Z., Khan, M. Y., &amp; Burhan, M. Journal of Management and Research, 6(2), 51–84.</p>
-          <a href="https://doi.org/10.29145/jmr/62/060203" target="_blank" rel="noopener">Read the paper</a>
-        </article>
-        <ul class="list">
-          <li><span>Seminar · FAU</span>IT and AI self-efficacy: success attribution, task performance and imposter syndrome</li>
-          <li><span>Seminar · FAU</span>Generative AI vs. Python for data analysis</li>
-          <li><span>Seminar · FAU</span>Immersive retail technologies</li>
-          <li><span>Project</span>Forecasting LNG and its impact on port traffic in Pakistan</li>
-          <li><span>Project</span>Celonis dashboard for process analytics and discovery</li>
-          <li><span>Project</span>Value stream mapping in the automotive industry</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="block" id="now" aria-labelledby="now-title" style="padding-top:0">
-      <div class="sec-head">
-        <div>
-          <p class="kicker">Right now</p>
-          <h2 id="now-title">Off the clock</h2>
+      <div class="phone" aria-label="Webshop mockup">
+        <div class="scr">
+          <div class="shop-hd"><span>RMTEK</span><span>DE · EN</span></div>
+          <div class="shop-hero">Built,<br>launched,<br>selling.</div>
+          <div class="lang">Webshop</div>
+          <div class="shop-grid"><i></i><i></i><i></i><i></i></div>
         </div>
       </div>
-      <div class="now">
-        <div><h3>Studying</h3><p>Finishing the M.Sc. at FAU, due early 2027.</p></div>
-        <div><h3>Learning German</h3><p>B1 and climbing. Urdu native, English C1, conversational Hindi.</p><div class="meter" aria-hidden="true"><b style="width:50%"></b></div></div>
-        <div><h3>Outdoors</h3><p>Hiking and gardening.</p></div>
-        <div><h3>Indoors</h3><p>Reading, films, gaming and cooking.</p></div>
+      <div class="tile t-orange">
+        <div class="arch">
+          <svg viewBox="0 0 200 120" aria-hidden="true">
+            <path id="arc1" d="M 22 112 A 78 78 0 0 1 178 112" fill="none"/>
+            <text font-family="Montserrat, sans-serif" font-weight="800" font-size="19" letter-spacing="3" fill="#2F4F9C"><textPath href="#arc1" startOffset="50%" text-anchor="middle">TOP PLANNER</textPath></text>
+          </svg>
+          <svg class="crane" viewBox="0 0 64 64" aria-hidden="true" style="position:static;width:34%"><g fill="#2F4F9C"><rect x="8" y="10" width="48" height="5"/><rect x="14" y="15" width="5" height="40"/><rect x="40" y="15" width="5" height="40"/><rect x="26" y="15" width="2" height="16"/><rect x="20" y="31" width="14" height="9"/><rect x="6" y="55" width="52" height="4"/></g></svg>
+          <span class="big">OF THE YEAR</span>
+          <span class="sm">Hutchison Ports Pakistan</span>
+        </div>
       </div>
-    </section>
+      <div class="t-stack">
+        <div class="tile t-blue">
+          <div class="bd" style="padding-bottom:.4rem"><b style="font-size:.8rem;font-weight:600">Order <em>of the day</em></b></div>
+          <div class="hd" style="font-family:var(--sans);font-size:.85rem;font-weight:600">A new order lands. The warehouse already knows.</div>
+        </div>
+        <div class="t-blush">
+          <small>Automated in Python</small>
+          <b>Dispatch &amp; Ship</b>
+          <div class="mail"><i></i><strong>To: Lager</strong><span>New order, ready to pick</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="see"><a class="caps uline" href="#work" style="padding-inline:clamp(2rem,15vw,12rem)">See my work</a></p>
   </div>
+
+  <!-- ABOUT -->
+  <section class="page" id="about" aria-labelledby="bio-title">
+    <div class="wrap">
+      <div class="bio">
+        <div>
+          <p class="label">Bio</p>
+          <div class="photo p1"><div class="mono">YK</div><img src="photo.jpg" alt="Portrait of Yousuf Khan" onerror="this.remove()"></div>
+        </div>
+        <div class="copy">
+          <h2 class="statement" id="bio-title">I am a port planner turned information systems builder.</h2>
+          <p>I spent four and a half years on the planning desk at Hutchison Ports Pakistan, working my way from trainee to senior planner. I planned vessels and yards for Karachi, joined the four-person special team planning for Yantian in China, and helped bring a new terminal live in Jazan, Saudi Arabia.</p>
+          <p>That work showed me how much operations depend on the software underneath. So I moved to Nuremberg to study information systems at FAU, and today I run the ERP, automation and webshop at RMtek.</p>
+        </div>
+      </div>
+
+      <div class="bg-ex">
+        <div>
+          <h2>Background</h2>
+          <p class="item"><b>RMtek, Winkelhaid</b><br>Werkstudent, ERP &amp; e-commerce, 2025–present</p>
+          <p class="item"><b>Hutchison Ports Pakistan</b><br>Senior Planner, 2023–2024<br>Planner, 2021–2022<br>Trainee Planner, 2020–2021</p>
+          <p class="item"><b>FAU Erlangen-Nürnberg</b>, 2024–2027<br>M.Sc. International Information Systems</p>
+          <p class="item"><b>IoBM Karachi</b>, 2021–2023<br>MBA, Logistics &amp; Supply Chain</p>
+          <p class="item"><b>Iqra University</b>, 2015–2019<br>Bachelor of Business Administration</p>
+        </div>
+        <div>
+          <h2>Expertise</h2>
+          <ul>
+            <li>Vessel stowage &amp; yard planning</li>
+            <li>Berth planning &amp; crane working plans</li>
+            <li>Reefer, DG &amp; out-of-gauge cargo</li>
+            <li>ERP administration (JTL-Wawi)</li>
+            <li>Process automation in Python</li>
+            <li>Webshop &amp; eBay operations</li>
+            <li>PHP, SQL &amp; DotLiquid</li>
+            <li>Process mining (Celonis)</li>
+            <li>QA, testing &amp; root-cause analysis</li>
+            <li>Training &amp; mentoring planners</li>
+          </ul>
+        </div>
+        <figure class="bayfig">
+          <div class="bp" aria-hidden="true">
+            <i class="b"></i><i class="b"></i><i class="o"></i><i class="o"></i><i class="p"></i><i></i>
+            <i class="b"></i><i class="b"></i><i class="o"></i><i class="o"></i><i class="p"></i><i class="p"></i>
+            <i class="s"></i><i class="b"></i><i class="b"></i><i class="o"></i><i class="p"></i><i class="p"></i>
+            <i class="s"></i><i class="s"></i><i class="b"></i><i class="o"></i><i class="o"></i><i class="p"></i>
+          </div>
+          <figcaption>Languages: Urdu (native), English (C1), German (B1, in progress), Hindi (conversational).<br>Off the clock: hiking, reading, films, gaming, gardening and cooking.</figcaption>
+        </figure>
+      </div>
+
+      <div class="quote">
+        <div class="photo p2"><div class="mono">YK</div><img src="photo-2.jpg" alt="" onerror="this.remove()"></div>
+        <blockquote>I help operations run on time, with plans people can trust and systems that stay out of the way.</blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work" aria-label="Work">
+    <div class="wrap">
+
+      <article class="case-head">
+        <div>
+          <p class="label">Work</p>
+          <h2 style="font-size:clamp(3rem,6.2vw,5rem);line-height:.95">Terminal<br>Planning</h2>
+        </div>
+        <div style="padding-top:2rem">
+          <p class="lead" style="margin-top:0">Four and a half years at Hutchison Ports Pakistan: stowage, yard and berth planning, rated top planner of the year, and part of the go-live of a brand-new terminal in Jazan, Saudi Arabia.</p>
+          <ul class="facts">
+            <li>Set terminal parameters and documentation guidelines for HPJZ Jazan, then oversaw live execution with the onsite planner</li>
+            <li>One of four planners on the special team for YICT, China</li>
+            <li>Devised an all-bays overview planning method</li>
+            <li>Ran the desk largely alone during the COVID-19 lockdown</li>
+          </ul>
+        </div>
+        <div class="tiles4 wide" aria-hidden="true">
+          <div class="yard">
+            <div class="t">Hutchison<br>Ports<small>Container terminal planning</small></div>
+            <div class="rows">
+              <i></i><i></i><i class="r"></i><i></i><i class="e"></i><i></i><i class="r"></i><i></i>
+              <i></i><i class="e"></i><i></i><i></i><i></i><i class="r"></i><i class="e"></i><i></i>
+              <i class="r"></i><i></i><i></i><i class="e"></i><i></i><i></i><i></i><i class="e"></i>
+            </div>
+          </div>
+          <div class="navycard"><b>Jazan go-live</b><span>Terminal parameters, guidelines and live plan execution for HPJZ.</span></div>
+          <div class="creamcard"><div><b>All-bays overview</b><div class="ring"></div></div><span>A planning method I devised</span></div>
+          <div class="t-blue tile"><div class="hd"><small>YICT · China</small>Special team of four</div><div class="bd"><div class="pill">Reefer · DG · OOG</div><div class="pill">Quality-checked plans</div></div></div>
+        </div>
+      </article>
+
+      <article class="case">
+        <div>
+          <h2>ERP &amp;<br>Webshop</h2>
+          <p class="lead">At RMtek I run JTL-Wawi day to day. I built and launched the company's bilingual German and English webshop and helped grow sales through it.</p>
+          <ul class="facts">
+            <li>DotLiquid listing templates and pricing research for the eBay channel</li>
+            <li>Custom shop pages in PHP and SQL for offsite service staff</li>
+            <li>Internal guides and recorded video manuals</li>
+          </ul>
+        </div>
+        <div class="phones" aria-hidden="true">
+          <div class="phone dark"><div class="scr">
+            <div class="shop-hd"><span>RMTEK</span><span>EN</span></div>
+            <div class="shop-hero">Online<br>shop</div>
+            <div class="shop-grid"><i></i><i></i><i></i><i></i></div>
+            <div class="btnmini">Add to cart</div>
+          </div></div>
+          <div class="phone"><div class="scr">
+            <div class="shop-hd"><span>RMTEK</span><span>DE</span></div>
+            <div class="shop-hero">Online-<br>shop</div>
+            <div class="lang">Zweisprachig</div>
+            <div class="shop-grid"><i></i><i></i><i></i><i></i></div>
+          </div></div>
+        </div>
+      </article>
+
+      <article class="case" style="display:block">
+        <h2>Automation</h2>
+        <div class="auto" style="margin-top:2.5rem">
+          <div class="auto-l">
+            <div class="laptop" aria-hidden="true">
+              <div class="lid"><div class="screen">
+                <div class="inbox">
+                  <div class="side"><b>Inbox</b><span class="on">Warehouse</span><span>Orders</span><span>Shipping</span><span>Archive</span></div>
+                  <div class="main">
+                    <div class="msg"><b>New order received</b><span>Pick list attached, ready for dispatch</span></div>
+                    <div class="msg"><b>New order received</b><span>2 items, standard shipping</span></div>
+                    <div class="flow">Order <i>→</i> Python <i>→</i> Warehouse email</div>
+                  </div>
+                </div>
+              </div></div>
+              <div class="base"></div>
+            </div>
+            <p class="caption">I wrote Python automation that goes beyond the ERP, including dispatch emails sent to the warehouse automatically when an order comes in.</p>
+          </div>
+          <div>
+            <div class="sidecard">
+              <h3>Bot<br>traffic</h3>
+              <div class="log">GET /shop … <em>bot</em><br>GET /shop … <em>bot</em><br>GET /shop … <em>bot</em><br>→ migrated to Cloudflare</div>
+              <p>I diagnosed a bot attack on the shop through server log analysis and mitigated it by migrating the site to Cloudflare.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="case">
+        <div>
+          <h2>Research &amp;<br>Writing</h2>
+          <p class="lead">A peer-reviewed paper on work values across generations, seminar papers at FAU, and projects ranging from LNG forecasting to process mining.</p>
+          <p style="margin-top:1.5rem"><a class="caps uline" style="padding-left:0;font-size:.8rem" href="https://doi.org/10.29145/jmr/62/060203" target="_blank" rel="noopener">Read the paper</a></p>
+        </div>
+        <div class="emblems">
+          <a class="emblem" href="https://doi.org/10.29145/jmr/62/060203" target="_blank" rel="noopener">
+            <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M8 6h18l6 6v22H8z" fill="#111"/><path d="M13 18h14M13 23h14M13 28h9" stroke="#F5F5F4" stroke-width="2"/></svg>
+            <b>Generation X &amp; Y</b><span>Journal of Management &amp; Research, 2019</span>
+          </a>
+          <div class="emblem">
+            <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M4 30 Q12 10 20 22 T36 8" fill="none" stroke="#111" stroke-width="3"/><circle cx="36" cy="8" r="3" fill="#111"/></svg>
+            <b>LNG &amp; Port Traffic</b><span>Forecasting project</span>
+          </div>
+          <div class="emblem">
+            <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="10" cy="20" r="5" fill="#111"/><circle cx="30" cy="10" r="5" fill="#111"/><circle cx="30" cy="30" r="5" fill="#111"/><path d="M14 18l12-6M14 22l12 6" stroke="#111" stroke-width="2.5"/></svg>
+            <b>Process Mining</b><span>Celonis dashboard</span>
+          </div>
+          <div class="emblem">
+            <svg viewBox="0 0 40 40" aria-hidden="true"><rect x="6" y="8" width="28" height="20" rx="2" fill="#111"/><path d="M14 34h12M20 28v6" stroke="#111" stroke-width="2.5"/><path d="M12 22l5-6 4 4 6-7" stroke="#F5F5F4" stroke-width="2" fill="none"/></svg>
+            <b>GenAI vs. Python</b><span>Seminar paper, FAU</span>
+          </div>
+          <div class="emblem">
+            <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="14" r="7" fill="#111"/><path d="M6 36c2-9 26-9 28 0" fill="#111"/></svg>
+            <b>AI Self-Efficacy</b><span>Seminar paper, FAU</span>
+          </div>
+          <div class="emblem">
+            <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M4 20h8l4-8 4 16 4-8h12" fill="none" stroke="#111" stroke-width="3"/></svg>
+            <b>Value Stream Map</b><span>Automotive case study</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" aria-labelledby="contact-title">
+    <div class="wrap">
+      <h2 id="contact-title">Work with me</h2>
+      <div class="contact">
+        <div class="photo p3"><div class="mono">YK</div><img src="photo-3.jpg" alt="" onerror="this.remove()"></div>
+        <div>
+          <dl>
+            <div><dt class="label">LinkedIn</dt><dd><a href="https://linkedin.com/in/yousufkhan1997" target="_blank" rel="noopener">in/yousufkhan1997</a></dd></div>
+            <div><dt class="label">Email</dt><dd><a href="mailto:m.yousufkhan1997@gmail.com">m.yousufkhan1997@gmail.com</a></dd></div>
+            <div><dt class="label">Phone</dt><dd><a href="tel:+4915750966840">+49 157 50966840</a></dd></div>
+          </dl>
+          <p class="note">Open to working student roles, thesis collaborations and full-time positions from 2027 in logistics, ERP and process automation. Based in Nuremberg.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 
-<section class="contact" id="contact" aria-labelledby="contact-title">
-  <div class="wrap contact-in">
-    <div>
-      <h2 id="contact-title">Let's talk operations, and the systems behind them.</h2>
-      <p>Open to working student roles, thesis collaborations and full-time positions from 2027 in logistics, ERP and process automation.</p>
-    </div>
-    <ul>
-      <li><small>Email</small><a href="mailto:m.yousufkhan1997@gmail.com">m.yousufkhan1997@gmail.com</a></li>
-      <li><small>Phone</small><a href="tel:+4915750966840">+49 157 50966840</a></li>
-      <li><small>LinkedIn</small><a href="https://linkedin.com/in/yousufkhan1997" target="_blank" rel="noopener">linkedin.com/in/yousufkhan1997</a></li>
-    </ul>
-  </div>
-</section>
-<div class="wrap"><footer><span>© 2026 Yousuf Khan, Nuremberg</span><a href="#top">Back to top</a></footer></div>
-
-<script>
-(function(){
-  var grid=document.getElementById('grid');
-  var buttons=document.querySelectorAll('.legend button');
-  var active=null;
-  buttons.forEach(function(b){
-    b.addEventListener('click',function(){
-      var k=b.getAttribute('data-k');
-      active=(active===k)?null:k;
-      buttons.forEach(function(x){x.setAttribute('aria-pressed',String(x.getAttribute('data-k')===active))});
-      grid.classList.toggle('filtered',!!active);
-      grid.querySelectorAll('.cell').forEach(function(c){c.classList.toggle('on',c.getAttribute('data-k')===active)});
-    });
-  });
-})();
-</script>
+<footer>
+  <div class="wrap"><span>© 2026 Yousuf Khan</span><a href="#top">Back to top ↑</a></div>
+</footer>
 </body>
 </html>
