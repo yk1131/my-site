@@ -1,0 +1,12 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // Must match the Worker's name in the Cloudflare dashboard.
+  "name": "my-site",
+  "compatibility_date": "2025-10-01",
+  // Static site: serve the public/ folder as assets.
+  "assets": {
+    "directory": "./public"
+  },
+  // Required by `wrangler preview` (non-production branch builds).
+  "previews": {}
+}
