@@ -222,6 +222,42 @@ section.page{background:var(--paper);padding:clamp(4rem,9vw,7rem) 0}
 .emblem span{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 a.emblem:hover b{color:var(--orange)}
 
+
+/* ---------- PORTFOLIO ---------- */
+#portfolio{background:var(--bg);padding:clamp(4rem,9vw,7rem) 0}
+.pf-head{display:flex;justify-content:space-between;align-items:end;gap:2rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.pf-head h2{font-size:clamp(2.5rem,5.5vw,4.5rem);margin-top:1rem;max-width:14ch}
+.pf-tabs{display:flex;flex-wrap:wrap;gap:.5rem}
+.pf-tabs button{font:inherit;font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;background:transparent;border:1.5px solid var(--ink);color:var(--ink);padding:.55rem 1rem;cursor:pointer}
+.pf-tabs button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.pf-tabs button:hover{border-color:var(--orange)}
+.pf-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1rem,2vw,1.5rem)}
+.pf{background:var(--paper);display:flex;flex-direction:column}
+.pf[hidden]{display:none}
+.pf-wide{grid-column:1/-1;display:grid;grid-template-columns:1.6fr 1fr}
+.pf-body{padding:1.4rem 1.4rem 1.6rem}
+.pf-wide .pf-body{padding:clamp(1.5rem,3vw,2.5rem);display:flex;flex-direction:column;justify-content:center}
+.pf-label{font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-bottom:.6rem}
+.pf h3{font-size:1.45rem;line-height:1.15;margin-bottom:.6rem}
+.pf-wide h3{font-size:clamp(1.8rem,3vw,2.5rem)}
+.pf-body>p:not(.pf-label){font-size:.92rem;color:var(--muted);line-height:1.65}
+.pf-links{margin-top:1rem!important}
+.pf-links a{font-size:.75rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)!important;text-decoration:none;border-bottom:1.5px solid var(--ink);padding-bottom:.2rem}
+.pf-links a:hover{color:var(--orange)!important;border-color:var(--orange)}
+.pv{aspect-ratio:4/3;position:relative;overflow:hidden}
+.ph{background:repeating-linear-gradient(135deg,var(--soft) 0 1px,transparent 1px 12px),var(--bg);border:1.5px dashed #cfcac4;margin:10px 10px 0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.35rem;text-align:center}
+.ph-kind{font-family:var(--serif);font-size:1.5rem;color:#9a948d}
+.ph-note{font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9a948d}
+.pf-empty{background:transparent;border:1.5px dashed #cfcac4}
+.pf-empty .ph{border:0;background:transparent}
+.gallery{aspect-ratio:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:10px;background:#E9EEF4}
+.gallery a{display:block;overflow:hidden;background:#fff;line-height:0}
+.gallery img{width:100%;height:auto;display:block;transition:transform .3s}
+.gallery a:hover img{transform:scale(1.03)}
+.gallery .g-main{grid-column:1/-1}
+@media (max-width: 960px){.pf-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.pf-wide{grid-template-columns:1fr}}
+@media (max-width: 600px){.pf-grid{grid-template-columns:1fr}}
+
 /* ---------- CONTACT ---------- */
 #contact{background:var(--paper);padding:clamp(4rem,9vw,7rem) 0 clamp(3rem,7vw,5rem);border-top:1px solid var(--soft)}
 #contact h2{font-size:clamp(3.25rem,7vw,5.5rem)}
@@ -275,7 +311,8 @@ footer a{text-decoration:none}
     <nav aria-label="Sections">
       <ul>
         <li><a href="#about">Bio</a></li>
-        <li><a href="#work">Work</a></li>
+        <li><a href="#work">Experience</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -327,9 +364,9 @@ footer a{text-decoration:none}
         <div class="hd"><small>JTL-Wawi</small>ERP, every day.</div>
         <div class="bd">
           <b>Systems that run <em>on time!</em></b>
-          <div class="pill">Orders in</div>
-          <div class="pill">Warehouse notified</div>
-          <div class="pill">Listings up to date</div>
+          <div class="pill">Maintenance &amp; operation</div>
+          <div class="pill">Order workflows</div>
+          <div class="pill">Webshop &amp; eBay</div>
         </div>
       </div>
       <div class="phone" aria-label="Webshop mockup">
@@ -357,13 +394,13 @@ footer a{text-decoration:none}
           <div class="hd" style="font-family:var(--sans);font-size:.85rem;font-weight:600">A new order lands. The warehouse already knows.</div>
         </div>
         <div class="t-blush">
-          <small>Automated in Python</small>
+          <small>Automated ERP workflow</small>
           <b>Dispatch &amp; Ship</b>
           <div class="mail"><i></i><strong>To: Lager</strong><span>New order, ready to pick</span></div>
         </div>
       </div>
     </div>
-    <p class="see"><a class="caps uline" href="#work" style="padding-inline:clamp(2rem,15vw,12rem)">See my work</a></p>
+    <p class="see"><a class="caps uline" href="#portfolio" style="padding-inline:clamp(2rem,15vw,12rem)">See my portfolio</a></p>
   </div>
 
   <!-- ABOUT -->
@@ -376,8 +413,8 @@ footer a{text-decoration:none}
         </div>
         <div class="copy">
           <h2 class="statement" id="bio-title">I build and run ERP systems, and I know shipping from the quay up.</h2>
-          <p>Today I run the JTL-Wawi ERP at RMtek, build Python automation around it, and keep the company's webshop and eBay channel working. Alongside that I'm finishing an M.Sc. in International Information Systems at FAU in Nuremberg.</p>
-          <p>Before that, I spent four and a half years at Hutchison Ports Pakistan, from trainee to senior planner. I planned vessels and yards, tested new terminal operating system releases, and helped configure a brand-new terminal in Jazan, Saudi Arabia.</p>
+          <p>Today I administer the JTL-Wawi ERP at RMtek, automate its workflows, build Python pipelines on top of its data, and run the company's webshop and eBay channel. Alongside that I'm finishing an M.Sc. in International Information Systems at FAU in Nuremberg.</p>
+          <p>Before that, I spent four and a half years at Hutchison Ports Pakistan, from top of my trainee batch to senior planner co-managing a team of six. I planned vessels of 2,000+ containers, tested new terminal operating systems, and helped bring a new terminal live in Jazan, Saudi Arabia.</p>
           <p>That combination is where I'm heading: ERP for the shipping industry, built by someone who knows how ships, yards and warehouses actually work.</p>
         </div>
       </div>
@@ -385,25 +422,27 @@ footer a{text-decoration:none}
       <div class="bg-ex">
         <div>
           <h2>Background</h2>
-          <p class="item"><b>RMtek, Winkelhaid</b><br>Werkstudent, ERP &amp; e-commerce, 2025–present</p>
-          <p class="item"><b>Hutchison Ports Pakistan</b><br>Senior Planner, 2023–2024<br>Planner, 2021–2022<br>Trainee Planner, 2020–2021</p>
-          <p class="item"><b>FAU Erlangen-Nürnberg</b>, 2024–2027<br>M.Sc. International Information Systems</p>
-          <p class="item"><b>IoBM Karachi</b>, 2021–2023<br>MBA, Logistics &amp; Supply Chain</p>
-          <p class="item"><b>Iqra University</b>, 2015–2019<br>Bachelor of Business Administration</p>
+          <p class="item"><b>RM Technical Services (RMtek)</b><br>Werkstudent, Jun 2025–present<br>Winkelhaid, Germany</p>
+          <p class="item"><b>Hutchison Ports Pakistan</b><br>Senior Planner, Jan 2023–Jul 2024<br>Planner, Jul 2021–Dec 2022<br>Trainee Planner, Jan 2020–Jun 2021</p>
+          <p class="item"><b>FAU Erlangen-Nürnberg</b><br>M.Sc. International Information Systems<br>Oct 2024–expected early 2027</p>
+          <p class="item"><b>Institute of Business Management, Karachi</b><br>MBA, Logistics &amp; Supply Chain Management<br>Sep 2021–Dec 2023</p>
+          <p class="item"><b>Iqra University, Karachi</b><br>Bachelor of Business Administration<br>Aug 2015–Aug 2019</p>
         </div>
         <div>
           <h2>Expertise</h2>
           <ul>
-            <li>ERP administration (JTL-Wawi)</li>
-            <li>ERP workflows &amp; process automation</li>
-            <li>Python, PHP, SQL &amp; DotLiquid</li>
-            <li>Webshop &amp; eBay integration</li>
-            <li>EDI &amp; terminal operating systems</li>
-            <li>System testing, QA &amp; root-cause analysis</li>
-            <li>Process mining (Celonis)</li>
+            <li>ERP administration &amp; workflows (JTL-Wawi)</li>
+            <li>Process automation &amp; process mining</li>
+            <li>Python, PHP &amp; SQL (AI-assisted)</li>
+            <li>Webshop, DotLiquid &amp; eBay Seller Tools</li>
+            <li>Excel: macros, data cleaning &amp; transformation</li>
+            <li>Celonis dashboards, R &amp; EViews</li>
+            <li>Terminal operating systems &amp; EDI</li>
+            <li>Software testing, QA &amp; bug reporting</li>
             <li>Vessel, yard &amp; berth planning</li>
-            <li>Reefer, DG &amp; out-of-gauge cargo</li>
-            <li>Training, guides &amp; video manuals</li>
+            <li>Special cargo: reefer, DG/IMDG, OOG, break-bulk</li>
+            <li>Technical documentation &amp; video manuals</li>
+            <li>Team leadership, training &amp; mentoring</li>
           </ul>
         </div>
         <figure class="bayfig">
@@ -432,12 +471,13 @@ footer a{text-decoration:none}
         <div>
           <p class="label" style="margin-bottom:1rem">Work</p>
           <h2>ERP &amp;<br>Webshop</h2>
-          <p class="lead">At RMtek I administer the JTL-Wawi ERP: maintenance, day-to-day operation and the workflows around it. On top of it I built and launched the company's bilingual German and English webshop and helped grow sales.</p>
+          <p class="lead">At RMtek I'm the administrator for JTL-Wawi ERP maintenance and ongoing operation. On top of it I built and launched the company's bilingual German and English webshop and helped increase sales.</p>
           <ul class="facts">
-            <li>DotLiquid listing templates and pricing research for the eBay channel</li>
+            <li>Custom DotLiquid eBay listing templates and product pricing research for eBay</li>
             <li>Custom shop pages in PHP and SQL for offsite service staff</li>
-            <li>Internal guides and recorded video manuals</li>
+            <li>Internal guides and video manuals for the company</li>
           </ul>
+          <p style="margin-top:1.5rem"><a class="caps uline" style="padding-left:0;font-size:.8rem" href="https://shop.rmtek.de" target="_blank" rel="noopener">Visit shop.rmtek.de</a></p>
         </div>
         <div class="phones" aria-hidden="true">
           <div class="phone dark"><div class="scr">
@@ -462,17 +502,17 @@ footer a{text-decoration:none}
             <div class="laptop" aria-hidden="true">
               <div class="lid"><div class="screen">
                 <div class="inbox">
-                  <div class="side"><b>Inbox</b><span class="on">Warehouse</span><span>Orders</span><span>Shipping</span><span>Archive</span></div>
+                  <div class="side"><b>Pipeline</b><span class="on">JTL data</span><span>Transform</span><span>HTML / Excel</span><span>FTP · Email</span></div>
                   <div class="main">
-                    <div class="msg"><b>New order received</b><span>Pick list attached, ready for dispatch</span></div>
-                    <div class="msg"><b>New order received</b><span>2 items, standard shipping</span></div>
-                    <div class="flow">Order <i>→</i> Python <i>→</i> Warehouse email</div>
+                    <div class="msg"><b>customer_report.xlsx</b><span>Generated from JTL-Wawi data, sent via FTP</span></div>
+                    <div class="msg"><b>customer_report.html</b><span>Generated from JTL-Wawi data, sent by email</span></div>
+                    <div class="flow">JTL <i>→</i> Python <i>→</i> HTML/Excel <i>→</i> Customer</div>
                   </div>
                 </div>
               </div></div>
               <div class="base"></div>
             </div>
-            <p class="caption">I wrote Python automation that goes beyond the ERP, including dispatch emails sent to the warehouse automatically when an order comes in.</p>
+            <p class="caption">I built a Python pipeline that turns JTL data into HTML and Excel files and sends them to customers via FTP and email. Inside the ERP, I implemented workflows that send warehouse dispatch emails automatically when an order comes in.</p>
           </div>
           <div>
             <div class="sidecard">
@@ -489,14 +529,16 @@ footer a{text-decoration:none}
           <h2 style="font-size:clamp(3rem,6.2vw,5rem);line-height:.95">Shipping, from<br>the Inside</h2>
         </div>
         <div style="padding-top:2rem">
-          <p class="lead" style="margin-top:0">Four and a half years at Hutchison Ports Pakistan taught me the operations an ERP in shipping has to serve, and the systems a terminal already runs on.</p>
+          <p class="lead" style="margin-top:0">Four and a half years at Hutchison Ports Pakistan, from trainee to senior planner, taught me the operations an ERP in shipping has to serve, and the systems a terminal already runs on.</p>
           <ul class="facts">
-            <li>Set terminal parameters and documentation guidelines for the go-live of HPJZ Jazan, Saudi Arabia, then oversaw live execution with the onsite planner</li>
-            <li>Tested new terminal operating system releases and reported bugs</li>
-            <li>Produced the daily yard planning report for the CEO and department heads</li>
-            <li>Rated top planner of the year; one of four planners on the special team for YICT, China</li>
-            <li>Devised an all-bays overview planning method</li>
-                      </ul>
+            <li>Co-managed a team of 6 planners with the team lead, balancing workload and quality-checking plans</li>
+            <li>Tested new terminal operating systems, reported bugs and wrote supporting documentation</li>
+            <li>Supported the go-live of HPJZ Jazan, Saudi Arabia: set terminal parameters and documentation guidelines, and oversaw live plan execution</li>
+            <li>Planned vessels of 2,000+ containers, typically completing a full plan in under an hour</li>
+            <li>Produced daily yard planning reports for the CEO and department heads</li>
+            <li>Rated top planner of the year; member of the 4-person special team planning for YICT, China</li>
+            <li>Finished top of the trainee batch; ran the planning desk largely alone during the COVID-19 lockdown</li>
+          </ul>
         </div>
         <div class="tiles4 wide" aria-hidden="true">
           <div class="yard">
@@ -507,45 +549,185 @@ footer a{text-decoration:none}
               <i class="r"></i><i></i><i></i><i class="e"></i><i></i><i></i><i></i><i class="e"></i>
             </div>
           </div>
-          <div class="navycard"><b>Jazan go-live</b><span>Terminal parameters, guidelines and live plan execution for HPJZ.</span></div>
-          <div class="creamcard"><div><b>All-bays overview</b><div class="ring"></div></div><span>A planning method I devised</span></div>
+          <div class="navycard"><b>Team of 6</b><span>Co-managed planners as senior planner: workload, quality checks, training.</span></div>
+          <div class="creamcard"><div><b>2,000+ containers</b><div class="ring"></div></div><span>A full vessel plan, typically in under an hour</span></div>
           <div class="t-blue tile"><div class="hd"><small>YICT · China</small>Special team of four</div><div class="bd"><div class="pill">Reefer · DG · OOG</div><div class="pill">Quality-checked plans</div></div></div>
         </div>
       </article>
 
-      <article class="case">
+    </div>
+  </section>
+
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio" aria-labelledby="pf-title">
+    <div class="wrap">
+      <div class="pf-head">
         <div>
-          <h2>Research &amp;<br>Writing</h2>
-          <p class="lead">A peer-reviewed paper on work values across generations, seminar papers at FAU, and projects ranging from LNG forecasting to process mining.</p>
-          <p style="margin-top:1.5rem"><a class="caps uline" style="padding-left:0;font-size:.8rem" href="https://doi.org/10.29145/jmr/62/060203" target="_blank" rel="noopener">Read the paper</a></p>
+          <p class="label">Portfolio</p>
+          <h2 id="pf-title">Dashboards, code, research &amp; writing</h2>
         </div>
-        <div class="emblems">
-          <a class="emblem" href="https://doi.org/10.29145/jmr/62/060203" target="_blank" rel="noopener">
-            <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M8 6h18l6 6v22H8z" fill="#111"/><path d="M13 18h14M13 23h14M13 28h9" stroke="#F5F5F4" stroke-width="2"/></svg>
-            <b>Generation X &amp; Y</b><span>Journal of Management &amp; Research, 2019</span>
-          </a>
-          <div class="emblem">
-            <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M4 30 Q12 10 20 22 T36 8" fill="none" stroke="#111" stroke-width="3"/><circle cx="36" cy="8" r="3" fill="#111"/></svg>
-            <b>LNG &amp; Port Traffic</b><span>Forecasting project</span>
-          </div>
-          <div class="emblem">
-            <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="10" cy="20" r="5" fill="#111"/><circle cx="30" cy="10" r="5" fill="#111"/><circle cx="30" cy="30" r="5" fill="#111"/><path d="M14 18l12-6M14 22l12 6" stroke="#111" stroke-width="2.5"/></svg>
-            <b>Process Mining</b><span>Celonis dashboard</span>
-          </div>
-          <div class="emblem">
-            <svg viewBox="0 0 40 40" aria-hidden="true"><rect x="6" y="8" width="28" height="20" rx="2" fill="#111"/><path d="M14 34h12M20 28v6" stroke="#111" stroke-width="2.5"/><path d="M12 22l5-6 4 4 6-7" stroke="#F5F5F4" stroke-width="2" fill="none"/></svg>
-            <b>GenAI vs. Python</b><span>Seminar paper, FAU</span>
-          </div>
-          <div class="emblem">
-            <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="14" r="7" fill="#111"/><path d="M6 36c2-9 26-9 28 0" fill="#111"/></svg>
-            <b>AI Self-Efficacy</b><span>Seminar paper, FAU</span>
-          </div>
-          <div class="emblem">
-            <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M4 20h8l4-8 4 16 4-8h12" fill="none" stroke="#111" stroke-width="3"/></svg>
-            <b>Value Stream Map</b><span>Automotive case study</span>
-          </div>
+        <div class="pf-tabs" role="group" aria-label="Filter portfolio">
+          <button type="button" data-f="all" aria-pressed="true">All</button>
+          <button type="button" data-f="dash" aria-pressed="false">Dashboards</button>
+          <button type="button" data-f="code" aria-pressed="false">Programming</button>
+          <button type="button" data-f="research" aria-pressed="false">Research</button>
+          <button type="button" data-f="writing" aria-pressed="false">Writing</button>
         </div>
-      </article>
+      </div>
+      <div class="pf-grid" id="pf-grid">
+        <article class="pf pf-wide" data-cat="dash">
+          <div class="pv gallery">
+            <a href="assets/celonis/01-overview.jpg" target="_blank" rel="noopener" class="g-main"><img src="assets/celonis/01-overview.jpg" alt="Celonis dashboard main overview: 19,953 orders, 210,104 events, 87.34% on-time delivery, process explorer" loading="lazy"></a>
+            <a href="assets/celonis/04-factories.jpg" target="_blank" rel="noopener"><img src="assets/celonis/04-factories.jpg" alt="Factory performance view with on-time delivery rate per factory" loading="lazy"></a>
+            <a href="assets/celonis/05-delivery.jpg" target="_blank" rel="noopener"><img src="assets/celonis/05-delivery.jpg" alt="Delivery company performance view" loading="lazy"></a>
+            <a href="assets/celonis/07-business-case.jpg" target="_blank" rel="noopener"><img src="assets/celonis/07-business-case.jpg" alt="Business case calculator: losses and potential revenue by product type" loading="lazy"></a>
+          </div>
+          <div class="pf-body">
+            <p class="pf-label">Dashboard · Celonis · Process mining</p>
+            <h3>Case Analysis Dashboard: Order to Cash</h3>
+            <p>A seven-view process mining dashboard for a case company's order-to-cash process: 19,953 orders and 210,104 events. It covers the process explorer, automation rate by warehouse type, make-to-order vs. make-to-stock, on-time delivery by factory and delivery company, customer markets, and a business case calculator for losses from late deliveries (current on-time delivery 87.34%).</p>
+            <p class="pf-links"><a href="assets/celonis/celonis-case-analysis-dashboard.pdf" target="_blank" rel="noopener">View full dashboard (PDF)</a></p>
+          </div>
+        </article>
+        <article class="pf " data-cat="dash">
+          <div class="pv ph"><span class="ph-kind">Dashboard</span><span class="ph-note">Preview coming soon</span></div>
+          <div class="pf-body">
+            <p class="pf-label">Dashboard · In progress</p>
+            <h3>Next dashboard</h3>
+            <p>A second dashboard is in progress and will be added here.</p>
+          </div>
+        </article>
+        <article class="pf " data-cat="code">
+          <div class="pv ph"><span class="ph-kind">Python</span><span class="ph-note">Code sample coming soon</span></div>
+          <div class="pf-body">
+            <p class="pf-label">Programming · Python</p>
+            <h3>JTL data pipeline</h3>
+            <p>Turns JTL-Wawi data into HTML and Excel files and sends them to customers via FTP and email.</p>
+          </div>
+        </article>
+        <article class="pf " data-cat="code">
+          <div class="pv ph"><span class="ph-kind">PHP · SQL</span><span class="ph-note">Preview coming soon</span></div>
+          <div class="pf-body">
+            <p class="pf-label">Programming · PHP &amp; SQL</p>
+            <h3>Shop pages for service staff</h3>
+            <p>Custom webshop pages for RMtek's offsite service staff, built in PHP and SQL.</p>
+          </div>
+        </article>
+        <article class="pf " data-cat="code">
+          <div class="pv ph"><span class="ph-kind">DotLiquid</span><span class="ph-note">Preview coming soon</span></div>
+          <div class="pf-body">
+            <p class="pf-label">Programming · DotLiquid</p>
+            <h3>eBay listing templates</h3>
+            <p>Custom DotLiquid templates for RMtek's eBay listings.</p>
+          </div>
+        </article>
+        <article class="pf pf-empty" data-cat="code">
+          <div class="pv ph"><span class="ph-kind">Code</span><span class="ph-note">Coming soon</span></div>
+          <div class="pf-body">
+            <p class="pf-label">Programming</p>
+            <h3>Your next project</h3>
+            <p>Space for more code: scripts, notebooks or repositories.</p>
+          </div>
+        </article>
+        <article class="pf " data-cat="research">
+          <div class="pv ph"><span class="ph-kind">Journal article</span><span class="ph-note">Preview coming soon</span></div>
+          <div class="pf-body">
+            <p class="pf-label">Thesis · Peer-reviewed · 2019</p>
+            <h3>Generation X and Y: Impact of Work Attitudes and Work Values on Employee Performance</h3>
+            <p>Usmani, S., Asif, M. H., Mahmood, M. Z., Khan, M. Y., &amp; Burhan, M. Journal of Management and Research, 6(2), 51–84.</p>
+            <p class="pf-links"><a href="https://doi.org/10.29145/jmr/62/060203" target="_blank" rel="noopener">Read the paper (DOI)</a></p>
+          </div>
+        </article>
+        <article class="pf " data-cat="research">
+          <div class="pv ph"><span class="ph-kind">Capstone</span><span class="ph-note">Preview coming soon</span></div>
+          <div class="pf-body">
+            <p class="pf-label">Capstone project</p>
+            <h3>Forecasting LNG and its Impact on Port Traffic in Pakistan</h3>
+            <p>Capstone project on LNG demand forecasting and what it means for port traffic.</p>
+          </div>
+        </article>
+        <article class="pf " data-cat="research">
+          <div class="pv ph"><span class="ph-kind">Capstone</span><span class="ph-note">Preview coming soon</span></div>
+          <div class="pf-body">
+            <p class="pf-label">Capstone project</p>
+            <h3>Application of Value Stream Mapping: A Case Study of an Automotive Industry</h3>
+            <p>Capstone project applying value stream mapping to an automotive manufacturer.</p>
+          </div>
+        </article>
+        <article class="pf " data-cat="research">
+          <div class="pv ph"><span class="ph-kind">Seminar paper</span><span class="ph-note">Preview coming soon</span></div>
+          <div class="pf-body">
+            <p class="pf-label">Research seminar · FAU</p>
+            <h3>IT and AI Self-efficacy</h3>
+            <p>Cross-sectional study on success attribution, task performance and imposter syndrome.</p>
+          </div>
+        </article>
+        <article class="pf " data-cat="research">
+          <div class="pv ph"><span class="ph-kind">Seminar paper</span><span class="ph-note">Preview coming soon</span></div>
+          <div class="pf-body">
+            <p class="pf-label">Research seminar · FAU</p>
+            <h3>Generative AI vs. Python for Data Analysis</h3>
+            <p>Seminar paper comparing generative AI with Python for data analysis.</p>
+          </div>
+        </article>
+        <article class="pf " data-cat="research">
+          <div class="pv ph"><span class="ph-kind">Seminar paper</span><span class="ph-note">Preview coming soon</span></div>
+          <div class="pf-body">
+            <p class="pf-label">Research seminar · FAU</p>
+            <h3>Immersive Retail Technologies</h3>
+            <p>Seminar paper on immersive technologies in retail.</p>
+          </div>
+        </article>
+        <article class="pf " data-cat="research">
+          <div class="pv ph"><span class="ph-kind">Seminar paper</span><span class="ph-note">Preview coming soon</span></div>
+          <div class="pf-body">
+            <p class="pf-label">Research seminar · FAU</p>
+            <h3>Intellectual Property in Venture Capital Financing</h3>
+            <p>Seminar paper on the role of intellectual property in venture capital financing.</p>
+          </div>
+        </article>
+        <article class="pf " data-cat="research">
+          <div class="pv ph"><span class="ph-kind">Project</span><span class="ph-note">Preview coming soon</span></div>
+          <div class="pf-body">
+            <p class="pf-label">Project · FAU</p>
+            <h3>Innovation and Leadership Project for JOSEPHS</h3>
+            <p>Innovation and leadership project carried out for JOSEPHS.</p>
+          </div>
+        </article>
+        <article class="pf " data-cat="writing">
+          <div class="pv ph"><span class="ph-kind">Writing sample</span><span class="ph-note">Sample coming soon</span></div>
+          <div class="pf-body">
+            <p class="pf-label">Writing</p>
+            <h3>Ghostwriting &amp; book outlining</h3>
+            <p>Space for ghostwritten work and book outlines.</p>
+          </div>
+        </article>
+        <article class="pf " data-cat="writing">
+          <div class="pv ph"><span class="ph-kind">Writing sample</span><span class="ph-note">Sample coming soon</span></div>
+          <div class="pf-body">
+            <p class="pf-label">Writing</p>
+            <h3>Content writing</h3>
+            <p>Space for articles and web content.</p>
+          </div>
+        </article>
+        <article class="pf " data-cat="writing">
+          <div class="pv ph"><span class="ph-kind">Documentation</span><span class="ph-note">Sample coming soon</span></div>
+          <div class="pf-body">
+            <p class="pf-label">Writing</p>
+            <h3>Technical documentation &amp; video manuals</h3>
+            <p>Space for internal guides, software documentation and video manuals.</p>
+          </div>
+        </article>
+        <article class="pf " data-cat="writing">
+          <div class="pv ph"><span class="ph-kind">Writing sample</span><span class="ph-note">Sample coming soon</span></div>
+          <div class="pf-body">
+            <p class="pf-label">Writing</p>
+            <h3>Editing &amp; proofreading</h3>
+            <p>Space for before-and-after editing samples.</p>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
 
@@ -571,5 +753,15 @@ footer a{text-decoration:none}
 <footer>
   <div class="wrap"><span>© 2026 Yousuf Khan</span><a href="#top">Back to top ↑</a></div>
 </footer>
+<script>
+(function(){
+  var btns=document.querySelectorAll('.pf-tabs button'), cards=document.querySelectorAll('#pf-grid .pf');
+  btns.forEach(function(b){b.addEventListener('click',function(){
+    var f=b.getAttribute('data-f');
+    btns.forEach(function(x){x.setAttribute('aria-pressed',String(x===b))});
+    cards.forEach(function(c){c.hidden=!(f==='all'||c.getAttribute('data-cat')===f)});
+  })});
+})();
+</script>
 </body>
 </html>
