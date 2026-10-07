@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Yousuf Khan — Portfolio</title>
-<meta name="description" content="Yousuf Khan: former container terminal planner at Hutchison Ports, now studying International Information Systems at FAU and building ERP, automation and e-commerce systems.">
+<title>Yousuf Khan — ERP for Shipping &amp; Logistics</title>
+<meta name="description" content="Yousuf Khan: ERP administrator and automation builder with four and a half years of container terminal experience at Hutchison Ports. Studying International Information Systems at FAU, aiming for ERP in the shipping industry.">
 <meta name="color-scheme" content="light">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,7 +45,7 @@ a{color:inherit}
 .hero h1{font-size:clamp(4.25rem,11vw,9.5rem);line-height:.95;margin-top:2.5rem}
 .hero .sub{margin-top:2rem;font-size:1.05rem;color:var(--muted);max-width:30ch;margin-inline:auto}
 .hero-foot{display:flex;justify-content:space-between;align-items:end;gap:1.5rem;flex-wrap:wrap;margin-top:3rem}
-.hero-art{position:relative;background:var(--wall);overflow:hidden;display:flex;align-items:center;justify-content:center;padding:3rem 0 3rem 2rem}
+.hero-art{position:relative;background:var(--wall);overflow:hidden;display:flex;align-items:center;justify-content:center;padding:3rem clamp(1.5rem,4vw,3.5rem)}
 .hero-art .moon{position:absolute;top:-22%;left:-18%;width:70%;aspect-ratio:1;border-radius:50%;background:#EFE8E6}
 .hero-art .vase{position:absolute;right:-3%;bottom:14%;width:22%;aspect-ratio:.62;border-radius:45% 45% 38% 38%/30% 30% 60% 60%;background:linear-gradient(90deg,#7c7468,#5b544b 60%,#4a443d)}
 .hero-art .desk{position:absolute;left:0;right:0;bottom:0;height:16%;background:#C9B8A8}
@@ -56,7 +56,7 @@ a{color:inherit}
 .laptop .screen{background:var(--cream);aspect-ratio:16/10;overflow:hidden;position:relative}
 .laptop .base{height:14px;background:linear-gradient(#d9d9db,#a9a9ad);border-radius:0 0 12px 12px;margin:0 -5%;position:relative}
 .laptop .base::after{content:"";position:absolute;left:42%;right:42%;top:0;height:5px;background:#8d8d92;border-radius:0 0 6px 6px}
-.hero-art .laptop{width:118%;max-width:none;margin-right:-30%}
+.hero-art .laptop{width:100%;max-width:600px}
 
 /* bay plan inside laptop */
 .bayscreen{position:absolute;inset:0;display:grid;grid-template-columns:1.1fr 1fr;padding:6%}
@@ -66,6 +66,27 @@ a{color:inherit}
 .bayscreen .copy{padding-left:9%;display:flex;flex-direction:column;justify-content:center;color:var(--orange);font-size:clamp(.45rem,.9vw,.72rem);line-height:1.5}
 .bayscreen .copy b{font-family:var(--serif);font-weight:400;font-size:1.9em;line-height:1.05;color:var(--ink);margin:.4em 0 .6em}
 .bayscreen .copy span{color:var(--muted)}
+
+
+/* ERP dashboard on laptop */
+.erp{position:absolute;inset:0;display:grid;grid-template-columns:22% 1fr;font-size:clamp(.4rem,.98vw,.82rem);line-height:1.35}
+.erp-side{background:#f0ece6;padding:10% 12%;display:flex;flex-direction:column;gap:.55em;color:var(--muted)}
+.erp-side b{font-family:var(--serif);font-weight:400;font-size:1.9em;color:var(--ink);margin-bottom:.3em}
+.erp-side .on{color:var(--orange);font-weight:600}
+.erp-main{padding:5% 6%;display:flex;flex-direction:column;gap:.8em}
+.erp-top{display:flex;justify-content:space-between;align-items:baseline}
+.erp-top b{font-family:var(--serif);font-weight:400;font-size:2em}
+.erp-top span{color:var(--muted)}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:.6em}
+.kpis div{background:#fff;padding:.6em .7em}
+.kpis small{display:block;color:var(--muted);font-size:.85em}
+.kpis b{display:block;font-weight:600;margin-bottom:.4em}
+.kpis i{display:block;height:.45em}
+.kpis i.b,.st.b{background:var(--blue)}.kpis i.p,.st.p{background:var(--blush)}.kpis i.o,.st.o{background:var(--orange)}.st.s{background:var(--sage)}
+.erp .rows{display:grid;gap:.45em}
+.erp .rows div{display:flex;justify-content:space-between;align-items:center;background:#fff;padding:.6em .8em}
+.st{font-style:normal;color:#fff;font-weight:600;padding:.15em .7em;border-radius:999px;font-size:.9em}
+.st.p{color:var(--ink)}
 
 /* home work strip */
 .strip{display:grid;grid-template-columns:.85fr .75fr 1.4fr .85fr;gap:clamp(1rem,2.5vw,2rem);align-items:center;padding:clamp(4rem,9vw,7rem) 0 clamp(3rem,6vw,4rem)}
@@ -222,7 +243,7 @@ footer a{text-decoration:none}
 @media (max-width: 960px){
   .hero{grid-template-columns:1fr;min-height:0}
   .hero-art{padding:3rem 0 3rem 1.25rem;min-height:340px}
-  .hero-art .laptop{width:105%;margin-right:-25%}
+  .hero-art .laptop{width:100%}
   .strip{grid-template-columns:1fr 1fr}
   .bio,.quote,.case,.case-head,.auto,.contact{grid-template-columns:1fr}
   .bg-ex{grid-template-columns:1fr 1fr}
@@ -232,6 +253,8 @@ footer a{text-decoration:none}
   .photo.p1{margin-top:0}
 }
 @media (max-width: 600px){
+  .hero-art{padding:2.5rem 1rem;min-height:0}
+  .hero-art .laptop{width:100%;margin-right:0}
   .emblem{aspect-ratio:auto;min-height:150px;padding:1.25rem .6rem}
   .emblem b{letter-spacing:.08em}
   .nav ul{gap:1rem}
@@ -266,10 +289,10 @@ footer a{text-decoration:none}
       <div class="top">
         <p class="caps">Portfolio</p>
         <h1>Yousuf<br>Khan</h1>
-        <p class="sub">I planned container ships at Hutchison Ports. Now I build the systems behind operations.</p>
+        <p class="sub">I run ERP and build automation around it. Before that, I spent four and a half years planning container ships at Hutchison Ports.</p>
       </div>
       <div class="hero-foot">
-        <p class="caps">Port planner &amp; systems builder</p>
+        <p class="caps">ERP for shipping &amp; logistics</p>
         <a class="caps uline" href="#contact">Contact</a>
       </div>
     </div>
@@ -279,18 +302,17 @@ footer a{text-decoration:none}
       <div class="vase"></div>
       <div class="laptop">
         <div class="lid"><div class="screen">
-          <div class="bayscreen">
-            <div class="bp">
-              <i class="b"></i><i class="b"></i><i class="o"></i><i class="o"></i><i class="p"></i><i></i>
-              <i class="b"></i><i class="b"></i><i class="o"></i><i class="o"></i><i class="p"></i><i class="p"></i>
-              <i class="s"></i><i class="b"></i><i class="b"></i><i class="o"></i><i class="p"></i><i class="p"></i>
-              <i class="s"></i><i class="s"></i><i class="b"></i><i class="o"></i><i class="o"></i><i class="p"></i>
-              <i class="s"></i><i class="s"></i><i class="b"></i><i class="b"></i><i class="o"></i><i class="p"></i>
-            </div>
-            <div class="copy">
-              ★ ★ ★ ★ ★
-              <b>Bay plan,<br>checked.</b>
-              <span>Reefer, dangerous goods and out-of-gauge cargo, each in the right slot, before the ship comes alongside.</span>
+          <div class="erp">
+            <div class="erp-side"><b>ERP</b><span class="on">Orders</span><span>Shipments</span><span>Stock</span><span>EDI</span><span>Reports</span></div>
+            <div class="erp-main">
+              <div class="erp-top"><b>Shipments</b><span>Today</span></div>
+              <div class="kpis"><div><small>Received</small><b>Orders</b><i style="width:86%" class="b"></i></div><div><small>Picked</small><b>Warehouse</b><i style="width:64%" class="p"></i></div><div><small>Dispatched</small><b>Carrier</b><i style="width:48%" class="o"></i></div></div>
+              <div class="rows">
+                <div><span>Order · DE</span><em class="st b">Received</em></div>
+                <div><span>Order · EN</span><em class="st p">Picked</em></div>
+                <div><span>Order · eBay</span><em class="st o">Dispatched</em></div>
+                <div><span>Order · DE</span><em class="st s">Delivered</em></div>
+              </div>
             </div>
           </div>
         </div></div>
@@ -302,12 +324,12 @@ footer a{text-decoration:none}
   <div class="wrap">
     <div class="strip" aria-label="Work preview">
       <div class="tile t-blue">
-        <div class="hd"><small>Hutchison Ports</small>Yard planning, daily.</div>
+        <div class="hd"><small>JTL-Wawi</small>ERP, every day.</div>
         <div class="bd">
-          <b>Ships on time is <em>teamwork!</em></b>
-          <div class="pill">Berth plan checked</div>
-          <div class="pill">Yard allocation set</div>
-          <div class="pill">Report sent to the CEO</div>
+          <b>Systems that run <em>on time!</em></b>
+          <div class="pill">Orders in</div>
+          <div class="pill">Warehouse notified</div>
+          <div class="pill">Listings up to date</div>
         </div>
       </div>
       <div class="phone" aria-label="Webshop mockup">
@@ -353,9 +375,10 @@ footer a{text-decoration:none}
           <div class="photo p1"><div class="mono">YK</div><img src="photo.jpg" alt="Portrait of Yousuf Khan" onerror="this.remove()"></div>
         </div>
         <div class="copy">
-          <h2 class="statement" id="bio-title">I am a port planner turned information systems builder.</h2>
-          <p>I spent four and a half years on the planning desk at Hutchison Ports Pakistan, working my way from trainee to senior planner. I planned vessels and yards for Karachi, joined the four-person special team planning for Yantian in China, and helped bring a new terminal live in Jazan, Saudi Arabia.</p>
-          <p>That work showed me how much operations depend on the software underneath. So I moved to Nuremberg to study information systems at FAU, and today I run the ERP, automation and webshop at RMtek.</p>
+          <h2 class="statement" id="bio-title">I build and run ERP systems, and I know shipping from the quay up.</h2>
+          <p>Today I run the JTL-Wawi ERP at RMtek, build Python automation around it, and keep the company's webshop and eBay channel working. Alongside that I'm finishing an M.Sc. in International Information Systems at FAU in Nuremberg.</p>
+          <p>Before that, I spent four and a half years at Hutchison Ports Pakistan, from trainee to senior planner. I planned vessels and yards, tested new terminal operating system releases, and helped configure a brand-new terminal in Jazan, Saudi Arabia.</p>
+          <p>That combination is where I'm heading: ERP for the shipping industry, built by someone who knows how ships, yards and warehouses actually work.</p>
         </div>
       </div>
 
@@ -371,16 +394,16 @@ footer a{text-decoration:none}
         <div>
           <h2>Expertise</h2>
           <ul>
-            <li>Vessel stowage &amp; yard planning</li>
-            <li>Berth planning &amp; crane working plans</li>
-            <li>Reefer, DG &amp; out-of-gauge cargo</li>
             <li>ERP administration (JTL-Wawi)</li>
-            <li>Process automation in Python</li>
-            <li>Webshop &amp; eBay operations</li>
-            <li>PHP, SQL &amp; DotLiquid</li>
+            <li>ERP workflows &amp; process automation</li>
+            <li>Python, PHP, SQL &amp; DotLiquid</li>
+            <li>Webshop &amp; eBay integration</li>
+            <li>EDI &amp; terminal operating systems</li>
+            <li>System testing, QA &amp; root-cause analysis</li>
             <li>Process mining (Celonis)</li>
-            <li>QA, testing &amp; root-cause analysis</li>
-            <li>Training &amp; mentoring planners</li>
+            <li>Vessel, yard &amp; berth planning</li>
+            <li>Reefer, DG &amp; out-of-gauge cargo</li>
+            <li>Training, guides &amp; video manuals</li>
           </ul>
         </div>
         <figure class="bayfig">
@@ -396,7 +419,7 @@ footer a{text-decoration:none}
 
       <div class="quote">
         <div class="photo p2"><div class="mono">YK</div><img src="photo-2.jpg" alt="" onerror="this.remove()"></div>
-        <blockquote>I help operations run on time, with plans people can trust and systems that stay out of the way.</blockquote>
+        <blockquote>Shipping runs on its systems. I want those systems to fit how ships, yards and warehouses really work.</blockquote>
       </div>
     </div>
   </section>
@@ -405,39 +428,11 @@ footer a{text-decoration:none}
   <section id="work" aria-label="Work">
     <div class="wrap">
 
-      <article class="case-head">
-        <div>
-          <p class="label">Work</p>
-          <h2 style="font-size:clamp(3rem,6.2vw,5rem);line-height:.95">Terminal<br>Planning</h2>
-        </div>
-        <div style="padding-top:2rem">
-          <p class="lead" style="margin-top:0">Four and a half years at Hutchison Ports Pakistan: stowage, yard and berth planning, rated top planner of the year, and part of the go-live of a brand-new terminal in Jazan, Saudi Arabia.</p>
-          <ul class="facts">
-            <li>Set terminal parameters and documentation guidelines for HPJZ Jazan, then oversaw live execution with the onsite planner</li>
-            <li>One of four planners on the special team for YICT, China</li>
-            <li>Devised an all-bays overview planning method</li>
-            <li>Ran the desk largely alone during the COVID-19 lockdown</li>
-          </ul>
-        </div>
-        <div class="tiles4 wide" aria-hidden="true">
-          <div class="yard">
-            <div class="t">Hutchison<br>Ports<small>Container terminal planning</small></div>
-            <div class="rows">
-              <i></i><i></i><i class="r"></i><i></i><i class="e"></i><i></i><i class="r"></i><i></i>
-              <i></i><i class="e"></i><i></i><i></i><i></i><i class="r"></i><i class="e"></i><i></i>
-              <i class="r"></i><i></i><i></i><i class="e"></i><i></i><i></i><i></i><i class="e"></i>
-            </div>
-          </div>
-          <div class="navycard"><b>Jazan go-live</b><span>Terminal parameters, guidelines and live plan execution for HPJZ.</span></div>
-          <div class="creamcard"><div><b>All-bays overview</b><div class="ring"></div></div><span>A planning method I devised</span></div>
-          <div class="t-blue tile"><div class="hd"><small>YICT · China</small>Special team of four</div><div class="bd"><div class="pill">Reefer · DG · OOG</div><div class="pill">Quality-checked plans</div></div></div>
-        </div>
-      </article>
-
       <article class="case">
         <div>
+          <p class="label" style="margin-bottom:1rem">Work</p>
           <h2>ERP &amp;<br>Webshop</h2>
-          <p class="lead">At RMtek I run JTL-Wawi day to day. I built and launched the company's bilingual German and English webshop and helped grow sales through it.</p>
+          <p class="lead">At RMtek I administer the JTL-Wawi ERP: maintenance, day-to-day operation and the workflows around it. On top of it I built and launched the company's bilingual German and English webshop and helped grow sales.</p>
           <ul class="facts">
             <li>DotLiquid listing templates and pricing research for the eBay channel</li>
             <li>Custom shop pages in PHP and SQL for offsite service staff</li>
@@ -489,6 +484,35 @@ footer a{text-decoration:none}
         </div>
       </article>
 
+      <article class="case-head" style="padding:clamp(3rem,7vw,5.5rem) 0">
+        <div>
+          <h2 style="font-size:clamp(3rem,6.2vw,5rem);line-height:.95">Shipping, from<br>the Inside</h2>
+        </div>
+        <div style="padding-top:2rem">
+          <p class="lead" style="margin-top:0">Four and a half years at Hutchison Ports Pakistan taught me the operations an ERP in shipping has to serve, and the systems a terminal already runs on.</p>
+          <ul class="facts">
+            <li>Set terminal parameters and documentation guidelines for the go-live of HPJZ Jazan, Saudi Arabia, then oversaw live execution with the onsite planner</li>
+            <li>Tested new terminal operating system releases and reported bugs</li>
+            <li>Produced the daily yard planning report for the CEO and department heads</li>
+            <li>Rated top planner of the year; one of four planners on the special team for YICT, China</li>
+            <li>Devised an all-bays overview planning method</li>
+                      </ul>
+        </div>
+        <div class="tiles4 wide" aria-hidden="true">
+          <div class="yard">
+            <div class="t">Hutchison<br>Ports<small>Container terminal planning</small></div>
+            <div class="rows">
+              <i></i><i></i><i class="r"></i><i></i><i class="e"></i><i></i><i class="r"></i><i></i>
+              <i></i><i class="e"></i><i></i><i></i><i></i><i class="r"></i><i class="e"></i><i></i>
+              <i class="r"></i><i></i><i></i><i class="e"></i><i></i><i></i><i></i><i class="e"></i>
+            </div>
+          </div>
+          <div class="navycard"><b>Jazan go-live</b><span>Terminal parameters, guidelines and live plan execution for HPJZ.</span></div>
+          <div class="creamcard"><div><b>All-bays overview</b><div class="ring"></div></div><span>A planning method I devised</span></div>
+          <div class="t-blue tile"><div class="hd"><small>YICT · China</small>Special team of four</div><div class="bd"><div class="pill">Reefer · DG · OOG</div><div class="pill">Quality-checked plans</div></div></div>
+        </div>
+      </article>
+
       <article class="case">
         <div>
           <h2>Research &amp;<br>Writing</h2>
@@ -537,7 +561,7 @@ footer a{text-decoration:none}
             <div><dt class="label">Email</dt><dd><a href="mailto:m.yousufkhan1997@gmail.com">m.yousufkhan1997@gmail.com</a></dd></div>
             <div><dt class="label">Phone</dt><dd><a href="tel:+4915750966840">+49 157 50966840</a></dd></div>
           </dl>
-          <p class="note">Open to working student roles, thesis collaborations and full-time positions from 2027 in logistics, ERP and process automation. Based in Nuremberg.</p>
+          <p class="note">Looking for ERP roles in shipping and logistics: working student positions and thesis collaborations now, full-time from 2027. Based in Nuremberg.</p>
         </div>
       </div>
     </div>
