@@ -232,7 +232,8 @@ a.emblem:hover b{color:var(--orange)}
 .pf-tabs button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
 .pf-tabs button:hover{border-color:var(--orange)}
 .pf-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1rem,2vw,1.5rem)}
-.pf{background:var(--paper);display:flex;flex-direction:column}
+.pf{background:var(--paper);display:flex;flex-direction:column;min-width:0}
+.pf-body{min-width:0}
 .pf[hidden]{display:none}
 .pf-wide{grid-column:1/-1;display:grid;grid-template-columns:1.6fr 1fr}
 .pf-body{padding:1.4rem 1.4rem 1.6rem}
@@ -251,19 +252,25 @@ a.emblem:hover b{color:var(--orange)}
 .doc{display:block;background:#E9E7E4;margin:10px 10px 0;padding:14px 14px 0;overflow:hidden}
 .doc img{display:block;width:100%;height:auto;box-shadow:0 2px 10px rgba(0,0,0,.12);transition:transform .3s}
 .doc:hover img{transform:translateY(-4px)}
-.pf-stack{grid-template-columns:1fr}
-.pf-stack .pf-body{display:grid;grid-template-columns:1fr 1.4fr;gap:.5rem 3rem;align-items:start}
-.pf-stack .pf-body .pf-label,.pf-stack .pf-body h3{grid-column:1}
-.pf-stack .pf-body p:not(.pf-label){grid-column:2}
-.pf-stack .pf-body h3{grid-row:2}
-.pf-stack .pf-body p:nth-of-type(2){grid-row:1/3}
-.guides{aspect-ratio:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px;padding:14px;background:#E9E7E4;margin:10px 10px 10px}
-.gdoc{background:#fff;padding:.9rem .85rem;display:flex;flex-direction:column;gap:.35rem;box-shadow:0 2px 8px rgba(0,0,0,.08);border-top:4px solid var(--blue);min-height:170px}
-.gdoc:nth-child(2){border-color:var(--orange)}.gdoc:nth-child(3){border-color:var(--sage)}.gdoc:nth-child(4){border-color:var(--blush)}.gdoc:nth-child(5){border-color:var(--navy)}
-.gtag{font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-.gdoc b{font-family:var(--serif);font-weight:400;font-size:1.1rem;line-height:1.15}
-.gd{font-size:.75rem;line-height:1.5;color:var(--muted)}
-.gm{margin-top:auto;font-size:.66rem;font-weight:600;color:var(--orange)}
+.doc.shot{padding:0;background:#ddd}
+.doc.shot img{box-shadow:none;height:100%;object-fit:cover;object-position:top}
+.guide-mock{background:#E9E7E4;margin:10px 10px 0;display:flex;align-items:flex-end;justify-content:center;padding:18px 18px 0}
+.gm-page{background:#fff;width:82%;height:100%;box-shadow:0 2px 10px rgba(0,0,0,.12);padding:12px 14px;display:flex;flex-direction:column;gap:10px}
+.gm-head{border-bottom:2px solid var(--blue);padding-bottom:6px;display:flex;flex-direction:column}
+.gm-head span{font-size:.55rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.gm-head b{font-family:var(--serif);font-weight:400;font-size:1rem}
+.gm-step{display:grid;grid-template-columns:20px 1fr;gap:8px}
+.gm-step i{width:20px;height:20px;border-radius:50%;background:var(--orange);color:#fff;font-style:normal;font-size:.65rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+.gm-step em{display:block;height:6px;background:var(--soft);margin:3px 0 5px;width:90%}
+.gm-step em.s{width:60%}
+.gm-shot{height:58px;background:var(--bg);border:1px solid var(--soft);position:relative;margin-top:4px}
+.gm-shot span{position:absolute;left:30%;top:22%;width:38%;height:40%;border:2px solid var(--orange)}
+details.code{margin-top:1rem}
+details.code summary{cursor:pointer;font-size:.75rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;list-style:none;display:inline-block;border-bottom:1.5px solid var(--ink);padding-bottom:.2rem}
+details.code summary::-webkit-details-marker{display:none}
+details.code summary::after{content:" +"}
+details.code[open] summary::after{content:" −"}
+details.code pre{margin:.9rem 0 0;background:#1d1d1f;color:#e9e7e4;padding:1rem;font-size:.7rem;line-height:1.55;overflow-x:auto;max-width:100%}
 .pf-empty{background:transparent;border:1.5px dashed #cfcac4}
 .pf-empty .ph{border:0;background:transparent}
 .gallery{aspect-ratio:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:10px;background:#E9EEF4}
@@ -273,8 +280,7 @@ a.emblem:hover b{color:var(--orange)}
 .gallery .g-main{grid-column:1/-1}
 @media (max-width: 960px){.pf-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.pf-wide{grid-template-columns:1fr}}
 @media (max-width: 600px){.pf-grid{grid-template-columns:1fr}}
-@media (max-width: 860px){.pf-stack .pf-body{display:block}.pf-stack .pf-body p{margin-top:.6rem}}
-
+@media (max-width: 860px){
 /* ---------- CONTACT ---------- */
 #contact{background:var(--paper);padding:clamp(4rem,9vw,7rem) 0 clamp(3rem,7vw,5rem);border-top:1px solid var(--soft)}
 #contact h2{font-size:clamp(3.25rem,7vw,5.5rem)}
@@ -631,12 +637,29 @@ footer a{text-decoration:none}
             <p>Custom webshop pages for RMtek's offsite service staff, built in PHP and SQL.</p>
           </div>
         </article>
-        <article class="pf " data-cat="code">
-          <div class="pv ph"><span class="ph-kind">DotLiquid</span><span class="ph-note">Preview coming soon</span></div>
+        <article class="pf" data-cat="code">
+          <a class="pv doc shot" href="https://www.ebay.de/itm/198565061430" target="_blank" rel="noopener"><img src="assets/ebay-template.jpg" alt="RMtek eBay listing built with the custom template: branded header, category menu, product photo and specification table" loading="lazy"></a>
           <div class="pf-body">
-            <p class="pf-label">Programming · DotLiquid</p>
+            <p class="pf-label">Programming · DotLiquid · eBay</p>
             <h3>eBay listing templates</h3>
-            <p>Custom DotLiquid templates for RMtek's eBay listings.</p>
+            <p>Custom DotLiquid template for RMtek's eBay listings, built on JTL's Evo theme. It fills each listing from JTL product data: a CSS-only gallery for up to 12 product images, a specification table generated from the product attributes, galleries of bestsellers from the same product group and related items, multi-language text blocks, and a responsive layout.</p>
+            <details class="code"><summary>View code excerpt</summary><pre><code>{%- comment -%} Bestsellers from the same product group, 20 EUR and up {%- endcomment -%}
+{% assign BestsellerWG = Vorgang.Galerien.Bestseller | ConfigureGallery : BestsellerWGTitel, &#x27;AnzahlVerkäufe&#x27;, true, 20 -%}
+{{ BestsellerWG | WhereA_Equals_B: &#x27;InterneWarengruppennummer&#x27;, Vorgang.Artikel.Allgemein.Kategorisierung.Warengruppe.InterneWarengruppennummer }}
+{{ BestsellerWG | WhereA_GreaterOrEqual_B: &#x27;StartPreis&#x27;, 20 }}
+
+{%- comment -%} Specification table from product attributes {%- endcomment -%}
+{% for Merkmal in Vorgang.Artikel.Merkmale.AlleMerkmaleNachGruppen.AlleMerkmale.Deutsch %}
+  {% assign name = Merkmal.MerkmalName %}
+  {% assign value = Merkmal.Wert %}
+  {% if name and value and name != &#x27;Anzahl der Einheiten&#x27; and name != &#x27;Maßeinheit&#x27; %}
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;{{ name }}&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;{{ value }}&lt;/td&gt;
+    &lt;/tr&gt;
+  {% endif %}
+{% endfor %}</code></pre></details>
+            <p class="pf-links"><a href="https://www.ebay.de/itm/198565061430" target="_blank" rel="noopener">See a live listing</a></p>
           </div>
         </article>
         <article class="pf pf-empty" data-cat="code">
@@ -716,19 +739,18 @@ footer a{text-decoration:none}
             <p>Innovation and leadership project carried out for JOSEPHS.</p>
           </div>
         </article>
-        <article class="pf pf-wide pf-stack" data-cat="writing">
-          <div class="pv guides" aria-label="Overview of five process guides">
-            <div class="gdoc"><span class="gtag">Returns</span><b>Retouren Manual</b><span class="gd">Booking, receiving and closing a customer return, with a standard format for internal comments.</span><span class="gm">3 stages · 28 screenshots</span></div>
-            <div class="gdoc"><span class="gtag">Variations</span><b>Parent &amp; Child Articles</b><span class="gd">Creating variations, assigning and unlinking child articles, and bulk-importing them.</span><span class="gm">Step-by-step · 17 screenshots</span></div>
-            <div class="gdoc"><span class="gtag">Shop</span><b>Webshop Update Manual</b><span class="gd">Backup, maintenance mode, sync stop, plugins, file merge and post-update theme fixes for JTL-Shop.</span><span class="gm">14 steps · 8 screenshots</span></div>
-            <div class="gdoc"><span class="gtag">Stock</span><b>Articles with Parts in Use</b><span class="gd">Tracking parts in use through a placeholder order and releasing them back to stock.</span><span class="gm">5 steps · 7 screenshots</span></div>
-            <div class="gdoc"><span class="gtag">Invoicing</span><b>Proforma Guide</b><span class="gd">Creating a proforma invoice from an order with the right template set.</span><span class="gm">7 steps · 7 screenshots</span></div>
+        <article class="pf" data-cat="writing">
+          <div class="pv guide-mock" aria-hidden="true">
+            <div class="gm-page">
+              <div class="gm-head"><span>Guide · JTL-Wawi</span><b>Process name</b></div>
+              <div class="gm-step"><i>1</i><div><em></em><em class="s"></em><div class="gm-shot"><span></span></div></div></div>
+              <div class="gm-step"><i>2</i><div><em></em><em class="s"></em></div></div>
+            </div>
           </div>
           <div class="pf-body">
-            <p class="pf-label">Technical documentation · RMtek · JTL-Wawi</p>
+            <p class="pf-label">Technical documentation · RMtek</p>
             <h3>Process guides &amp; video manuals</h3>
-            <p>Step-by-step guides I wrote so colleagues can run everyday JTL-Wawi and webshop processes on their own: returns, proforma invoices, product variations, parts in use and the JTL-Shop update procedure. Written in English with the German JTL interface terms, built around annotated screenshots, and backed up by recorded video manuals.</p>
-            <p>The guides themselves are internal to RMtek, so this is an overview of what they cover.</p>
+            <p>Step-by-step guides and video manuals I write so colleagues can handle everyday JTL-Wawi and webshop processes on their own. Written in English with the German JTL interface terms and built around annotated screenshots. The guides are internal to RMtek.</p>
           </div>
         </article>
         <article class="pf " data-cat="writing">
