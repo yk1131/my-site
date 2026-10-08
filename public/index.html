@@ -251,6 +251,19 @@ a.emblem:hover b{color:var(--orange)}
 .doc{display:block;background:#E9E7E4;margin:10px 10px 0;padding:14px 14px 0;overflow:hidden}
 .doc img{display:block;width:100%;height:auto;box-shadow:0 2px 10px rgba(0,0,0,.12);transition:transform .3s}
 .doc:hover img{transform:translateY(-4px)}
+.pf-stack{grid-template-columns:1fr}
+.pf-stack .pf-body{display:grid;grid-template-columns:1fr 1.4fr;gap:.5rem 3rem;align-items:start}
+.pf-stack .pf-body .pf-label,.pf-stack .pf-body h3{grid-column:1}
+.pf-stack .pf-body p:not(.pf-label){grid-column:2}
+.pf-stack .pf-body h3{grid-row:2}
+.pf-stack .pf-body p:nth-of-type(2){grid-row:1/3}
+.guides{aspect-ratio:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px;padding:14px;background:#E9E7E4;margin:10px 10px 10px}
+.gdoc{background:#fff;padding:.9rem .85rem;display:flex;flex-direction:column;gap:.35rem;box-shadow:0 2px 8px rgba(0,0,0,.08);border-top:4px solid var(--blue);min-height:170px}
+.gdoc:nth-child(2){border-color:var(--orange)}.gdoc:nth-child(3){border-color:var(--sage)}.gdoc:nth-child(4){border-color:var(--blush)}.gdoc:nth-child(5){border-color:var(--navy)}
+.gtag{font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.gdoc b{font-family:var(--serif);font-weight:400;font-size:1.1rem;line-height:1.15}
+.gd{font-size:.75rem;line-height:1.5;color:var(--muted)}
+.gm{margin-top:auto;font-size:.66rem;font-weight:600;color:var(--orange)}
 .pf-empty{background:transparent;border:1.5px dashed #cfcac4}
 .pf-empty .ph{border:0;background:transparent}
 .gallery{aspect-ratio:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:10px;background:#E9EEF4}
@@ -260,6 +273,7 @@ a.emblem:hover b{color:var(--orange)}
 .gallery .g-main{grid-column:1/-1}
 @media (max-width: 960px){.pf-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.pf-wide{grid-template-columns:1fr}}
 @media (max-width: 600px){.pf-grid{grid-template-columns:1fr}}
+@media (max-width: 860px){.pf-stack .pf-body{display:block}.pf-stack .pf-body p{margin-top:.6rem}}
 
 /* ---------- CONTACT ---------- */
 #contact{background:var(--paper);padding:clamp(4rem,9vw,7rem) 0 clamp(3rem,7vw,5rem);border-top:1px solid var(--soft)}
@@ -702,6 +716,21 @@ footer a{text-decoration:none}
             <p>Innovation and leadership project carried out for JOSEPHS.</p>
           </div>
         </article>
+        <article class="pf pf-wide pf-stack" data-cat="writing">
+          <div class="pv guides" aria-label="Overview of five process guides">
+            <div class="gdoc"><span class="gtag">Returns</span><b>Retouren Manual</b><span class="gd">Booking, receiving and closing a customer return, with a standard format for internal comments.</span><span class="gm">3 stages · 28 screenshots</span></div>
+            <div class="gdoc"><span class="gtag">Variations</span><b>Parent &amp; Child Articles</b><span class="gd">Creating variations, assigning and unlinking child articles, and bulk-importing them.</span><span class="gm">Step-by-step · 17 screenshots</span></div>
+            <div class="gdoc"><span class="gtag">Shop</span><b>Webshop Update Manual</b><span class="gd">Backup, maintenance mode, sync stop, plugins, file merge and post-update theme fixes for JTL-Shop.</span><span class="gm">14 steps · 8 screenshots</span></div>
+            <div class="gdoc"><span class="gtag">Stock</span><b>Articles with Parts in Use</b><span class="gd">Tracking parts in use through a placeholder order and releasing them back to stock.</span><span class="gm">5 steps · 7 screenshots</span></div>
+            <div class="gdoc"><span class="gtag">Invoicing</span><b>Proforma Guide</b><span class="gd">Creating a proforma invoice from an order with the right template set.</span><span class="gm">7 steps · 7 screenshots</span></div>
+          </div>
+          <div class="pf-body">
+            <p class="pf-label">Technical documentation · RMtek · JTL-Wawi</p>
+            <h3>Process guides &amp; video manuals</h3>
+            <p>Step-by-step guides I wrote so colleagues can run everyday JTL-Wawi and webshop processes on their own: returns, proforma invoices, product variations, parts in use and the JTL-Shop update procedure. Written in English with the German JTL interface terms, built around annotated screenshots, and backed up by recorded video manuals.</p>
+            <p>The guides themselves are internal to RMtek, so this is an overview of what they cover.</p>
+          </div>
+        </article>
         <article class="pf " data-cat="writing">
           <div class="pv ph"><span class="ph-kind">Writing sample</span><span class="ph-note">Sample coming soon</span></div>
           <div class="pf-body">
@@ -716,14 +745,6 @@ footer a{text-decoration:none}
             <p class="pf-label">Writing</p>
             <h3>Content writing</h3>
             <p>Space for articles and web content.</p>
-          </div>
-        </article>
-        <article class="pf " data-cat="writing">
-          <div class="pv ph"><span class="ph-kind">Documentation</span><span class="ph-note">Sample coming soon</span></div>
-          <div class="pf-body">
-            <p class="pf-label">Writing</p>
-            <h3>Technical documentation &amp; video manuals</h3>
-            <p>Space for internal guides, software documentation and video manuals.</p>
           </div>
         </article>
         <article class="pf " data-cat="writing">
