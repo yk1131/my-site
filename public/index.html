@@ -130,7 +130,8 @@ section.page{background:var(--paper);padding:clamp(4rem,9vw,7rem) 0}
 .photo{position:relative;overflow:hidden;background:var(--wall)}
 .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .photo .mono{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:clamp(4rem,9vw,7rem);color:#fff}
-.photo.p1{aspect-ratio:.81;max-width:330px;margin-top:4rem}
+.photo.p1{aspect-ratio:.81;max-width:420px;margin-top:.4rem}
+.bio-label{margin-bottom:1.75rem}
 .photo.p1 .mono{background:linear-gradient(160deg,var(--wall),#d5c3bf)}
 
 .bg-ex{display:grid;grid-template-columns:1fr 1fr .85fr;gap:clamp(2rem,4vw,4rem);margin-top:clamp(4rem,9vw,7rem);align-items:start}
@@ -493,9 +494,9 @@ footer a{text-decoration:none}
   <!-- ABOUT -->
   <section class="page" id="about" aria-labelledby="bio-title">
     <div class="wrap">
+      <p class="label bio-label">Bio</p>
       <div class="bio">
         <div>
-          <p class="label">Bio</p>
           <div class="photo p1"><div class="mono">YK</div><img src="photo.jpg" alt="Yousuf Khan hiking in the mountains" onerror="this.remove()"></div>
         </div>
         <div class="copy">
