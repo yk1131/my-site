@@ -310,6 +310,19 @@ html.v-open{overflow:hidden}
 .v-guides span{font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 .v-guides b{display:block;font-family:var(--serif);font-weight:400;font-size:1.2rem;line-height:1.15;margin:.3rem 0 .45rem}
 .v-guides p{font-size:.85rem;color:var(--muted);line-height:1.6}
+.flow-mock{background:#E9EEF4;margin:10px 10px 0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:14px;text-decoration:none;color:var(--ink)}
+.flow-mock>i{width:2px;height:10px;background:var(--muted);position:relative}
+.flow-mock>i::after{content:"";position:absolute;left:-4px;bottom:-4px;border:5px solid transparent;border-top-color:var(--muted)}
+.fm-node{background:#fff;border-left:4px solid var(--blue);padding:.3rem .8rem;font-size:.78rem;font-weight:600;text-align:center;min-width:44%;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.fm-node small{display:block;font-weight:500;font-size:.6rem;color:var(--muted);letter-spacing:.06em}
+.fm-node.py{border-color:var(--orange)}.fm-node.out{border-color:var(--sage)}
+.fm-split{display:flex;gap:8px;width:70%}.fm-split .fm-node{min-width:0;flex:1;border-color:var(--navy)}
+.v-text pre{background:#1d1d1f;color:#e9e7e4;padding:1rem;font-size:.72rem;line-height:1.55;overflow-x:auto;margin:.4rem 0 1.2rem}
+.v-text>p+p{margin-top:.8rem}
+.v-note{font-size:.8rem;color:var(--muted)}
+.v-cap{font-size:.78rem;font-weight:600;margin-top:1rem!important}
+.v-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.v-tags span{font-size:.72rem;border:1px solid var(--soft);padding:.15rem .55rem;color:var(--muted)}
 a.guide-mock{cursor:pointer}
 @media (max-width: 700px){
   dialog#viewer{width:100vw;height:100dvh;max-height:100dvh}
@@ -661,12 +674,18 @@ footer a{text-decoration:none}
             <p>A second dashboard is in progress and will be added here.</p>
           </div>
         </article>
-        <article class="pf " data-cat="code">
-          <div class="pv ph"><span class="ph-kind">Python</span><span class="ph-note">Code sample coming soon</span></div>
+        <article class="pf" data-cat="code">
+          <a data-view="pipeline" href="#pipeline" class="pv flow-mock" aria-label="How the JTL data pipeline works">
+            <span class="fm-node">JTL-Wawi<small>export</small></span><i></i>
+            <span class="fm-node py">Python<small>pandas</small></span><i></i>
+            <span class="fm-split"><span class="fm-node">HTML<small>Flask</small></span><span class="fm-node">Excel<small>openpyxl</small></span></span><i></i>
+            <span class="fm-node out">FTP · Email<small>+ archive</small></span>
+          </a>
           <div class="pf-body">
             <p class="pf-label">Programming · Python</p>
-            <h3>JTL data pipeline</h3>
-            <p>Turns JTL-Wawi data into HTML and Excel files and sends them to customers via FTP and email.</p>
+            <h3>JTL stock list pipeline</h3>
+            <p>One run turns a JTL-Wawi export into four HTML stock lists and a styled Excel file, uploads them by FTP, emails them to the recipient and archives the previous version. It sorts drives by series, separates new from refurbished stock and reads kW ratings out of free-text product names.</p>
+            <p class="pf-links"><a data-view="pipeline" href="#pipeline">How it works</a></p>
           </div>
         </article>
         <article class="pf" data-cat="code">
@@ -850,6 +869,58 @@ footer a{text-decoration:none}
   </div>
   <div class="v-body" id="v-body"></div>
 </dialog>
+<template id="tpl-pipeline">
+  <div class="v-text">
+    <p class="v-lead">A Python pipeline I built at RMtek that produces the company's stock lists for a trading partner. What used to be a manual export-and-format job is now one run: export, transform, publish, send and archive.</p>
+    <h3>What one run does</h3>
+    <ol class="v-steps">
+      <li><b>Export.</b> Runs a JTL-Ameise batch export of the article master data from JTL-Wawi (can be skipped to reuse the last export).</li>
+      <li><b>Load and validate.</b> Reads the CSV with pandas (German number format, Windows encoding) and checks the required columns are there.</li>
+      <li><b>Transform.</b> Sorts in-stock drives into product series by article-number patterns, merges new and refurbished units of the same model, extracts the kW rating from the free-text product name and sorts each series by power.</li>
+      <li><b>Render HTML.</b> A Flask app fills a Jinja template for four stock lists (current, legacy and two other ranges); the pipeline saves them as static pages, fixes asset paths and adds cache busting.</li>
+      <li><b>Build Excel.</b> Writes the complete in-stock list as CSV and as a formatted Excel file with openpyxl: styled header, zebra rows, euro format, frozen header and filters.</li>
+      <li><b>Publish.</b> Uploads the pages and files to the partner's FTP folder.</li>
+      <li><b>Send and archive.</b> Emails the files as attachments over SMTP, then moves the previous files into a timestamped archive. When run as part of a larger scheduled job, it leaves emailing and archiving to the orchestrator.</li>
+    </ol>
+    <p>Credentials for FTP and email live in environment variables, not in the code.</p>
+    <p class="v-tags"><span>Python</span><span>pandas</span><span>Flask</span><span>Jinja</span><span>openpyxl</span><span>ftplib</span><span>smtplib</span><span>JTL-Ameise</span></p>
+    <h3>Code excerpts</h3>
+    <p class="v-note">Simplified from the real code; file paths and partner details removed.</p>
+    <p class="v-cap">The whole run, step by step</p>
+    <pre><code>def get_stocklists():
+    run_bat_file()              # 1. JTL-Ameise export of article data
+
+    # 2. Flask renders the stock lists from the export
+    threading.Thread(target=run_server, daemon=True).start()
+
+    # 3. Save each list as a static HTML page
+    for page in [&quot;legacy&quot;, &quot;current&quot;, &quot;pdrive&quot;, &quot;pdl&quot;]:
+        download_webpage(url=f&quot;http://127.0.0.1:5000/{page}&quot;, path=SAVE_PATH)
+    copy_static_assets()
+
+    StockList().complete_stock_to_excel()   # 4. styled Excel + CSV
+
+    upload_folder_to_ftp(local_folder=SAVE_PATH, remote_folder=FTP_REMOTE_PATH,
+                         host=FTP_HOST, user=FTP_USER, password=FTP_PASS)  # 5. FTP
+    send_email()                # 6. email with the files attached
+    archive_old_files()         # 7. timestamped archive</code></pre>
+    <p class="v-cap">Filtering a series and splitting new from refurbished stock</p>
+    <pre><code># In-stock drives of one series
+result_df = self.stock_list.loc[
+    (self.stock_list[&quot;Artikelnummer&quot;].str.startswith(dev_type))
+    &amp; (self.stock_list[&quot;Auf Lager&quot;] &gt; 0)]
+
+for index, row in result_df.iterrows():
+    article = str(row[&quot;Artikelnummer&quot;])
+    used = False
+    if article.lower().endswith(&quot;x&quot;) or article.lower().endswith(&quot;r&quot;):
+        article = article[:-1]          # X/R suffix = refurbished unit
+        used = True
+
+    description = str(row[&quot;Artikelname&quot;])
+    dev_type_dict[article][&quot;kw&quot;] = get_kw_rating(description)   # &quot;2,2kW&quot; -&gt; 2.2</code></pre>
+  </div>
+</template>
 <template id="tpl-guides">
   <div class="v-text">
     <p class="v-lead">I write step-by-step guides so colleagues at RMtek can run everyday ERP and webshop processes on their own, without having to ask. The full guides stay internal; here is how they are built and a few examples of what they cover.</p>
@@ -885,7 +956,7 @@ footer a{text-decoration:none}
 </script>
 <script>
 (function(){
-  var VIEWS={"celonis": {"title": "Case Analysis Dashboard: Order to Cash", "sub": "Celonis process mining dashboard, 7 views", "images": ["assets/celonis/01-overview.jpg", "assets/celonis/02-warehouse-type.jpg", "assets/celonis/03-production-strategy.jpg", "assets/celonis/04-factories.jpg", "assets/celonis/05-delivery.jpg", "assets/celonis/06-market-delivery.jpg", "assets/celonis/07-business-case.jpg"], "download": "assets/celonis/celonis-case-analysis-dashboard.pdf", "dlabel": "Download PDF"}, "portal": {"title": "Service portal for field staff", "sub": "RMtek webshop · PHP & SQL", "images": ["assets/service-portal.jpg"]}, "ebay": {"title": "eBay listing template", "sub": "DotLiquid · JTL eazyAuction", "images": ["assets/ebay-template.jpg"], "external": "https://www.ebay.de/itm/198565061430", "elabel": "See live listing on eBay"}, "thesis": {"title": "Generation X and Y: Impact of Work Attitudes and Work Values on Employee Performance", "sub": "Journal of Management and Research, 6(2), 2019 · CC BY 4.0", "images": ["assets/pages/thesis/p01.jpg", "assets/pages/thesis/p02.jpg", "assets/pages/thesis/p03.jpg", "assets/pages/thesis/p04.jpg", "assets/pages/thesis/p05.jpg", "assets/pages/thesis/p06.jpg", "assets/pages/thesis/p07.jpg", "assets/pages/thesis/p08.jpg", "assets/pages/thesis/p09.jpg", "assets/pages/thesis/p10.jpg", "assets/pages/thesis/p11.jpg", "assets/pages/thesis/p12.jpg", "assets/pages/thesis/p13.jpg", "assets/pages/thesis/p14.jpg", "assets/pages/thesis/p15.jpg", "assets/pages/thesis/p16.jpg", "assets/pages/thesis/p17.jpg", "assets/pages/thesis/p18.jpg", "assets/pages/thesis/p19.jpg", "assets/pages/thesis/p20.jpg", "assets/pages/thesis/p21.jpg", "assets/pages/thesis/p22.jpg", "assets/pages/thesis/p23.jpg", "assets/pages/thesis/p24.jpg", "assets/pages/thesis/p25.jpg", "assets/pages/thesis/p26.jpg", "assets/pages/thesis/p27.jpg", "assets/pages/thesis/p28.jpg", "assets/pages/thesis/p29.jpg", "assets/pages/thesis/p30.jpg", "assets/pages/thesis/p31.jpg", "assets/pages/thesis/p32.jpg", "assets/pages/thesis/p33.jpg", "assets/pages/thesis/p34.jpg"], "download": "assets/research/generation-x-y-jmr-2019.pdf", "dlabel": "Download PDF", "external": "https://ojs.umt.edu.pk/index.php/jmr/article/view/258", "elabel": "Journal site"}, "selfefficacy": {"title": "IT and AI Self-efficacy", "sub": "Preview: abstract to introduction", "images": ["assets/pages/selfefficacy/p01.jpg", "assets/pages/selfefficacy/p02.jpg", "assets/pages/selfefficacy/p03.jpg", "assets/pages/selfefficacy/p04.jpg", "assets/pages/selfefficacy/p05.jpg", "assets/pages/selfefficacy/p06.jpg", "assets/pages/selfefficacy/p07.jpg"], "download": "assets/research/selfefficacy-preview.pdf", "dlabel": "Download preview"}, "immersive": {"title": "Which Technologies Will Become Relevant for Immersive Retail Concepts in the Future?", "sub": "Preview: abstract to introduction", "images": ["assets/pages/immersive/p01.jpg", "assets/pages/immersive/p02.jpg", "assets/pages/immersive/p03.jpg", "assets/pages/immersive/p04.jpg"], "download": "assets/research/immersive-preview.pdf", "dlabel": "Download preview"}, "ip-vc": {"title": "Relevance of IP in Venture Capital Financing for a Start-Up", "sub": "Preview: contents and introduction", "images": ["assets/pages/ip-vc/p01.jpg", "assets/pages/ip-vc/p02.jpg"], "download": "assets/research/ip-vc-preview.pdf", "dlabel": "Download preview"}, "green-loyalty": {"title": "Effect of Environmental Strategies and CSR on Green Employee Loyalty", "sub": "Preview: contents and introduction", "images": ["assets/pages/green-loyalty/p01.jpg", "assets/pages/green-loyalty/p02.jpg", "assets/pages/green-loyalty/p03.jpg", "assets/pages/green-loyalty/p04.jpg", "assets/pages/green-loyalty/p05.jpg", "assets/pages/green-loyalty/p06.jpg"], "download": "assets/research/green-loyalty-preview.pdf", "dlabel": "Download preview"}, "guides": {"title": "Process guides & video manuals", "sub": "Technical documentation · RMtek", "template": "tpl-guides"}};
+  var VIEWS={"celonis": {"title": "Case Analysis Dashboard: Order to Cash", "sub": "Celonis process mining dashboard, 7 views", "images": ["assets/celonis/01-overview.jpg", "assets/celonis/02-warehouse-type.jpg", "assets/celonis/03-production-strategy.jpg", "assets/celonis/04-factories.jpg", "assets/celonis/05-delivery.jpg", "assets/celonis/06-market-delivery.jpg", "assets/celonis/07-business-case.jpg"], "download": "assets/celonis/celonis-case-analysis-dashboard.pdf", "dlabel": "Download PDF"}, "portal": {"title": "Service portal for field staff", "sub": "RMtek webshop · PHP & SQL", "images": ["assets/service-portal.jpg"]}, "ebay": {"title": "eBay listing template", "sub": "DotLiquid · JTL eazyAuction", "images": ["assets/ebay-template.jpg"], "external": "https://www.ebay.de/itm/198565061430", "elabel": "See live listing on eBay"}, "thesis": {"title": "Generation X and Y: Impact of Work Attitudes and Work Values on Employee Performance", "sub": "Journal of Management and Research, 6(2), 2019 · CC BY 4.0", "images": ["assets/pages/thesis/p01.jpg", "assets/pages/thesis/p02.jpg", "assets/pages/thesis/p03.jpg", "assets/pages/thesis/p04.jpg", "assets/pages/thesis/p05.jpg", "assets/pages/thesis/p06.jpg", "assets/pages/thesis/p07.jpg", "assets/pages/thesis/p08.jpg", "assets/pages/thesis/p09.jpg", "assets/pages/thesis/p10.jpg", "assets/pages/thesis/p11.jpg", "assets/pages/thesis/p12.jpg", "assets/pages/thesis/p13.jpg", "assets/pages/thesis/p14.jpg", "assets/pages/thesis/p15.jpg", "assets/pages/thesis/p16.jpg", "assets/pages/thesis/p17.jpg", "assets/pages/thesis/p18.jpg", "assets/pages/thesis/p19.jpg", "assets/pages/thesis/p20.jpg", "assets/pages/thesis/p21.jpg", "assets/pages/thesis/p22.jpg", "assets/pages/thesis/p23.jpg", "assets/pages/thesis/p24.jpg", "assets/pages/thesis/p25.jpg", "assets/pages/thesis/p26.jpg", "assets/pages/thesis/p27.jpg", "assets/pages/thesis/p28.jpg", "assets/pages/thesis/p29.jpg", "assets/pages/thesis/p30.jpg", "assets/pages/thesis/p31.jpg", "assets/pages/thesis/p32.jpg", "assets/pages/thesis/p33.jpg", "assets/pages/thesis/p34.jpg"], "download": "assets/research/generation-x-y-jmr-2019.pdf", "dlabel": "Download PDF", "external": "https://ojs.umt.edu.pk/index.php/jmr/article/view/258", "elabel": "Journal site"}, "selfefficacy": {"title": "IT and AI Self-efficacy", "sub": "Preview: abstract to introduction", "images": ["assets/pages/selfefficacy/p01.jpg", "assets/pages/selfefficacy/p02.jpg", "assets/pages/selfefficacy/p03.jpg", "assets/pages/selfefficacy/p04.jpg", "assets/pages/selfefficacy/p05.jpg", "assets/pages/selfefficacy/p06.jpg", "assets/pages/selfefficacy/p07.jpg"], "download": "assets/research/selfefficacy-preview.pdf", "dlabel": "Download preview"}, "immersive": {"title": "Which Technologies Will Become Relevant for Immersive Retail Concepts in the Future?", "sub": "Preview: abstract to introduction", "images": ["assets/pages/immersive/p01.jpg", "assets/pages/immersive/p02.jpg", "assets/pages/immersive/p03.jpg", "assets/pages/immersive/p04.jpg"], "download": "assets/research/immersive-preview.pdf", "dlabel": "Download preview"}, "ip-vc": {"title": "Relevance of IP in Venture Capital Financing for a Start-Up", "sub": "Preview: contents and introduction", "images": ["assets/pages/ip-vc/p01.jpg", "assets/pages/ip-vc/p02.jpg"], "download": "assets/research/ip-vc-preview.pdf", "dlabel": "Download preview"}, "green-loyalty": {"title": "Effect of Environmental Strategies and CSR on Green Employee Loyalty", "sub": "Preview: contents and introduction", "images": ["assets/pages/green-loyalty/p01.jpg", "assets/pages/green-loyalty/p02.jpg", "assets/pages/green-loyalty/p03.jpg", "assets/pages/green-loyalty/p04.jpg", "assets/pages/green-loyalty/p05.jpg", "assets/pages/green-loyalty/p06.jpg"], "download": "assets/research/green-loyalty-preview.pdf", "dlabel": "Download preview"}, "guides": {"title": "Process guides & video manuals", "sub": "Technical documentation · RMtek", "template": "tpl-guides"}, "pipeline": {"title": "JTL stock list pipeline", "sub": "Python automation · RMtek", "template": "tpl-pipeline"}};
   var dlg=document.getElementById('viewer'), body=document.getElementById('v-body');
   if(!dlg||typeof dlg.showModal!=='function') return;
   function set(el,href,label){ if(href){el.href=href;el.textContent=label;el.hidden=false}else{el.hidden=true;el.removeAttribute('href')} }
