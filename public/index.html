@@ -370,6 +370,12 @@ footer a{text-decoration:none}
   .hero-art .laptop{width:100%}
   .strip{grid-template-columns:1fr 1fr}
   .bio,.quote,.case,.case-head,.auto,.contact{grid-template-columns:1fr}
+  .bio{row-gap:0}
+  .bio .copy{display:contents}
+  .bio .statement{order:1}
+  .bio>div:first-child{order:2;margin:1.75rem 0 .25rem}
+  .bio .copy p{order:3}
+  .bio .copy p:first-of-type{margin-top:1.25rem}
   .bg-ex{grid-template-columns:1fr 1fr}
   .bayfig{grid-column:1/-1;margin-top:0;max-width:520px}
   .tiles4{grid-template-columns:1fr 1fr}
