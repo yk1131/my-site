@@ -282,7 +282,45 @@ details.code pre{margin:.9rem 0 0;background:#1d1d1f;color:#e9e7e4;padding:1rem;
 .gallery .g-main{grid-column:1/-1}
 @media (max-width: 960px){.pf-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.pf-wide{grid-template-columns:1fr}}
 @media (max-width: 600px){.pf-grid{grid-template-columns:1fr}}
-@media (max-width: 860px){
+
+/* ---------- VIEWER (pop-up) ---------- */
+dialog#viewer{border:0;padding:0;width:min(1040px,94vw);height:min(92vh,1200px);max-width:none;max-height:none;background:var(--bg);color:var(--ink);box-shadow:0 20px 60px rgba(0,0,0,.35);display:none;flex-direction:column}
+dialog#viewer[open]{display:flex}
+dialog#viewer::backdrop{background:rgba(17,17,17,.7)}
+html.v-open{overflow:hidden}
+.v-head{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;padding:1.1rem 1.25rem;background:var(--paper);border-bottom:1px solid var(--soft)}
+.v-head h2{font-size:clamp(1.2rem,2.4vw,1.7rem);line-height:1.15}
+.v-head p{font-size:.78rem;color:var(--muted);margin-top:.3rem}
+.v-actions{display:flex;gap:.5rem;align-items:center;flex:none}
+.v-btn{font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;background:var(--ink);color:var(--bg);padding:.55rem .85rem;border:1.5px solid var(--ink);white-space:nowrap}
+.v-btn.ghost{background:transparent;color:var(--ink)}
+.v-btn:hover{background:var(--orange);border-color:var(--orange);color:#fff}
+.v-close{font:inherit;font-size:1.6rem;line-height:1;width:2.4rem;height:2.4rem;border:0;background:transparent;cursor:pointer;color:var(--ink)}
+.v-close:hover{color:var(--orange)}
+.v-body{flex:1;overflow:auto;padding:1.25rem;display:flex;flex-direction:column;align-items:center;gap:1rem;-webkit-overflow-scrolling:touch}
+.v-body img{width:100%;max-width:900px;height:auto;background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.12)}
+.v-text{max-width:760px;width:100%;background:var(--paper);padding:clamp(1.25rem,3vw,2.25rem)}
+.v-text h3{font-size:1.5rem;margin:2rem 0 .9rem}
+.v-lead{font-size:1.02rem}
+.v-steps{margin:0;padding-left:1.2rem;font-size:.95rem}
+.v-steps li{margin-bottom:.55rem}
+.v-guides{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.v-guides div{border-top:4px solid var(--blue);background:var(--bg);padding:1rem}
+.v-guides div:nth-child(2){border-color:var(--orange)}.v-guides div:nth-child(3){border-color:var(--sage)}.v-guides div:nth-child(4){border-color:var(--navy)}
+.v-guides span{font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.v-guides b{display:block;font-family:var(--serif);font-weight:400;font-size:1.2rem;line-height:1.15;margin:.3rem 0 .45rem}
+.v-guides p{font-size:.85rem;color:var(--muted);line-height:1.6}
+a.guide-mock{cursor:pointer}
+@media (max-width: 700px){
+  dialog#viewer{width:100vw;height:100dvh;max-height:100dvh}
+  .v-head{flex-direction:column}
+  .v-actions{width:100%;flex-wrap:wrap}
+  .v-close{position:absolute;top:.6rem;right:.6rem}
+  .v-head>div:first-child{padding-right:2.5rem}
+  .v-body{padding:.75rem}
+  .v-guides{grid-template-columns:1fr}
+}
+
 /* ---------- CONTACT ---------- */
 #contact{background:var(--paper);padding:clamp(4rem,9vw,7rem) 0 clamp(3rem,7vw,5rem);border-top:1px solid var(--soft)}
 #contact h2{font-size:clamp(3.25rem,7vw,5.5rem)}
@@ -603,16 +641,16 @@ footer a{text-decoration:none}
       <div class="pf-grid" id="pf-grid">
         <article class="pf pf-wide" data-cat="dash">
           <div class="pv gallery">
-            <a href="assets/celonis/01-overview.jpg" target="_blank" rel="noopener" class="g-main"><img src="assets/celonis/01-overview.jpg" alt="Celonis dashboard main overview: 19,953 orders, 210,104 events, 87.34% on-time delivery, process explorer" loading="lazy"></a>
-            <a href="assets/celonis/04-factories.jpg" target="_blank" rel="noopener"><img src="assets/celonis/04-factories.jpg" alt="Factory performance view with on-time delivery rate per factory" loading="lazy"></a>
-            <a href="assets/celonis/05-delivery.jpg" target="_blank" rel="noopener"><img src="assets/celonis/05-delivery.jpg" alt="Delivery company performance view" loading="lazy"></a>
-            <a href="assets/celonis/07-business-case.jpg" target="_blank" rel="noopener"><img src="assets/celonis/07-business-case.jpg" alt="Business case calculator: losses and potential revenue by product type" loading="lazy"></a>
+            <a data-view="celonis" href="assets/celonis/01-overview.jpg" class="g-main"><img src="assets/celonis/01-overview.jpg" alt="Celonis dashboard main overview: 19,953 orders, 210,104 events, 87.34% on-time delivery, process explorer" loading="lazy"></a>
+            <a data-view="celonis" href="assets/celonis/04-factories.jpg"><img src="assets/celonis/04-factories.jpg" alt="Factory performance view with on-time delivery rate per factory" loading="lazy"></a>
+            <a data-view="celonis" href="assets/celonis/05-delivery.jpg"><img src="assets/celonis/05-delivery.jpg" alt="Delivery company performance view" loading="lazy"></a>
+            <a data-view="celonis" href="assets/celonis/07-business-case.jpg"><img src="assets/celonis/07-business-case.jpg" alt="Business case calculator: losses and potential revenue by product type" loading="lazy"></a>
           </div>
           <div class="pf-body">
             <p class="pf-label">Dashboard · Celonis · Process mining</p>
             <h3>Case Analysis Dashboard: Order to Cash</h3>
             <p>A seven-view process mining dashboard for a case company's order-to-cash process: 19,953 orders and 210,104 events. It covers the process explorer, automation rate by warehouse type, make-to-order vs. make-to-stock, on-time delivery by factory and delivery company, customer markets, and a business case calculator for losses from late deliveries (current on-time delivery 87.34%).</p>
-            <p class="pf-links"><a href="assets/celonis/celonis-case-analysis-dashboard.pdf" target="_blank" rel="noopener">View full dashboard (PDF)</a></p>
+            <p class="pf-links"><a data-view="celonis" href="assets/celonis/celonis-case-analysis-dashboard.pdf">View all 7 dashboard views</a></p>
           </div>
         </article>
         <article class="pf " data-cat="dash">
@@ -632,16 +670,16 @@ footer a{text-decoration:none}
           </div>
         </article>
         <article class="pf" data-cat="code">
-          <a class="pv doc shot" href="assets/service-portal.jpg" target="_blank" rel="noopener"><img src="assets/service-portal.jpg" alt="RMtek service portal page for an Altivar 61 drive: availability, article and serial number, spare parts, documents and contact options" loading="lazy"></a>
+          <a data-view="portal" class="pv doc shot" href="assets/service-portal.jpg"><img src="assets/service-portal.jpg" alt="RMtek service portal page for an Altivar 61 drive: availability, article and serial number, spare parts, documents and contact options" loading="lazy"></a>
           <div class="pf-body">
             <p class="pf-label">Programming · PHP &amp; SQL</p>
             <h3>Service portal for field staff</h3>
             <p>A service portal page in RMtek's webshop for offsite service staff, opened from a QR code on the device. It looks up the device by article and serial number and shows its availability, matching spare parts, documents for operating, installation, catalogue and maintenance, and direct contact and repair-form options.</p>
-            <p class="pf-links"><a href="assets/service-portal.jpg" target="_blank" rel="noopener">View full screenshot</a></p>
+            <p class="pf-links"><a data-view="portal" href="assets/service-portal.jpg">View full screenshot</a></p>
           </div>
         </article>
         <article class="pf" data-cat="code">
-          <a class="pv doc shot" href="https://www.ebay.de/itm/198565061430" target="_blank" rel="noopener"><img src="assets/ebay-template.jpg" alt="RMtek eBay listing built with the custom template: branded header, category menu, product photo and specification table" loading="lazy"></a>
+          <a data-view="ebay" class="pv doc shot" href="assets/ebay-template.jpg"><img src="assets/ebay-template.jpg" alt="RMtek eBay listing built with the custom template: branded header, category menu, product photo and specification table" loading="lazy"></a>
           <div class="pf-body">
             <p class="pf-label">Programming · DotLiquid · eBay</p>
             <h3>eBay listing templates</h3>
@@ -674,13 +712,13 @@ footer a{text-decoration:none}
           </div>
         </article>
         <article class="pf" data-cat="research">
-          <a class="pv doc" href="assets/research/generation-x-y-jmr-2019.pdf" target="_blank" rel="noopener"><img src="assets/research/generation-x-y.jpg" alt="First page of the published article Generation X and Y: Impact of Work Attitudes and Work Values on Employee Performance" loading="lazy"></a>
+          <a data-view="thesis" class="pv doc" href="assets/research/generation-x-y-jmr-2019.pdf"><img src="assets/research/generation-x-y.jpg" alt="First page of the published article Generation X and Y: Impact of Work Attitudes and Work Values on Employee Performance" loading="lazy"></a>
           <div class="pf-body">
             <p class="pf-label">Thesis · Peer-reviewed · 2019</p>
             <h3>Generation X and Y: Impact of Work Attitudes and Work Values on Employee Performance</h3>
             <p>Survey of 300 Generation X and Y employees at commercial banks in Karachi. Work values and attitudes were significantly related to performance for both generations: cognitive and social values mattered most for Generation X, cognitive, instrumental and prestige values for Generation Y.</p>
             <p>Usmani, S., Asif, M. H., Mahmood, M. Z., Khan, M. Y., &amp; Burhan, M. (2019). Journal of Management and Research, 6(2), 51–84. doi:10.29145/jmr/62/060203. Published under CC BY 4.0.</p>
-            <p class="pf-links"><a href="assets/research/generation-x-y-jmr-2019.pdf" target="_blank" rel="noopener">Download paper (PDF)</a> <a href="https://ojs.umt.edu.pk/index.php/jmr/article/view/258" target="_blank" rel="noopener">View on journal site</a></p>
+            <p class="pf-links"><a data-view="thesis" href="assets/research/generation-x-y-jmr-2019.pdf">Read the paper</a> <a href="https://ojs.umt.edu.pk/index.php/jmr/article/view/258" target="_blank" rel="noopener">View on journal site</a></p>
           </div>
         </article>
         <article class="pf " data-cat="research">
@@ -700,39 +738,39 @@ footer a{text-decoration:none}
           </div>
         </article>
         <article class="pf" data-cat="research">
-          <a class="pv doc" href="assets/research/selfefficacy-preview.pdf" target="_blank" rel="noopener"><img src="assets/research/selfefficacy.jpg" alt="Abstract page of the IT and AI self-efficacy seminar paper" loading="lazy"></a>
+          <a data-view="selfefficacy" class="pv doc" href="assets/research/selfefficacy-preview.pdf"><img src="assets/research/selfefficacy.jpg" alt="Abstract page of the IT and AI self-efficacy seminar paper" loading="lazy"></a>
           <div class="pf-body">
             <p class="pf-label">Research seminar · FAU · 2026</p>
             <h3>IT and AI Self-efficacy: Success Attribution, Task Performance and Imposter Syndrome</h3>
             <p>Cross-sectional study of graduate students learning data analysis, testing four moderated research models with linear regression. AI self-efficacy showed a positive and stronger relationship with perceived task performance than IT self-efficacy, and imposter syndrome moderated the effect of IT self-efficacy.</p>
-            <p class="pf-links"><a href="assets/research/selfefficacy-preview.pdf" target="_blank" rel="noopener">Read preview (7 pages, PDF)</a></p>
+            <p class="pf-links"><a data-view="selfefficacy" href="assets/research/selfefficacy-preview.pdf">Read preview (7 pages)</a></p>
           </div>
         </article>
         <article class="pf" data-cat="research">
-          <a class="pv doc" href="assets/research/immersive-preview.pdf" target="_blank" rel="noopener"><img src="assets/research/immersive.jpg" alt="Abstract page of the immersive retail seminar paper" loading="lazy"></a>
+          <a data-view="immersive" class="pv doc" href="assets/research/immersive-preview.pdf"><img src="assets/research/immersive.jpg" alt="Abstract page of the immersive retail seminar paper" loading="lazy"></a>
           <div class="pf-body">
             <p class="pf-label">Research seminar · FAU · 2026 · Group paper</p>
             <h3>Which Technologies Will Become Relevant for Immersive Retail Concepts in the Future?</h3>
             <p>A systematic literature review builds a framework of three factors: consumer experience, technology value and economic viability. Applied to holograms, neurotechnology and agentic AI, it identifies agentic AI as the most viable future innovation for retailers.</p>
-            <p class="pf-links"><a href="assets/research/immersive-preview.pdf" target="_blank" rel="noopener">Read preview (4 pages, PDF)</a></p>
+            <p class="pf-links"><a data-view="immersive" href="assets/research/immersive-preview.pdf">Read preview (4 pages)</a></p>
           </div>
         </article>
         <article class="pf" data-cat="research">
-          <a class="pv doc" href="assets/research/ip-vc-preview.pdf" target="_blank" rel="noopener"><img src="assets/research/ip-vc.jpg" alt="Introduction page of the IP and venture capital seminar paper" loading="lazy"></a>
+          <a data-view="ip-vc" class="pv doc" href="assets/research/ip-vc-preview.pdf"><img src="assets/research/ip-vc.jpg" alt="Introduction page of the IP and venture capital seminar paper" loading="lazy"></a>
           <div class="pf-body">
             <p class="pf-label">Seminar paper · FAU · 2026</p>
             <h3>Relevance of IP in Venture Capital Financing for a Start-Up</h3>
             <p>Examines how patents help start-ups attract venture capital, with a case study of Rescale, the cloud simulation company whose growing patent portfolio accompanied its funding rounds from Series B to Series D.</p>
-            <p class="pf-links"><a href="assets/research/ip-vc-preview.pdf" target="_blank" rel="noopener">Read preview (2 pages, PDF)</a></p>
+            <p class="pf-links"><a data-view="ip-vc" href="assets/research/ip-vc-preview.pdf">Read preview (2 pages)</a></p>
           </div>
         </article>
         <article class="pf" data-cat="research">
-          <a class="pv doc" href="assets/research/green-loyalty-preview.pdf" target="_blank" rel="noopener"><img src="assets/research/green-loyalty.jpg" alt="Introduction page of the green employee loyalty research report" loading="lazy"></a>
+          <a data-view="green-loyalty" class="pv doc" href="assets/research/green-loyalty-preview.pdf"><img src="assets/research/green-loyalty.jpg" alt="Introduction page of the green employee loyalty research report" loading="lazy"></a>
           <div class="pf-body">
             <p class="pf-label">Group research project · IoBM · MBA</p>
             <h3>Effect of Environmental Strategies and CSR on Green Employee Loyalty</h3>
             <p>Quantitative survey study in Karachi on how environmental strategy and corporate social responsibility affect green employee loyalty, with green product attitude and green trust as moderators, analysed with regression in SmartPLS.</p>
-            <p class="pf-links"><a href="assets/research/green-loyalty-preview.pdf" target="_blank" rel="noopener">Read preview (6 pages, PDF)</a></p>
+            <p class="pf-links"><a data-view="green-loyalty" href="assets/research/green-loyalty-preview.pdf">Read preview (6 pages)</a></p>
           </div>
         </article>
         <article class="pf " data-cat="research">
@@ -744,17 +782,18 @@ footer a{text-decoration:none}
           </div>
         </article>
         <article class="pf" data-cat="writing">
-          <div class="pv guide-mock" aria-hidden="true">
+          <a data-view="guides" href="#guides" class="pv guide-mock" aria-label="Read about the process guides">
             <div class="gm-page">
               <div class="gm-head"><span>Guide · JTL-Wawi</span><b>Process name</b></div>
               <div class="gm-step"><i>1</i><div><em></em><em class="s"></em><div class="gm-shot"><span></span></div></div></div>
               <div class="gm-step"><i>2</i><div><em></em><em class="s"></em></div></div>
             </div>
-          </div>
+          </a>
           <div class="pf-body">
             <p class="pf-label">Technical documentation · RMtek</p>
             <h3>Process guides &amp; video manuals</h3>
             <p>Step-by-step guides and video manuals I write so colleagues can handle everyday JTL-Wawi and webshop processes on their own. Written in English with the German JTL interface terms and built around annotated screenshots. The guides are internal to RMtek.</p>
+            <p class="pf-links"><a data-view="guides" href="#guides">Read about the guides</a></p>
           </div>
         </article>
         <article class="pf " data-cat="writing">
@@ -804,6 +843,33 @@ footer a{text-decoration:none}
   </section>
 </main>
 
+<dialog id="viewer" aria-labelledby="v-title">
+  <div class="v-head">
+    <div><h2 id="v-title"></h2><p id="v-sub"></p></div>
+    <div class="v-actions"><a id="v-dl" class="v-btn" download hidden></a><a id="v-ext" class="v-btn ghost" target="_blank" rel="noopener" hidden></a><button type="button" class="v-close" aria-label="Close">×</button></div>
+  </div>
+  <div class="v-body" id="v-body"></div>
+</dialog>
+<template id="tpl-guides">
+  <div class="v-text">
+    <p class="v-lead">I write step-by-step guides so colleagues at RMtek can run everyday ERP and webshop processes on their own, without having to ask. The full guides stay internal; here is how they are built and a few examples of what they cover.</p>
+    <h3>How each guide is built</h3>
+    <ol class="v-steps">
+      <li><b>Goal first.</b> What the process achieves and when to use it.</li>
+      <li><b>Numbered steps in the software's own words.</b> Written in English, with the exact German menu and button names from JTL-Wawi, so nobody has to translate on screen.</li>
+      <li><b>Annotated screenshots.</b> Every step shows where to click, with the relevant field highlighted.</li>
+      <li><b>Notes and pitfalls.</b> Edge cases, things that must match exactly, and what went wrong last time.</li>
+      <li><b>Video manuals.</b> Short screen recordings for the trickier processes.</li>
+    </ol>
+    <h3>A few examples</h3>
+    <div class="v-guides">
+      <div><span>Returns</span><b>Customer returns, end to end</b><p>Booking a return from the original order, recording quantities and reasons, a standard comment format so everyone can see whether a replacement was sent, booking the item back into stock on arrival, and closing the case.</p></div>
+      <div><span>Product data</span><b>Product variations</b><p>Setting up variations on a parent article, linking existing articles as child items, controlling how variations appear in the shop, unlinking them again, and preparing bulk imports.</p></div>
+      <div><span>Webshop</span><b>Updating the webshop safely</b><p>A checklist for JTL-Shop updates: backup, maintenance mode, pausing the ERP sync, handling plugins, merging the new files, running the update and restoring theme settings afterwards, with notes from real updates.</p></div>
+      <div><span>Invoicing</span><b>Proforma invoices</b><p>Creating a proforma invoice from an existing order by switching the output template set, and checking the preview before sending.</p></div>
+    </div>
+  </div>
+</template>
 <footer>
   <div class="wrap"><span>© 2026 Yousuf Khan</span><a href="#top">Back to top ↑</a></div>
 </footer>
@@ -815,6 +881,32 @@ footer a{text-decoration:none}
     btns.forEach(function(x){x.setAttribute('aria-pressed',String(x===b))});
     cards.forEach(function(c){c.hidden=!(f==='all'||c.getAttribute('data-cat')===f)});
   })});
+})();
+</script>
+<script>
+(function(){
+  var VIEWS={"celonis": {"title": "Case Analysis Dashboard: Order to Cash", "sub": "Celonis process mining dashboard, 7 views", "images": ["assets/celonis/01-overview.jpg", "assets/celonis/02-warehouse-type.jpg", "assets/celonis/03-production-strategy.jpg", "assets/celonis/04-factories.jpg", "assets/celonis/05-delivery.jpg", "assets/celonis/06-market-delivery.jpg", "assets/celonis/07-business-case.jpg"], "download": "assets/celonis/celonis-case-analysis-dashboard.pdf", "dlabel": "Download PDF"}, "portal": {"title": "Service portal for field staff", "sub": "RMtek webshop · PHP & SQL", "images": ["assets/service-portal.jpg"]}, "ebay": {"title": "eBay listing template", "sub": "DotLiquid · JTL eazyAuction", "images": ["assets/ebay-template.jpg"], "external": "https://www.ebay.de/itm/198565061430", "elabel": "See live listing on eBay"}, "thesis": {"title": "Generation X and Y: Impact of Work Attitudes and Work Values on Employee Performance", "sub": "Journal of Management and Research, 6(2), 2019 · CC BY 4.0", "images": ["assets/pages/thesis/p01.jpg", "assets/pages/thesis/p02.jpg", "assets/pages/thesis/p03.jpg", "assets/pages/thesis/p04.jpg", "assets/pages/thesis/p05.jpg", "assets/pages/thesis/p06.jpg", "assets/pages/thesis/p07.jpg", "assets/pages/thesis/p08.jpg", "assets/pages/thesis/p09.jpg", "assets/pages/thesis/p10.jpg", "assets/pages/thesis/p11.jpg", "assets/pages/thesis/p12.jpg", "assets/pages/thesis/p13.jpg", "assets/pages/thesis/p14.jpg", "assets/pages/thesis/p15.jpg", "assets/pages/thesis/p16.jpg", "assets/pages/thesis/p17.jpg", "assets/pages/thesis/p18.jpg", "assets/pages/thesis/p19.jpg", "assets/pages/thesis/p20.jpg", "assets/pages/thesis/p21.jpg", "assets/pages/thesis/p22.jpg", "assets/pages/thesis/p23.jpg", "assets/pages/thesis/p24.jpg", "assets/pages/thesis/p25.jpg", "assets/pages/thesis/p26.jpg", "assets/pages/thesis/p27.jpg", "assets/pages/thesis/p28.jpg", "assets/pages/thesis/p29.jpg", "assets/pages/thesis/p30.jpg", "assets/pages/thesis/p31.jpg", "assets/pages/thesis/p32.jpg", "assets/pages/thesis/p33.jpg", "assets/pages/thesis/p34.jpg"], "download": "assets/research/generation-x-y-jmr-2019.pdf", "dlabel": "Download PDF", "external": "https://ojs.umt.edu.pk/index.php/jmr/article/view/258", "elabel": "Journal site"}, "selfefficacy": {"title": "IT and AI Self-efficacy", "sub": "Preview: abstract to introduction", "images": ["assets/pages/selfefficacy/p01.jpg", "assets/pages/selfefficacy/p02.jpg", "assets/pages/selfefficacy/p03.jpg", "assets/pages/selfefficacy/p04.jpg", "assets/pages/selfefficacy/p05.jpg", "assets/pages/selfefficacy/p06.jpg", "assets/pages/selfefficacy/p07.jpg"], "download": "assets/research/selfefficacy-preview.pdf", "dlabel": "Download preview"}, "immersive": {"title": "Which Technologies Will Become Relevant for Immersive Retail Concepts in the Future?", "sub": "Preview: abstract to introduction", "images": ["assets/pages/immersive/p01.jpg", "assets/pages/immersive/p02.jpg", "assets/pages/immersive/p03.jpg", "assets/pages/immersive/p04.jpg"], "download": "assets/research/immersive-preview.pdf", "dlabel": "Download preview"}, "ip-vc": {"title": "Relevance of IP in Venture Capital Financing for a Start-Up", "sub": "Preview: contents and introduction", "images": ["assets/pages/ip-vc/p01.jpg", "assets/pages/ip-vc/p02.jpg"], "download": "assets/research/ip-vc-preview.pdf", "dlabel": "Download preview"}, "green-loyalty": {"title": "Effect of Environmental Strategies and CSR on Green Employee Loyalty", "sub": "Preview: contents and introduction", "images": ["assets/pages/green-loyalty/p01.jpg", "assets/pages/green-loyalty/p02.jpg", "assets/pages/green-loyalty/p03.jpg", "assets/pages/green-loyalty/p04.jpg", "assets/pages/green-loyalty/p05.jpg", "assets/pages/green-loyalty/p06.jpg"], "download": "assets/research/green-loyalty-preview.pdf", "dlabel": "Download preview"}, "guides": {"title": "Process guides & video manuals", "sub": "Technical documentation · RMtek", "template": "tpl-guides"}};
+  var dlg=document.getElementById('viewer'), body=document.getElementById('v-body');
+  if(!dlg||typeof dlg.showModal!=='function') return;
+  function set(el,href,label){ if(href){el.href=href;el.textContent=label;el.hidden=false}else{el.hidden=true;el.removeAttribute('href')} }
+  function open(key){
+    var v=VIEWS[key]; if(!v) return false;
+    document.getElementById('v-title').textContent=v.title;
+    document.getElementById('v-sub').textContent=v.sub||'';
+    set(document.getElementById('v-dl'),v.download,v.dlabel);
+    set(document.getElementById('v-ext'),v.external,v.elabel);
+    body.innerHTML='';
+    if(v.template){ body.appendChild(document.getElementById(v.template).content.cloneNode(true)); }
+    else { (v.images||[]).forEach(function(src,i){ var img=document.createElement('img'); img.src=src; img.loading=i<2?'eager':'lazy'; img.alt=v.title+(v.images.length>1?' – page '+(i+1):''); body.appendChild(img); }); }
+    body.scrollTop=0; dlg.showModal(); document.documentElement.classList.add('v-open'); return true;
+  }
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('[data-view]'); if(!a) return;
+    if(open(a.getAttribute('data-view'))) e.preventDefault();
+  });
+  dlg.querySelector('.v-close').addEventListener('click',function(){dlg.close()});
+  dlg.addEventListener('click',function(e){ if(e.target===dlg) dlg.close(); });
+  dlg.addEventListener('close',function(){ document.documentElement.classList.remove('v-open'); body.innerHTML=''; });
 })();
 </script>
 </body>
