@@ -16,7 +16,7 @@
 <style>
 :root{
   --bg:#F5F5F4; --paper:#FFFFFF; --ink:#111111; --muted:#5B5B5B; --line:#1A1A1A; --soft:#E9E7E4;
-  --orange:#EE5A2F; --blue:#3A86D6; --navy:#2F4F9C; --blush:#F2B8B0; --cream:#FBF4EC; --sage:#8A9A6B; --wall:#E8DCD9;
+  --orange:#3A7A53; --pastel:#BDE5C8; --mint:#86C49A; --blue:#86C49A; --navy:#3A7A53; --blush:#F2B8B0; --cream:#FBF4EC; --sage:#8A9A6B; --wall:#E8DCD9;
   --serif:"Gloock",Georgia,"Times New Roman",serif;
   --sans:"Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
 }
@@ -43,7 +43,7 @@ a{color:inherit}
 .nav ul a:hover{color:var(--orange)}
 
 /* ---------- HOME ---------- */
-.hero{display:grid;grid-template-columns:1fr 1fr;min-height:min(92vh,820px)}
+.hero{display:grid;grid-template-columns:1fr;min-height:0}
 .hero-text{display:flex;flex-direction:column;justify-content:space-between;padding:clamp(3rem,8vw,6rem) clamp(1rem,5vw,4.5rem) clamp(2.5rem,6vw,5rem)}
 .hero-text .top{text-align:center}
 .hero h1{font-size:clamp(4.25rem,11vw,9.5rem);line-height:.95;margin-top:2.5rem}
@@ -153,7 +153,7 @@ section.page{background:var(--paper);padding:clamp(4rem,9vw,7rem) 0}
 .langs .lv{grid-column:1;font-size:.75rem;color:var(--muted)}
 .langs .dots{grid-column:2;grid-row:1/3;display:flex;gap:4px}
 .langs .dots i{width:9px;height:9px;border-radius:50%;background:var(--soft)}
-.langs .dots i.on{background:var(--orange)}
+.langs .dots i.on{background:var(--mint)}
 .hobbies{display:flex;flex-wrap:wrap;gap:.4rem}
 .hobbies li{font-size:.78rem;padding:.3rem .7rem;border:1px solid var(--soft);background:var(--paper);border-radius:999px}
 
@@ -276,7 +276,7 @@ a.emblem:hover b{color:var(--orange)}
 .gm-head span{font-size:.55rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .gm-head b{font-family:var(--serif);font-weight:400;font-size:1rem}
 .gm-step{display:grid;grid-template-columns:20px 1fr;gap:8px}
-.gm-step i{width:20px;height:20px;border-radius:50%;background:var(--orange);color:#fff;font-style:normal;font-size:.65rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+.gm-step i{width:20px;height:20px;border-radius:50%;background:var(--pastel);color:var(--ink);font-style:normal;font-size:.65rem;font-weight:700;display:flex;align-items:center;justify-content:center}
 .gm-step em{display:block;height:6px;background:var(--soft);margin:3px 0 5px;width:90%}
 .gm-step em.s{width:60%}
 .gm-shot{height:58px;background:var(--bg);border:1px solid var(--soft);position:relative;margin-top:4px}
@@ -325,7 +325,7 @@ html.v-open{overflow:hidden}
 .v-actions{display:flex;gap:.5rem;align-items:center;flex:none}
 .v-btn{font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;background:var(--ink);color:var(--bg);padding:.55rem .85rem;border:1.5px solid var(--ink);white-space:nowrap}
 .v-btn.ghost{background:transparent;color:var(--ink)}
-.v-btn:hover{background:var(--orange);border-color:var(--orange);color:#fff}
+.v-btn:hover{background:var(--pastel);border-color:var(--pastel);color:var(--ink)}
 .v-close{font:inherit;font-size:1.6rem;line-height:1;width:2.4rem;height:2.4rem;border:0;background:transparent;cursor:pointer;color:var(--ink)}
 .v-close:hover{color:var(--orange)}
 .v-body{flex:1;overflow:auto;padding:1.25rem;display:flex;flex-direction:column;align-items:center;gap:1rem;-webkit-overflow-scrolling:touch}
@@ -390,7 +390,7 @@ a.guide-mock{cursor:pointer}
 .js .rv{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.2,.7,.2,1) var(--d,0ms),transform .8s cubic-bezier(.2,.7,.2,1) var(--d,0ms)}
 .js .rv.in{opacity:1;transform:none}
 .js .aboutcard .dots i.on{background:var(--soft);transition:background .35s ease var(--dd,0ms)}
-.js .aboutcard.in .dots i.on{background:var(--orange)}
+.js .aboutcard.in .dots i.on{background:var(--mint)}
 .erp .kpis i{transition:width 1.2s cubic-bezier(.2,.7,.2,1)}
 .st.pop{animation:stpop .5s ease}
 @keyframes stpop{0%{transform:scale(.6);opacity:.2}60%{transform:scale(1.12)}100%{transform:scale(1);opacity:1}}
@@ -463,8 +463,8 @@ a.guide-mock{cursor:pointer}
 .xp{display:grid;grid-template-columns:200px minmax(0,1fr);gap:2.5rem;max-width:900px}
 .xp-tabs{display:flex;flex-direction:column;border-left:2px solid var(--soft);align-self:start}
 .xp-tabs button{font:inherit;font-family:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;font-size:.82rem;text-align:left;padding:.85rem 1.2rem;background:transparent;border:0;border-left:2px solid transparent;margin-left:-2px;color:var(--muted);cursor:pointer;white-space:nowrap;transition:color .2s,background .2s,border-color .2s}
-.xp-tabs button:hover{color:var(--orange);background:var(--bg)}
-.xp-tabs button[aria-selected="true"]{color:var(--orange);border-left-color:var(--orange);background:var(--bg)}
+.xp-tabs button:hover{color:var(--orange);background:color-mix(in srgb,var(--pastel) 25%,transparent)}
+.xp-tabs button[aria-selected="true"]{color:var(--orange);border-left-color:var(--orange);background:color-mix(in srgb,var(--pastel) 40%,transparent)}
 .xp-panel h3{font-family:var(--sans);font-weight:600;font-size:1.3rem;line-height:1.3;margin:0}
 .xp-panel .at{color:var(--orange)}
 .xp-meta{font-family:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;font-size:.8rem;color:var(--muted);margin:.4rem 0 1rem}
@@ -491,7 +491,7 @@ a.guide-mock{cursor:pointer}
 .skills{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:2rem 2.5rem;max-width:1000px}
 .sk-group h3{font-family:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;font-size:.8rem;font-weight:400;color:var(--orange);letter-spacing:.04em;margin:0 0 .8rem}
 .sk-group ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem}
-.sk-group li{font-size:.82rem;padding:.3rem .7rem;background:var(--bg);border:1px solid var(--soft);border-radius:999px}
+.sk-group li{font-size:.82rem;padding:.3rem .7rem;background:color-mix(in srgb,var(--pastel) 30%,var(--paper));border:1px solid color-mix(in srgb,var(--pastel) 70%,var(--soft));border-radius:999px}
 /* ---------- CONTACT FORM ---------- */
 .cform{margin-top:2.5rem;display:grid;gap:1rem;max-width:520px}
 .cform h3{font-size:1.5rem;margin-bottom:.2rem}
@@ -501,7 +501,7 @@ a.guide-mock{cursor:pointer}
 .cform input:focus,.cform textarea:focus{outline:none;border-color:var(--ink)}
 .cform .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 .cform button{justify-self:start;font:inherit;font-size:.75rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:.9rem 1.6rem;background:var(--ink);color:var(--bg);border:1.5px solid var(--ink);cursor:pointer}
-.cform button:hover:not(:disabled){background:var(--orange);border-color:var(--orange)}
+.cform button:hover:not(:disabled){background:var(--pastel);border-color:var(--pastel);color:var(--ink)}
 .cform button:disabled{opacity:.6;cursor:wait}
 .cform-err{color:#C0392B;font-size:.85rem;margin:0}
 .toast{position:fixed;left:50%;bottom:2rem;transform:translate(-50%,150%);background:var(--ink);color:var(--bg);padding:1rem 1.4rem;font-size:.95rem;z-index:100;box-shadow:0 10px 30px rgba(0,0,0,.25);display:flex;gap:.7rem;align-items:center;opacity:0;pointer-events:none;transition:transform .4s cubic-bezier(.2,.7,.2,1),opacity .4s;max-width:calc(100vw - 2rem)}
@@ -509,6 +509,8 @@ a.guide-mock{cursor:pointer}
 .toast::before{content:"✓";display:inline-grid;place-items:center;width:1.5rem;height:1.5rem;border-radius:50%;background:#3BA55C;color:#fff;font-size:.85rem;flex:none}
 .toast small{display:block;opacity:.7;font-size:.8rem}
 
+::selection{background:var(--pastel);color:var(--ink)}
+.pf-tabs button[aria-pressed="true"]{background:var(--ink)}
 /* ---------- CONTACT ---------- */
 #contact{background:var(--paper);padding:clamp(4rem,9vw,7rem) 0 clamp(3rem,7vw,5rem);border-top:1px solid var(--soft)}
 #contact h2{font-size:clamp(2.6rem,7vw,5.5rem)}
@@ -619,75 +621,7 @@ footer a{text-decoration:none}
         <a class="caps uline" href="#contact">Contact</a>
       </div>
     </div>
-    <div class="hero-art" aria-hidden="true">
-      <div class="moon"></div>
-      <div class="desk"></div>
-      <div class="vase"></div>
-      <div class="laptop">
-        <div class="lid"><div class="screen">
-          <div class="erp">
-            <div class="erp-side"><b>ERP</b><span class="on">Orders</span><span>Shipments</span><span>Stock</span><span>EDI</span><span>Reports</span></div>
-            <div class="erp-main">
-              <div class="erp-top"><b>Shipments</b><span>Today</span></div>
-              <div class="kpis"><div><small>Received</small><b>Orders</b><i style="width:86%" class="b"></i></div><div><small>Picked</small><b>Warehouse</b><i style="width:64%" class="p"></i></div><div><small>Dispatched</small><b>Carrier</b><i style="width:48%" class="o"></i></div></div>
-              <div class="rows">
-                <div><span>Order · DE</span><em class="st b">Received</em></div>
-                <div><span>Order · EN</span><em class="st p">Picked</em></div>
-                <div><span>Order · eBay</span><em class="st o">Dispatched</em></div>
-                <div><span>Order · DE</span><em class="st s">Delivered</em></div>
-              </div>
-            </div>
-          </div>
-        </div></div>
-        <div class="base"></div>
-      </div>
-    </div>
   </section>
-
-  <div class="wrap">
-    <div class="strip" aria-label="Work preview">
-      <div class="tile t-blue">
-        <div class="hd"><small>JTL-Wawi</small>ERP, every day.</div>
-        <div class="bd">
-          <b>Systems that run <em>on time!</em></b>
-          <div class="pill">Maintenance &amp; operation</div>
-          <div class="pill">Order workflows</div>
-          <div class="pill">Webshop &amp; eBay</div>
-        </div>
-      </div>
-      <div class="phone" aria-label="Webshop mockup">
-        <div class="scr">
-          <div class="shop-hd"><span>RMTEK</span><span>DE · EN</span></div>
-          <div class="shop-hero">Built,<br>launched,<br>selling.</div>
-          <div class="lang">Webshop</div>
-          <div class="shop-grid"><i></i><i></i><i></i><i></i></div>
-        </div>
-      </div>
-      <div class="tile t-orange">
-        <div class="arch">
-          <svg viewBox="0 0 200 120" aria-hidden="true">
-            <path id="arc1" d="M 22 112 A 78 78 0 0 1 178 112" fill="none"/>
-            <text font-family="Montserrat, sans-serif" font-weight="800" font-size="19" letter-spacing="3" fill="#2F4F9C"><textPath href="#arc1" startOffset="50%" text-anchor="middle">TOP PLANNER</textPath></text>
-          </svg>
-          <svg class="crane" viewBox="0 0 64 64" aria-hidden="true" style="position:static;width:34%"><g fill="#2F4F9C"><rect x="8" y="10" width="48" height="5"/><rect x="14" y="15" width="5" height="40"/><rect x="40" y="15" width="5" height="40"/><rect x="26" y="15" width="2" height="16"/><rect x="20" y="31" width="14" height="9"/><rect x="6" y="55" width="52" height="4"/></g></svg>
-          <span class="big">OF THE YEAR</span>
-          <span class="sm">Hutchison Ports Pakistan</span>
-        </div>
-      </div>
-      <div class="t-stack">
-        <div class="tile t-blue">
-          <div class="bd" style="padding-bottom:.4rem"><b style="font-size:.8rem;font-weight:600">Order <em>of the day</em></b></div>
-          <div class="hd" style="font-family:var(--sans);font-size:.85rem;font-weight:600">A new order lands. The warehouse already knows.</div>
-        </div>
-        <div class="t-blush">
-          <small>Automated ERP workflow</small>
-          <b>Dispatch &amp; Ship</b>
-          <div class="mail"><i></i><strong>To: Lager</strong><span>New order, ready to pick</span></div>
-        </div>
-      </div>
-    </div>
-    <p class="see"><a class="caps uline" href="#portfolio" style="padding-inline:clamp(2rem,15vw,12rem)">See my portfolio</a></p>
-  </div>
 
   <!-- ABOUT -->
   <section class="page" id="about" aria-labelledby="bio-title">
