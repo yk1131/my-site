@@ -441,6 +441,11 @@ a.guide-mock{cursor:pointer}
   .hero-art{min-height:440px}
   .bio{grid-template-columns:1fr}
   .bio>div:first-child{display:none}
+  .bio .copy{column-count:2;column-gap:clamp(2.5rem,4vw,4rem)}
+  .bio .statement{column-span:all;max-width:22ch}
+  .bio .copy p{max-width:none;margin:0 0 1.4rem;orphans:3;widows:3}
+  .bio .copy p:first-of-type{margin-top:0}
+  .bio .copy .statement{margin-bottom:2.5rem}
   .bg-ex{grid-template-columns:1fr 1fr}
   .strip{grid-template-columns:repeat(2,minmax(0,1fr))}
   .pf-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
