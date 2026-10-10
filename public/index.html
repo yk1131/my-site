@@ -500,7 +500,7 @@ a.guide-mock{cursor:pointer}
 .sk-group ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem}
 .sk-group li{font-size:.82rem;padding:.3rem .7rem;background:color-mix(in srgb,var(--pastel) 30%,var(--paper));border:1px solid color-mix(in srgb,var(--pastel) 70%,var(--soft));border-radius:999px}
 /* ---------- CONTACT FORM ---------- */
-.cform{margin-top:2.5rem;display:grid;gap:1rem;max-width:520px}
+.cform{margin-top:0;display:grid;gap:1rem;max-width:520px}
 .cform h3{font-size:1.5rem;margin-bottom:.2rem}
 .cform label{display:grid;gap:.35rem;font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
 .cform input,.cform textarea{font:inherit;font-size:1rem;letter-spacing:0;text-transform:none;font-weight:400;padding:.75rem .9rem;border:1.5px solid var(--soft);background:var(--bg);color:var(--ink);border-radius:0;width:100%}
@@ -522,12 +522,12 @@ a.guide-mock{cursor:pointer}
 #contact{background:var(--paper);padding:clamp(4rem,9vw,7rem) 0 clamp(3rem,7vw,5rem);border-top:1px solid var(--soft)}
 #contact h2{font-size:clamp(2.6rem,7vw,5.5rem)}
 h1,h2,h3{overflow-wrap:break-word;hyphens:auto}
-.contact{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(2rem,8vw,10rem);margin-top:clamp(3rem,7vw,6rem);align-items:center}
+.contact{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(2rem,4vw,3.5rem);margin-top:clamp(3rem,7vw,6rem);align-items:start}
 .photo.p3{aspect-ratio:1.72}
 .photo.p3 .mono{background:linear-gradient(120deg,var(--wall),#d9cfc6)}
 .contact dl{margin:0;display:grid;gap:2rem}
 .contact dt{margin-bottom:.6rem}
-.contact dd{margin:0;font-family:var(--serif);font-size:clamp(1.15rem,1.8vw,1.45rem);line-height:1.3}
+.contact dd{margin:0;font-family:var(--serif);font-size:clamp(1.1rem,1.45vw,1.35rem);line-height:1.3}
 .contact dd a{text-decoration:none;border-bottom:1px solid transparent;overflow-wrap:anywhere}
 .contact dd a:hover{border-color:var(--ink)}
 .contact .note{margin-top:2.5rem;font-size:.95rem;color:var(--muted);max-width:44ch}
@@ -956,7 +956,6 @@ footer a{text-decoration:none}
     <div class="wrap">
       <h2 id="contact-title">Work with me</h2>
       <div class="contact">
-        <div class="photo p3"><div class="mono">YK</div></div>
         <div>
           <dl>
             <div><dt class="label">LinkedIn</dt><dd><a href="https://linkedin.com/in/yousufkhan1997" target="_blank" rel="noopener">in/yousufkhan1997</a></dd></div>
@@ -964,7 +963,8 @@ footer a{text-decoration:none}
             <div><dt class="label">Phone</dt><dd><a href="tel:+4915750966840">+49 157 50966840</a></dd></div>
           </dl>
           <p class="note">Open to working student roles and thesis collaborations now, and full-time positions from 2027, in ERP, logistics, process automation and related fields. Based in Nuremberg.</p>
-          <form class="cform" id="cform" novalidate>
+        </div>
+        <form class="cform" id="cform" novalidate>
             <h3>Send me a message</h3>
             <label>From<input type="email" name="email" autocomplete="email" placeholder="your@email.com" required></label>
             <label>Subject<input type="text" name="subject" maxlength="150" required></label>
@@ -973,7 +973,6 @@ footer a{text-decoration:none}
             <button type="submit">Send message</button>
             <p class="cform-err" role="alert" hidden></p>
           </form>
-        </div>
       </div>
     </div>
   </section>
