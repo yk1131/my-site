@@ -413,19 +413,13 @@ a.guide-mock{cursor:pointer}
 /* ---------- STICKY SIDE PANELS (wide screens) ---------- */
 .rail{display:none}
 @media (min-width: 1280px){
-  :root{--rl:clamp(260px,21vw,330px);--rr:clamp(230px,17vw,280px);--navh:4rem}
-  body{padding-left:var(--rl);padding-right:var(--rr)}
-  .nav{margin-left:calc(-1*var(--rl));margin-right:calc(-1*var(--rr));border-bottom:1px solid var(--soft)}
+  :root{--rr:clamp(230px,17vw,280px);--navh:4rem}
+  body{padding-right:var(--rr)}
+  .nav{margin-right:calc(-1*var(--rr));border-bottom:1px solid var(--soft)}
   .nav .wrap{max-width:none;padding:0 1.75rem}
   .rail{display:flex;flex-direction:column;justify-content:space-between;position:fixed;top:var(--navh);bottom:0;z-index:15;background:var(--bg);padding:2rem 1.75rem 1.75rem;overflow:auto}
-  .rail-l{left:0;width:var(--rl);border-right:1px solid var(--soft);justify-content:flex-end}
   .rail-r{right:0;width:var(--rr);border-left:1px solid var(--soft)}
-  .rail-tag{font-family:var(--serif);font-size:clamp(2.3rem,3.1vw,3.2rem);line-height:1.02;margin:0}
-  .rail-stats{margin:0;display:grid}
-  .rail-stats div{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.55rem 0;border-top:1px solid var(--soft)}
-  .rail-stats dt{font-family:var(--serif);font-size:1.15rem;white-space:nowrap}
   .hero-foot .uline{padding-left:0}
-  .rail-stats dd{margin:0;font-size:.72rem;color:var(--muted);text-align:right;line-height:1.35}
   .rail-status{display:flex;align-items:center;gap:.5rem;font-size:.75rem;font-weight:600;margin:0 0 1rem}
   .rail-status i{width:.55rem;height:.55rem;border-radius:50%;background:#3BA55C;box-shadow:0 0 0 0 rgba(59,165,92,.5);animation:pulse 2.4s infinite}
   @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(59,165,92,.45)}70%{box-shadow:0 0 0 8px rgba(59,165,92,0)}100%{box-shadow:0 0 0 0 rgba(59,165,92,0)}}
@@ -440,8 +434,7 @@ a.guide-mock{cursor:pointer}
   /* centre column adjustments */
   .hero{grid-template-columns:1fr;min-height:0}
   .hero h1,.hero .top>.caps,.hero-foot>p.caps{display:none}
-  .rail-stats .plus{font-family:var(--sans);font-size:.9rem;margin-left:1px}
-  .hero-text{padding:clamp(2.5rem,5vw,4rem) clamp(1.5rem,4vw,3.5rem) 2rem;text-align:left}
+  .hero-text{padding:clamp(2.5rem,5vw,4rem) clamp(1rem,5vw,4.5rem) 2rem;text-align:left;max-width:1240px;width:100%;margin:0 auto}
   .hero-text .top{text-align:left}
   .hero .sub{font-family:var(--serif);font-size:clamp(1.7rem,2.5vw,2.4rem);line-height:1.18;color:var(--ink);max-width:24ch;margin:0}
   .hero-foot{justify-content:flex-start;margin-top:1.75rem}
@@ -455,8 +448,6 @@ a.guide-mock{cursor:pointer}
   .tiles4{grid-template-columns:1fr 1fr}
   .case,.case-head,.auto{grid-template-columns:1fr}
   .phones{justify-content:flex-start}
-  .contact{grid-template-columns:1fr}
-  .photo.p3{max-width:520px}
 }
 @media (min-width: 1680px){
   .pf-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -592,13 +583,6 @@ footer a{text-decoration:none}
   </div>
 </header>
 
-<aside class="rail rail-l" aria-label="At a glance">
-  <dl class="rail-stats">
-    <div><dt>Top planner</dt><dd>of the year, Hutchison Ports</dd></div>
-    <div><dt>2</dt><dd>master's degrees: MBA · M.Sc. in progress</dd></div>
-    <div><dt>DE / EN</dt><dd>webshop built and launched</dd></div>
-  </dl>
-</aside>
 <aside class="rail rail-r" aria-label="Profile">
   <div>
     <p class="rail-status"><i aria-hidden="true"></i>Open to opportunities</p>
