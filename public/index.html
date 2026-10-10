@@ -37,7 +37,9 @@ a{color:inherit}
 /* nav */
 .nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .nav .wrap{display:flex;justify-content:space-between;align-items:center;height:4rem}
-.nav .name{font-family:var(--serif);font-size:1.35rem;text-decoration:none}
+.nav .name{font-family:var(--serif);font-size:1.35rem;text-decoration:none;display:flex;align-items:center}
+.nav .name .logo{display:none;width:36px;height:36px;border-radius:8px}
+@media (max-width:1020px){.nav ul{gap:1rem}.nav .wrap{gap:.9rem}.nav ul li:not(:last-child){display:none}.nav .name .logo{display:block}.nav .name span{display:none}}
 .nav ul{list-style:none;display:flex;gap:2rem;margin:0;padding:0}
 .nav ul a{text-decoration:none;font-size:.75rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
 .nav ul a:hover{color:var(--orange)}
@@ -411,19 +413,13 @@ a.guide-mock{cursor:pointer}
 /* ---------- STICKY SIDE PANELS (wide screens) ---------- */
 .rail{display:none}
 @media (min-width: 1280px){
-  :root{--rl:clamp(260px,21vw,330px);--rr:clamp(230px,17vw,280px);--navh:4rem}
-  body{padding-left:var(--rl);padding-right:var(--rr)}
-  .nav{margin-left:calc(-1*var(--rl));margin-right:calc(-1*var(--rr));border-bottom:1px solid var(--soft)}
+  :root{--rr:clamp(230px,17vw,280px);--navh:4rem}
+  body{padding-right:var(--rr)}
+  .nav{margin-right:calc(-1*var(--rr));border-bottom:1px solid var(--soft)}
   .nav .wrap{max-width:none;padding:0 1.75rem}
   .rail{display:flex;flex-direction:column;justify-content:space-between;position:fixed;top:var(--navh);bottom:0;z-index:15;background:var(--bg);padding:2rem 1.75rem 1.75rem;overflow:auto}
-  .rail-l{left:0;width:var(--rl);border-right:1px solid var(--soft);justify-content:flex-end}
   .rail-r{right:0;width:var(--rr);border-left:1px solid var(--soft)}
-  .rail-tag{font-family:var(--serif);font-size:clamp(2.3rem,3.1vw,3.2rem);line-height:1.02;margin:0}
-  .rail-stats{margin:0;display:grid}
-  .rail-stats div{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.55rem 0;border-top:1px solid var(--soft)}
-  .rail-stats dt{font-family:var(--serif);font-size:1.15rem;white-space:nowrap}
   .hero-foot .uline{padding-left:0}
-  .rail-stats dd{margin:0;font-size:.72rem;color:var(--muted);text-align:right;line-height:1.35}
   .rail-status{display:flex;align-items:center;gap:.5rem;font-size:.75rem;font-weight:600;margin:0 0 1rem}
   .rail-status i{width:.55rem;height:.55rem;border-radius:50%;background:#3BA55C;box-shadow:0 0 0 0 rgba(59,165,92,.5);animation:pulse 2.4s infinite}
   @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(59,165,92,.45)}70%{box-shadow:0 0 0 8px rgba(59,165,92,0)}100%{box-shadow:0 0 0 0 rgba(59,165,92,0)}}
@@ -438,8 +434,7 @@ a.guide-mock{cursor:pointer}
   /* centre column adjustments */
   .hero{grid-template-columns:1fr;min-height:0}
   .hero h1,.hero .top>.caps,.hero-foot>p.caps{display:none}
-  .rail-stats .plus{font-family:var(--sans);font-size:.9rem;margin-left:1px}
-  .hero-text{padding:clamp(2.5rem,5vw,4rem) clamp(1.5rem,4vw,3.5rem) 2rem;text-align:left}
+  .hero-text{padding:clamp(2.5rem,5vw,4rem) clamp(1rem,5vw,4.5rem) 2rem;text-align:left;max-width:1240px;width:100%;margin:0 auto}
   .hero-text .top{text-align:left}
   .hero .sub{font-family:var(--serif);font-size:clamp(1.7rem,2.5vw,2.4rem);line-height:1.18;color:var(--ink);max-width:24ch;margin:0}
   .hero-foot{justify-content:flex-start;margin-top:1.75rem}
@@ -453,8 +448,6 @@ a.guide-mock{cursor:pointer}
   .tiles4{grid-template-columns:1fr 1fr}
   .case,.case-head,.auto{grid-template-columns:1fr}
   .phones{justify-content:flex-start}
-  .contact{grid-template-columns:1fr}
-  .photo.p3{max-width:520px}
 }
 @media (min-width: 1680px){
   .pf-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -500,7 +493,7 @@ a.guide-mock{cursor:pointer}
 .sk-group ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem}
 .sk-group li{font-size:.82rem;padding:.3rem .7rem;background:color-mix(in srgb,var(--pastel) 30%,var(--paper));border:1px solid color-mix(in srgb,var(--pastel) 70%,var(--soft));border-radius:999px}
 /* ---------- CONTACT FORM ---------- */
-.cform{margin-top:2.5rem;display:grid;gap:1rem;max-width:520px}
+.cform{margin-top:0;display:grid;gap:1rem;max-width:520px}
 .cform h3{font-size:1.5rem;margin-bottom:.2rem}
 .cform label{display:grid;gap:.35rem;font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
 .cform input,.cform textarea{font:inherit;font-size:1rem;letter-spacing:0;text-transform:none;font-weight:400;padding:.75rem .9rem;border:1.5px solid var(--soft);background:var(--bg);color:var(--ink);border-radius:0;width:100%}
@@ -522,12 +515,12 @@ a.guide-mock{cursor:pointer}
 #contact{background:var(--paper);padding:clamp(4rem,9vw,7rem) 0 clamp(3rem,7vw,5rem);border-top:1px solid var(--soft)}
 #contact h2{font-size:clamp(2.6rem,7vw,5.5rem)}
 h1,h2,h3{overflow-wrap:break-word;hyphens:auto}
-.contact{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(2rem,8vw,10rem);margin-top:clamp(3rem,7vw,6rem);align-items:center}
+.contact{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(2rem,4vw,3.5rem);margin-top:clamp(3rem,7vw,6rem);align-items:start}
 .photo.p3{aspect-ratio:1.72}
 .photo.p3 .mono{background:linear-gradient(120deg,var(--wall),#d9cfc6)}
 .contact dl{margin:0;display:grid;gap:2rem}
 .contact dt{margin-bottom:.6rem}
-.contact dd{margin:0;font-family:var(--serif);font-size:clamp(1.15rem,1.8vw,1.45rem);line-height:1.3}
+.contact dd{margin:0;font-family:var(--serif);font-size:clamp(1.1rem,1.45vw,1.35rem);line-height:1.3}
 .contact dd a{text-decoration:none;border-bottom:1px solid transparent;overflow-wrap:anywhere}
 .contact dd a:hover{border-color:var(--ink)}
 .contact .note{margin-top:2.5rem;font-size:.95rem;color:var(--muted);max-width:44ch}
@@ -560,9 +553,6 @@ footer a{text-decoration:none}
   .hero-art .laptop{width:100%;margin-right:0}
   .emblem{aspect-ratio:auto;min-height:150px;padding:1.25rem .6rem}
   .emblem b{letter-spacing:.08em}
-  .nav ul{gap:1rem}
-  .nav .wrap{gap:.9rem}
-  .nav ul li:not(:last-child){display:none}
   .strip{grid-template-columns:1fr;max-width:380px;margin:0 auto}
   .strip .phone{max-width:230px;margin:0 auto;width:100%}
   .bg-ex{grid-template-columns:1fr}
@@ -575,7 +565,7 @@ footer a{text-decoration:none}
 
 <header class="nav">
   <div class="wrap">
-    <a class="name" href="#top">Yousuf Khan</a>
+    <a class="name" href="#top" aria-label="Yousuf Khan"><img class="logo" src="favicon.svg" alt="" width="36" height="36"><span>Yousuf Khan</span></a>
     <nav aria-label="Sections">
       <ul>
         <li><a href="#about">Bio</a></li>
@@ -593,13 +583,6 @@ footer a{text-decoration:none}
   </div>
 </header>
 
-<aside class="rail rail-l" aria-label="At a glance">
-  <dl class="rail-stats">
-    <div><dt>Top planner</dt><dd>of the year, Hutchison Ports</dd></div>
-    <div><dt>2</dt><dd>master's degrees: MBA · M.Sc. in progress</dd></div>
-    <div><dt>DE / EN</dt><dd>webshop built and launched</dd></div>
-  </dl>
-</aside>
 <aside class="rail rail-r" aria-label="Profile">
   <div>
     <p class="rail-status"><i aria-hidden="true"></i>Open to opportunities</p>
@@ -793,14 +776,6 @@ footer a{text-decoration:none}
             <p class="pf-links"><a data-view="celonis" href="assets/celonis/celonis-dashboard.mp4">Watch the dashboard in action (4:36)</a></p>
           </div>
         </article>
-        <article class="pf " data-cat="erp">
-          <div class="pv ph"><span class="ph-kind">Dashboard</span><span class="ph-note">Preview coming soon</span></div>
-          <div class="pf-body">
-            <p class="pf-label">Dashboard · In progress</p>
-            <h3>Next dashboard</h3>
-            <p>A second dashboard is in progress and will be added here.</p>
-          </div>
-        </article>
         <article class="pf" data-cat="erp">
           <a data-view="pipeline" class="pv doc shot" href="assets/drive-availability.jpg"><img src="assets/drive-availability.jpg" alt="Drive availability matrix on shop.rmtek.de, generated by the pipeline" loading="lazy"></a>
           <div class="pf-body">
@@ -826,14 +801,6 @@ footer a{text-decoration:none}
             <h3>eBay listing templates</h3>
             <p>Custom DotLiquid template for RMtek's eBay listings, built on JTL's Evo theme. It fills each listing from JTL product data: a CSS-only gallery for up to 12 product images, a specification table generated from the product attributes, galleries of bestsellers from the same product group and related items, multi-language text blocks, and a responsive layout.</p>
             <p class="pf-links"><a data-view="ebay-code" href="#ebay-code">View code excerpt</a> <a href="https://www.ebay.de/itm/198565061430" target="_blank" rel="noopener">See a live listing</a></p>
-          </div>
-        </article>
-        <article class="pf pf-empty" data-cat="erp">
-          <div class="pv ph"><span class="ph-kind">Code</span><span class="ph-note">Coming soon</span></div>
-          <div class="pf-body">
-            <p class="pf-label">Programming</p>
-            <h3>Your next project</h3>
-            <p>Space for more code: scripts, notebooks or repositories.</p>
           </div>
         </article>
         <article class="pf" data-cat="research">
@@ -898,14 +865,6 @@ footer a{text-decoration:none}
             <h3>Effect of Environmental Strategies and CSR on Green Employee Loyalty</h3>
             <p>Quantitative survey study in Karachi on how environmental strategy and corporate social responsibility affect green employee loyalty, with green product attitude and green trust as moderators, analysed with regression in SmartPLS.</p>
             <p class="pf-links"><a data-view="green-loyalty" href="assets/research/green-loyalty-preview.pdf">Read preview (6 pages)</a></p>
-          </div>
-        </article>
-        <article class="pf " data-cat="research">
-          <div class="pv ph"><span class="ph-kind">Project</span><span class="ph-note">Preview coming soon</span></div>
-          <div class="pf-body">
-            <p class="pf-label">Project · FAU</p>
-            <h3>Innovation and Leadership Project for JOSEPHS</h3>
-            <p>Innovation and leadership project carried out for JOSEPHS.</p>
           </div>
         </article>
         <article class="pf" data-cat="writing erp">
@@ -980,7 +939,6 @@ footer a{text-decoration:none}
     <div class="wrap">
       <h2 id="contact-title">Work with me</h2>
       <div class="contact">
-        <div class="photo p3"><div class="mono">YK</div></div>
         <div>
           <dl>
             <div><dt class="label">LinkedIn</dt><dd><a href="https://linkedin.com/in/yousufkhan1997" target="_blank" rel="noopener">in/yousufkhan1997</a></dd></div>
@@ -988,7 +946,8 @@ footer a{text-decoration:none}
             <div><dt class="label">Phone</dt><dd><a href="tel:+4915750966840">+49 157 50966840</a></dd></div>
           </dl>
           <p class="note">Open to working student roles and thesis collaborations now, and full-time positions from 2027, in ERP, logistics, process automation and related fields. Based in Nuremberg.</p>
-          <form class="cform" id="cform" novalidate>
+        </div>
+        <form class="cform" id="cform" novalidate>
             <h3>Send me a message</h3>
             <label>From<input type="email" name="email" autocomplete="email" placeholder="your@email.com" required></label>
             <label>Subject<input type="text" name="subject" maxlength="150" required></label>
@@ -997,7 +956,6 @@ footer a{text-decoration:none}
             <button type="submit">Send message</button>
             <p class="cform-err" role="alert" hidden></p>
           </form>
-        </div>
       </div>
     </div>
   </section>
